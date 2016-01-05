@@ -34,8 +34,8 @@ public class Database extends SQLiteOpenHelper {
             db.execSQL("CREATE TABLE utilisateur (idUtilisateur INT, pseudo VARCHAR(20), nom VARCHAR(20), prenom VARCHAR(20));");
             db.execSQL("CREATE TABLE sacADos (idUtilisateur INT, idElement INT, nombre INT);");
             db.execSQL("CREATE TABLE element (idElement INT, libelle VARCHAR(50), effet VARCHAR(255));");
-            db.execSQL("CREATE TABLE pokemonReel (idPokemonReel INT, idUtilisateur INT, idPokemon INT, pseudo VARCHAR(20), equipe BOOL, atk INT, def INT, niveau INT, exp INT, longitude REAL, latitude REAL );");
-            db.execSQL("CREATE TABLE infosPokemon (idPokemon INT , idTypePokemon INT, nom VARCHAR(255), description TEXT, nomImage VARCHAR(255), vue BOOL, capture BOOL);");
+            db.execSQL("CREATE TABLE pokemonReel (idPokemonReel INT, idUtilisateur INT, idPokemon INT, pseudo VARCHAR(20), equipe BOOL, atk INT, def INT, niveau INT, exp INT, longitude REAL, latitude REAL, maxVie INT );");
+            db.execSQL("CREATE TABLE infosPokemon (idPokemon INT , idTypePokemon INT, numero INT, nom VARCHAR(255), description TEXT, nomImage VARCHAR(255), vue BOOL, capture BOOL);");
             db.execSQL("CREATE TABLE typePokemon (idTypePokemon INT, libelle VARCHAR(50));");
             db.execSQL("CREATE TABLE lieu (idLieu INT, libelle VARCHAR(50), typeLieu VARCHAR(50), longitude REAL, latitude REAL );");
             db.execSQL("CREATE TABLE lieuFavoris (idLieu INT, idUtilisateur INT );");
@@ -82,6 +82,7 @@ public class Database extends SQLiteOpenHelper {
             values.put("nomImage", " ");
             values.put("vue", 1);
             values.put("capture", 1);
+            values.put("numero", 1);
             db.insert("infosPokemon", null, values);
 
             values = new ContentValues();
@@ -92,6 +93,7 @@ public class Database extends SQLiteOpenHelper {
             values.put("nomImage", " ");
             values.put("vue", 1);
             values.put("capture", 0);
+            values.put("numero", 4);
             db.insert("infosPokemon", null, values);
 
             values = new ContentValues();
@@ -102,6 +104,7 @@ public class Database extends SQLiteOpenHelper {
             values.put("nomImage", " ");
             values.put("vue", 0);
             values.put("capture", 0);
+            values.put("numero", 5);
             db.insert("infosPokemon", null, values);
 
             values = new ContentValues();
@@ -112,6 +115,7 @@ public class Database extends SQLiteOpenHelper {
             values.put("nomImage", " ");
             values.put("vue", 0);
             values.put("capture", 0);
+            values.put("numero", 6);
             db.insert("infosPokemon", null, values);
 
 
