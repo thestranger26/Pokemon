@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="fr.pokemonteam.pokemon.controller.CombatActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:baselineAligned="false">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="200dp"
+            android:layout_weight="1">
+            <ImageView
+                android:id="@+id/imagePokemonAdverse"
+                android:layout_width="195dp"
+                android:layout_height="150dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop ="true"/>
+            <TextView
+                android:id="@+id/textPokemonAdverse"
+                android:layout_width="195dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_alignParentLeft="true" />
+            <ProgressBar
+                android:id="@+id/progressBarPokemonAdverse"
+                android:layout_marginTop="50dp"
+                android:layout_width="195dp"
+                android:layout_height="15dp"
+                android:layout_alignParentLeft="true"
+
+                style="@android:style/Widget.ProgressBar.Horizontal" />
+            <ImageView
+                android:id="@+id/imagePokemonAllie"
+                android:layout_width="195dp"
+                android:layout_height="150dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentBottom="true" />
+            <TextView
+                android:id="@+id/textNomPokemonAllie"
+                android:layout_width="195dp"
+                android:layout_height="30dp"
+                android:layout_marginBottom="30dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"/>
+            <TextView
+                android:id="@+id/textViePokemonAllie"
+                android:layout_width="195dp"
+                android:layout_height="30dp"
+                android:layout_marginBottom="10dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"/>
+            <ProgressBar
+                android:id="@+id/progressBarPokemonAllie"
+                android:layout_width="195dp"
+                android:layout_height="15dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                />
+
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <Button
+                android:layout_width="180dp"
+                android:layout_height="95dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop ="true"
+                android:text="@string/button_atk"
+                />
+
+            <Button
+                android:layout_width="180dp"
+                android:layout_height="95dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentBottom="true"
+                android:text="@string/button_def"
+                />
+
+            <Button
+                android:layout_width="180dp"
+                android:layout_height="95dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop ="true"
+                android:text="@string/button_pkball"
+                />
+
+            <Button
+                android:layout_width="180dp"
+                android:layout_height="95dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:text="@string/button_fuite"
+                />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <include layout="@layout/content_combat" />
+
+</android.support.design.widget.CoordinatorLayout>

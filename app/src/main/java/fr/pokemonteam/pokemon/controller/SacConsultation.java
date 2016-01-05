@@ -20,6 +20,7 @@ public class SacConsultation extends AppCompatActivity {
 
     Utilisateur utilisateur = new Utilisateur(0);
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -34,8 +34,8 @@ public class Database extends SQLiteOpenHelper {
             db.execSQL("CREATE TABLE utilisateur (idUtilisateur INT, pseudo VARCHAR(20), nom VARCHAR(20), prenom VARCHAR(20));");
             db.execSQL("CREATE TABLE sacADos (idUtilisateur INT, idElement INT, nombre INT);");
             db.execSQL("CREATE TABLE element (idElement INT, libelle VARCHAR(50), effet VARCHAR(255));");
-            db.execSQL("CREATE TABLE pokemonReel (idPokemonReel INT, idUtilisateur INT, idPokemon INT, pseudo VARCHAR(20), equipe BOOL, atk INT, def INT, niveau INT, exp INT, longitude REAL, latitude REAL );");
-            db.execSQL("CREATE TABLE infosPokemon (idPokemon INT , idTypePokemon INT, nom VARCHAR(255), description TEXT, nomImage VARCHAR(255), vue BOOL, capture BOOL);");
+            db.execSQL("CREATE TABLE pokemonReel (idPokemonReel INT, idUtilisateur INT, idPokemon INT, pseudo VARCHAR(20), equipe BOOL, atk INT, def INT, niveau INT, exp INT, longitude REAL, latitude REAL, vieActuelle INT, maxVie INT );");
+            db.execSQL("CREATE TABLE infosPokemon (idPokemon INT , idTypePokemon INT, numero INT, nom VARCHAR(255), description TEXT, nomImage VARCHAR(255), vue BOOL, capture BOOL);");
             db.execSQL("CREATE TABLE typePokemon (idTypePokemon INT, libelle VARCHAR(50));");
             db.execSQL("CREATE TABLE lieu (idLieu INT, libelle VARCHAR(50), typeLieu VARCHAR(50), longitude REAL, latitude REAL );");
             db.execSQL("CREATE TABLE lieuFavoris (idLieu INT, idUtilisateur INT );");
@@ -47,10 +47,6 @@ public class Database extends SQLiteOpenHelper {
             db.endTransaction();
             System.out.println("Fin de la creation de la BDD");
         }
-        this.remplirDB(db);
-    }
-
-    private void remplirDB(SQLiteDatabase db ) {
         try {
             db.beginTransaction();
 
@@ -86,6 +82,7 @@ public class Database extends SQLiteOpenHelper {
             values.put("nomImage", " ");
             values.put("vue", 1);
             values.put("capture", 1);
+            values.put("numero", 1);
             db.insert("infosPokemon", null, values);
 
             values = new ContentValues();
@@ -96,6 +93,7 @@ public class Database extends SQLiteOpenHelper {
             values.put("nomImage", " ");
             values.put("vue", 1);
             values.put("capture", 0);
+            values.put("numero", 4);
             db.insert("infosPokemon", null, values);
 
             values = new ContentValues();
@@ -106,6 +104,7 @@ public class Database extends SQLiteOpenHelper {
             values.put("nomImage", " ");
             values.put("vue", 0);
             values.put("capture", 0);
+            values.put("numero", 5);
             db.insert("infosPokemon", null, values);
 
             values = new ContentValues();
@@ -116,6 +115,7 @@ public class Database extends SQLiteOpenHelper {
             values.put("nomImage", " ");
             values.put("vue", 0);
             values.put("capture", 0);
+            values.put("numero", 6);
             db.insert("infosPokemon", null, values);
 
 
@@ -123,15 +123,100 @@ public class Database extends SQLiteOpenHelper {
             values = new ContentValues();
             values.put("idPokemonReel", 0);
             values.put("idPokemon", 1);
-            values.put("pseudo", "Bulbi");
+            values.put("idUtilisateur",0);
+            values.put("pseudo", "Pupuce");
+            values.put("equipe", true);
+            values.put("atk", 50);
+            values.put("def", 40);
+            values.put("niveau",60);
+            values.put("exp",18657);
+            values.put("longitude", "43.2");
+            values.put("latitude", "151");
+            values.put("vieActuelle", 130);
+            values.put("maxVie", 130);
+            db.insert("pokemonReel", null, values);
+
+            values = new ContentValues();
+            values.put("idPokemonReel", 1);
+            values.put("idPokemon", 2);
+            values.put("idUtilisateur",0);
+            values.put("pseudo", "Dracouille");
+            values.put("equipe", true);
+            values.put("atk", 45);
+            values.put("def", 23);
+            values.put("niveau",50);
+            values.put("exp",13400);
+            values.put("longitude", "43.2");
+            values.put("latitude", "151");
+            values.put("vieActuelle", 30);
+            values.put("maxVie", 130);
+            db.insert("pokemonReel", null, values);
+
+            values = new ContentValues();
+            values.put("idPokemonReel", 2);
+            values.put("idPokemon", 3);
+            values.put("idUtilisateur",0);
             values.put("equipe", true);
             values.put("atk", 10);
-            values.put("def",40);
-            values.put("niveau",23);
-            values.put("exp",1034);
-            values.put("longitude","43.2");
+            values.put("def", 50);
+            values.put("niveau",25);
+            values.put("exp",5400);
+            values.put("longitude", "43.2");
             values.put("latitude","151");
+            values.put("vieActuelle", 90);
+            values.put("maxVie", 130);
             db.insert("pokemonReel", null, values);
+
+            //// CREATION D'ELEMENTS POUR LE SAC A DOS
+            values = new ContentValues();
+            values.put("idElement", 0);
+            values.put("libelle", "pokeball");
+            values.put("effet", "Pour capturer des petits pokemons");
+            db.insert("element", null, values);
+
+            values = new ContentValues();
+            values.put("idElement", 1);
+            values.put("libelle", "superball");
+            values.put("effet", "Pour capturer des petits pokemons un peu plus grand");
+            db.insert("element", null, values);
+
+            values = new ContentValues();
+            values.put("idElement", 2);
+            values.put("libelle", "megaball");
+            values.put("effet", "Pour capturer des pokemons très grand");
+            db.insert("element", null, values);
+
+            values = new ContentValues();
+            values.put("idElement", 3);
+            values.put("libelle", "potion");
+            values.put("effet", "Pour guérir ton petit mignon tout doux pokemon adoré <3 <3 <3 XO XO XO ");
+            db.insert("element", null, values);
+
+
+            // CREATION DU SAC A DOS DU USER
+            values = new ContentValues();
+            values.put("idUtilisateur", 0);
+            values.put("idElement", 3);
+            values.put("nombre", 3);
+            db.insert("sacADos", null, values);
+
+            values = new ContentValues();
+            values.put("idUtilisateur", 0);
+            values.put("idElement", 1);
+            values.put("nombre", 10);
+            db.insert("sacADos", null, values);
+
+            values = new ContentValues();
+            values.put("idUtilisateur", 0);
+            values.put("idElement", 0);
+            values.put("nombre", 25);
+            db.insert("sacADos", null, values);
+
+            values = new ContentValues();
+            values.put("idUtilisateur", 0);
+            values.put("idElement", 2);
+            values.put("nombre", 3);
+            db.insert("sacADos", null, values);
 
             db.setTransactionSuccessful();
         }catch (Exception e) {
@@ -181,22 +266,25 @@ public class Database extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         try {
             db.beginTransaction();
-            Cursor c = db.query("pokemonReel", new String[]{"idPokemonReel", "idPokemon", "pseudo", "equipe", "atk", "def", "niveau", "exp", "longitude", "latitude"}, "idUtilisateur=" + idUtilisateur + " AND equipe=TRUE", null, null, null, null);
+            Cursor c = db.query("pokemonReel", new String[]{"idPokemonReel", "idPokemon", "pseudo", "equipe", "atk", "def", "niveau", "exp", "longitude", "latitude", "maxVie", "vieActuelle"}, "idUtilisateur=" + idUtilisateur + " AND equipe=1", null, null, null, null);
 
 
             if (c.getCount() > 0) {
                 c.moveToFirst();
                 do {
                     PokemonReel p = new PokemonReel();
-                    p.setPseudo(c.getColumnName(c.getColumnIndex("pseudo")));
-                    p.setAtk(Integer.parseInt(c.getColumnName(c.getColumnIndex("atk"))));
-                    p.setDef(Integer.parseInt(c.getColumnName(c.getColumnIndex("def"))));
-                    p.setNiveau(Integer.parseInt(c.getColumnName(c.getColumnIndex("niveau"))));
-                    p.setExp(Integer.parseInt(c.getColumnName(c.getColumnIndex("exp"))));
-                    p.setLongitude(Long.parseLong(c.getColumnName(c.getColumnIndex("longitude"))));
-                    p.setLatitude(Long.parseLong(c.getColumnName(c.getColumnIndex("latitude"))));
 
-                    p.setPokemon(this.getPokemon(Integer.parseInt(c.getColumnName(c.getColumnIndex("idPokemon")))));
+                    p.setPseudo(c.getString(c.getColumnIndex("pseudo")));
+                    p.setAtk(c.getInt(c.getColumnIndex("atk")));
+                    p.setDef(c.getInt(c.getColumnIndex("def")));
+                    p.setNiveau(c.getInt(c.getColumnIndex("niveau")));
+                    p.setExp(c.getInt(c.getColumnIndex("exp")));
+                    p.setLongitude(c.getLong(c.getColumnIndex("longitude")));
+                    p.setLatitude(c.getLong(c.getColumnIndex("latitude")));
+                    p.setVieActuelle(c.getInt(c.getColumnIndex("vieActuelle")));
+                    p.setMaxVie(c.getInt(c.getColumnIndex("maxVie")));
+
+                    p.setPokemon(this.getPokemon(c.getInt(c.getColumnIndex("idPokemon"))));
 
                     liste.add(p);
 
@@ -222,11 +310,20 @@ public class Database extends SQLiteOpenHelper {
             p.setId(idPokemon);
             if (c.getCount() == 1) {
                 c.moveToFirst();
-                p.setNom(c.getColumnName(c.getColumnIndex("nom")));
-                p.setDescription(c.getColumnName(c.getColumnIndex("description")));
-                p.setLienImage(c.getColumnName(c.getColumnIndex("nomImage")));
-                p.setVue(Boolean.parseBoolean(c.getColumnName(c.getColumnIndex("vue"))));
-                p.setCapture(Boolean.parseBoolean(c.getColumnName(c.getColumnIndex("capture"))));
+                p.setNom(c.getString(c.getColumnIndex("nom")));
+                p.setDescription(c.getString(c.getColumnIndex("description")));
+                p.setLienImage(c.getString(c.getColumnIndex("nomImage")));
+
+                if (c.getInt(c.getColumnIndex("vue"))==1) {
+                    p.setVue(true);
+                } else {
+                    p.setVue(false);
+                }
+                if (c.getInt(c.getColumnIndex("capture"))==1) {
+                    p.setCapture(true);
+                } else {
+                    p.setCapture(false);
+                }
             }
             db.setTransactionSuccessful();
         } catch (Exception e) {

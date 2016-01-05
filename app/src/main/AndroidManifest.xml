@@ -12,7 +12,6 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
-
     <uses-feature
         android:glEsVersion="0x00020000"
         android:required="true" />
@@ -53,6 +52,15 @@
         <activity
             android:name=".controller.PokedexActivity"
             android:label="@string/title_activity_pokedex"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".controller.CombatActivity"
+            android:label="@string/title_activity_combat"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".controller.MonEquipeActivity"
+            android:label="@string/title_activity_my_team"
+
             android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
