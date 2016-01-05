@@ -42,14 +42,12 @@ public class AdapterMonEquipe extends ArrayAdapter<PokemonReel> {
         atk.setText(atk.getText() + Integer.toString(pkm.getAtk()));
         def.setText(def.getText() + Integer.toString(pkm.getDef()));
         exp.setText(exp.getText() + Integer.toString(pkm.getExp()));
-
+        nom.setText(pkm.getPokemon().getNom());
 
         if(pkm.getPseudo() == null || pkm.getPseudo().isEmpty()) {
-            nom.setText("");
             pseudo.setText(pkm.getPokemon().getNom());
         } else {
             pseudo.setText(pkm.getPseudo());
-            nom.setText(pkm.getPokemon().getNom());
         }
 
         ProgressBar pg = (ProgressBar) convertView.findViewById(R.id.monEquipe_progressBar);
