@@ -4,4 +4,9 @@
     <string name="title_activity_pokedex">PokedexActivity</string>
     <string name="title_activity_sac_consultation">SacConsultation</string>
     <string name="action_settings">Menu</string>
+    <string name="title_activity_combat">CombatActivity</string>
+    <string name="button_atk">Attaque</string>
+    <string name="button_def">Défense</string>
+    <string name="button_pkball">Pokéball</string>
+    <string name="button_fuite">Fuite</string>
 </resources>
