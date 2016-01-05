@@ -133,12 +133,67 @@ public class Database extends SQLiteOpenHelper {
             values.put("latitude","151");
             db.insert("pokemonReel", null, values);
 
+            //// CREATION D'ELEMENTS POUR LE SAC A DOS
+            values = new ContentValues();
+            values.put("idElement", 0);
+            values.put("libelle", "pokeball");
+            values.put("effet", "Pour capturer des petits pokemons");
+            db.insert("element", null, values);
+
+            values = new ContentValues();
+            values.put("idElement", 1);
+            values.put("libelle", "superball");
+            values.put("effet", "Pour capturer des petits pokemons un peu plus grand");
+            db.insert("element", null, values);
+
+            values = new ContentValues();
+            values.put("idElement", 2);
+            values.put("libelle", "megaball");
+            values.put("effet", "Pour capturer des pokemons très grand");
+            db.insert("element", null, values);
+
+            values = new ContentValues();
+            values.put("idElement", 3);
+            values.put("libelle", "potion");
+            values.put("effet", "Pour guérir ton petit mignon tout doux pokemon adoré <3 <3 <3 XO XO XO ");
+            db.insert("element", null, values);
+
+
+            // CREATION DU SAC A DOS DU USER
+            values = new ContentValues();
+            values.put("idUtilisateur", 0);
+            values.put("idElement", 3);
+            values.put("nombre", 3);
+            db.insert("sacADos", null, values);
+
+            values = new ContentValues();
+            values.put("idUtilisateur", 0);
+            values.put("idElement", 1);
+            values.put("nombre", 10);
+            db.insert("sacADos", null, values);
+
+            values = new ContentValues();
+            values.put("idUtilisateur", 0);
+            values.put("idElement", 0);
+            values.put("nombre", 25);
+            db.insert("sacADos", null, values);
+
+            values = new ContentValues();
+            values.put("idUtilisateur", 0);
+            values.put("idElement", 2);
+            values.put("nombre", 3);
+            db.insert("sacADos", null, values);
+
             db.setTransactionSuccessful();
         }catch (Exception e) {
             e.printStackTrace();
         } finally {
             db.endTransaction();
         }
+    }
+
+    private void remplirDB(SQLiteDatabase db ) {
+
     }
 
     @Override
