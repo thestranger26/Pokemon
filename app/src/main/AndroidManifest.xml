@@ -54,14 +54,14 @@
             android:label="@string/title_activity_pokedex"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-<<<<<<< Updated upstream
             android:name=".controller.CombatActivity"
             android:label="@string/title_activity_combat"
-=======
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".controller.MonEquipeActivity"
             android:label="@string/title_activity_my_team"
->>>>>>> Stashed changes
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>
