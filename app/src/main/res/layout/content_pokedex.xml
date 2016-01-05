@@ -12,4 +12,26 @@
     tools:context=".controller.PokedexActivity"
     tools:showIn="@layout/activity_pokedex">
 
+    <android.support.v4.widget.CircleImageView
+        android:layout_alignParentStart="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/image_pokemon"
+        android:layout_toStartOf="@+id/pokedex_nom"
+        />
+
+    <TextView
+        android:id="@+id/pokedex_nom"
+        android:layout_toLeftOf="@+id/pokedex_id"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Pikachu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/pokedex_id"
+        android:text="3"
+        android:singleLine="false"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
 </RelativeLayout>
