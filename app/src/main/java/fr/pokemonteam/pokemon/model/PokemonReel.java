@@ -13,6 +13,8 @@ public class PokemonReel {
     int exp;
     long latitude;
     long longitude;
+    int maxVie;
+    int vieActuelle;
 
 
     public PokemonReel() {
@@ -101,5 +103,21 @@ public class PokemonReel {
 
     public void setLongitude(long longitude) {
         this.longitude = longitude;
+    }
+
+    public int getMaxVie() {
+        return maxVie;
+    }
+
+    public void setMaxVie(int maxVie) {
+        this.maxVie = maxVie;
+    }
+
+    public int getVieActuelle() {
+        return vieActuelle;
+    }
+
+    public void setVieActuelle(int vieActuelle) {
+        this.vieActuelle = vieActuelle;
     }
 }

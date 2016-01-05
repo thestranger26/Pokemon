@@ -34,7 +34,7 @@ public class Database extends SQLiteOpenHelper {
             db.execSQL("CREATE TABLE utilisateur (idUtilisateur INT, pseudo VARCHAR(20), nom VARCHAR(20), prenom VARCHAR(20));");
             db.execSQL("CREATE TABLE sacADos (idUtilisateur INT, idElement INT, nombre INT);");
             db.execSQL("CREATE TABLE element (idElement INT, libelle VARCHAR(50), effet VARCHAR(255));");
-            db.execSQL("CREATE TABLE pokemonReel (idPokemonReel INT, idUtilisateur INT, idPokemon INT, pseudo VARCHAR(20), equipe BOOL, atk INT, def INT, niveau INT, exp INT, longitude REAL, latitude REAL, maxVie INT );");
+            db.execSQL("CREATE TABLE pokemonReel (idPokemonReel INT, idUtilisateur INT, idPokemon INT, pseudo VARCHAR(20), equipe BOOL, atk INT, def INT, niveau INT, exp INT, longitude REAL, latitude REAL, vieActuelle INT, maxVie INT );");
             db.execSQL("CREATE TABLE infosPokemon (idPokemon INT , idTypePokemon INT, numero INT, nom VARCHAR(255), description TEXT, nomImage VARCHAR(255), vue BOOL, capture BOOL);");
             db.execSQL("CREATE TABLE typePokemon (idTypePokemon INT, libelle VARCHAR(50));");
             db.execSQL("CREATE TABLE lieu (idLieu INT, libelle VARCHAR(50), typeLieu VARCHAR(50), longitude REAL, latitude REAL );");
@@ -131,7 +131,9 @@ public class Database extends SQLiteOpenHelper {
             values.put("niveau",60);
             values.put("exp",18657);
             values.put("longitude", "43.2");
-            values.put("latitude","151");
+            values.put("latitude", "151");
+            values.put("vieActuelle", 130);
+            values.put("maxVie", 130);
             db.insert("pokemonReel", null, values);
 
             values = new ContentValues();
@@ -145,7 +147,9 @@ public class Database extends SQLiteOpenHelper {
             values.put("niveau",50);
             values.put("exp",13400);
             values.put("longitude", "43.2");
-            values.put("latitude","151");
+            values.put("latitude", "151");
+            values.put("vieActuelle", 30);
+            values.put("maxVie", 130);
             db.insert("pokemonReel", null, values);
 
             values = new ContentValues();
@@ -159,6 +163,8 @@ public class Database extends SQLiteOpenHelper {
             values.put("exp",5400);
             values.put("longitude", "43.2");
             values.put("latitude","151");
+            values.put("vieActuelle", 90);
+            values.put("maxVie", 130);
             db.insert("pokemonReel", null, values);
 
             //// CREATION D'ELEMENTS POUR LE SAC A DOS
@@ -260,7 +266,7 @@ public class Database extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         try {
             db.beginTransaction();
-            Cursor c = db.query("pokemonReel", new String[]{"idPokemonReel", "idPokemon", "pseudo", "equipe", "atk", "def", "niveau", "exp", "longitude", "latitude"}, "idUtilisateur=" + idUtilisateur + " AND equipe=1", null, null, null, null);
+            Cursor c = db.query("pokemonReel", new String[]{"idPokemonReel", "idPokemon", "pseudo", "equipe", "atk", "def", "niveau", "exp", "longitude", "latitude", "maxVie", "vieActuelle"}, "idUtilisateur=" + idUtilisateur + " AND equipe=1", null, null, null, null);
 
 
             if (c.getCount() > 0) {
@@ -275,6 +281,8 @@ public class Database extends SQLiteOpenHelper {
                     p.setExp(c.getInt(c.getColumnIndex("exp")));
                     p.setLongitude(c.getLong(c.getColumnIndex("longitude")));
                     p.setLatitude(c.getLong(c.getColumnIndex("latitude")));
+                    p.setVieActuelle(c.getInt(c.getColumnIndex("vieActuelle")));
+                    p.setMaxVie(c.getInt(c.getColumnIndex("maxVie")));
 
                     p.setPokemon(this.getPokemon(c.getInt(c.getColumnIndex("idPokemon"))));
 

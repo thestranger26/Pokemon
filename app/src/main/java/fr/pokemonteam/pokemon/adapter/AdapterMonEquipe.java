@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.util.List;
@@ -50,6 +51,11 @@ public class AdapterMonEquipe extends ArrayAdapter<PokemonReel> {
             pseudo.setText(pkm.getPseudo());
             nom.setText(pkm.getPokemon().getNom());
         }
+
+        ProgressBar pg = (ProgressBar) convertView.findViewById(R.id.monEquipe_progressBar);
+        pg.setMax(pkm.getMaxVie());
+        pg.setProgress(pkm.getVieActuelle());
+
 
         return convertView;
     }
