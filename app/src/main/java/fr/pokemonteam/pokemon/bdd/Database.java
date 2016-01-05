@@ -130,6 +130,7 @@ public class Database extends SQLiteOpenHelper {
             values.put("niveau",23);
             values.put("exp",1034);
             values.put("longitude","43.2");
+            values.put("longitude", "43.2");
             values.put("latitude","151");
             db.insert("pokemonReel", null, values);
 
@@ -237,6 +238,7 @@ public class Database extends SQLiteOpenHelper {
         try {
             db.beginTransaction();
             Cursor c = db.query("pokemonReel", new String[]{"idPokemonReel", "idPokemon", "pseudo", "equipe", "atk", "def", "niveau", "exp", "longitude", "latitude"}, "idUtilisateur=" + idUtilisateur + " AND equipe=TRUE", null, null, null, null);
+            Cursor c = db.query("pokemonReel", new String[]{"idPokemonReel", "idPokemon", "pseudo", "equipe", "atk", "def", "niveau", "exp", "longitude", "latitude"}, "idUtilisateur=" + idUtilisateur + " AND equipe=1", null, null, null, null);
 
 
             if (c.getCount() > 0) {
