@@ -1,4 +1,4 @@
-package fr.pokemonteam.pokemon.Adapter;
+package fr.pokemonteam.pokemon.adapter;
 
 import android.content.Context;
 import android.renderscript.Element;
