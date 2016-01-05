@@ -123,10 +123,11 @@ public class Database extends SQLiteOpenHelper {
             values = new ContentValues();
             values.put("idPokemonReel", 0);
             values.put("idPokemon", 1);
+            values.put("idUtilisateur",0);
             values.put("pseudo", "Bulbi");
             values.put("equipe", true);
             values.put("atk", 10);
-            values.put("def",40);
+            values.put("def", 40);
             values.put("niveau",23);
             values.put("exp",1034);
             values.put("longitude", "43.2");
@@ -239,15 +240,16 @@ public class Database extends SQLiteOpenHelper {
                 c.moveToFirst();
                 do {
                     PokemonReel p = new PokemonReel();
-                    p.setPseudo(c.getColumnName(c.getColumnIndex("pseudo")));
-                    p.setAtk(Integer.parseInt(c.getColumnName(c.getColumnIndex("atk"))));
-                    p.setDef(Integer.parseInt(c.getColumnName(c.getColumnIndex("def"))));
-                    p.setNiveau(Integer.parseInt(c.getColumnName(c.getColumnIndex("niveau"))));
-                    p.setExp(Integer.parseInt(c.getColumnName(c.getColumnIndex("exp"))));
-                    p.setLongitude(Long.parseLong(c.getColumnName(c.getColumnIndex("longitude"))));
-                    p.setLatitude(Long.parseLong(c.getColumnName(c.getColumnIndex("latitude"))));
 
-                    p.setPokemon(this.getPokemon(Integer.parseInt(c.getColumnName(c.getColumnIndex("idPokemon")))));
+                    p.setPseudo(c.getString(c.getColumnIndex("pseudo")));
+                    p.setAtk(c.getInt(c.getColumnIndex("atk")));
+                    p.setDef(c.getInt(c.getColumnIndex("def")));
+                    p.setNiveau(c.getInt(c.getColumnIndex("niveau")));
+                    p.setExp(c.getInt(c.getColumnIndex("exp")));
+                    p.setLongitude(c.getLong(c.getColumnIndex("longitude")));
+                    p.setLatitude(c.getLong(c.getColumnIndex("latitude")));
+
+                    p.setPokemon(this.getPokemon(c.getInt(c.getColumnIndex("idPokemon"))));
 
                     liste.add(p);
 
@@ -273,11 +275,20 @@ public class Database extends SQLiteOpenHelper {
             p.setId(idPokemon);
             if (c.getCount() == 1) {
                 c.moveToFirst();
-                p.setNom(c.getColumnName(c.getColumnIndex("nom")));
-                p.setDescription(c.getColumnName(c.getColumnIndex("description")));
-                p.setLienImage(c.getColumnName(c.getColumnIndex("nomImage")));
-                p.setVue(Boolean.parseBoolean(c.getColumnName(c.getColumnIndex("vue"))));
-                p.setCapture(Boolean.parseBoolean(c.getColumnName(c.getColumnIndex("capture"))));
+                p.setNom(c.getString(c.getColumnIndex("nom")));
+                p.setDescription(c.getString(c.getColumnIndex("description")));
+                p.setLienImage(c.getString(c.getColumnIndex("nomImage")));
+
+                if (c.getInt(c.getColumnIndex("vue"))==1) {
+                    p.setVue(true);
+                } else {
+                    p.setVue(false);
+                }
+                if (c.getInt(c.getColumnIndex("capture"))==1) {
+                    p.setCapture(true);
+                } else {
+                    p.setCapture(false);
+                }
             }
             db.setTransactionSuccessful();
         } catch (Exception e) {
