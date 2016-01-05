@@ -47,10 +47,6 @@ public class Database extends SQLiteOpenHelper {
             db.endTransaction();
             System.out.println("Fin de la creation de la BDD");
         }
-        this.remplirDB(db);
-    }
-
-    private void remplirDB(SQLiteDatabase db ) {
         try {
             db.beginTransaction();
 
@@ -129,7 +125,6 @@ public class Database extends SQLiteOpenHelper {
             values.put("def",40);
             values.put("niveau",23);
             values.put("exp",1034);
-            values.put("longitude","43.2");
             values.put("longitude", "43.2");
             values.put("latitude","151");
             db.insert("pokemonReel", null, values);
@@ -193,10 +188,6 @@ public class Database extends SQLiteOpenHelper {
         }
     }
 
-    private void remplirDB(SQLiteDatabase db ) {
-
-    }
-
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         if (db.getVersion() == oldVersion) db.setVersion(newVersion);
@@ -237,7 +228,6 @@ public class Database extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         try {
             db.beginTransaction();
-            Cursor c = db.query("pokemonReel", new String[]{"idPokemonReel", "idPokemon", "pseudo", "equipe", "atk", "def", "niveau", "exp", "longitude", "latitude"}, "idUtilisateur=" + idUtilisateur + " AND equipe=TRUE", null, null, null, null);
             Cursor c = db.query("pokemonReel", new String[]{"idPokemonReel", "idPokemon", "pseudo", "equipe", "atk", "def", "niveau", "exp", "longitude", "latitude"}, "idUtilisateur=" + idUtilisateur + " AND equipe=1", null, null, null, null);
 
 
