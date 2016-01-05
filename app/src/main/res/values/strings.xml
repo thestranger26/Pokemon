@@ -3,5 +3,5 @@
     <string name="title_activity_main">Accueil</string>
     <string name="title_activity_pokedex">PokedexActivity</string>
     <string name="title_activity_sac_consultation">SacConsultation</string>
-    <string name="action_setting">Menu</string>
+    <string name="action_settings">Menu</string>
 </resources>
