@@ -1,0 +1,1363 @@
+{
+  "Pokémons": [
+    {
+      "Numéro": "001",
+      "Image": "",
+      "Nom": "Bulbizarre",
+      "PV": "45",
+      "Attaque": "49",
+      "Défense": "49",
+      "Type": "Plante / Poison"
+    },
+    {
+      "Numéro": "002",
+      "Image": "",
+      "Nom": "Herbizarre",
+      "PV": "60",
+      "Attaque": "62",
+      "Défense": "63",
+      "Type": "Plante / Poison"
+    },
+    {
+      "Numéro": "003",
+      "Image": "",
+      "Nom": "Florizarre",
+      "PV": "80",
+      "Attaque": "82",
+      "Défense": "83",
+      "Type": "Plante / Poison"
+    },
+    {
+      "Numéro": "004",
+      "Image": "",
+      "Nom": "Salamèche",
+      "PV": "39",
+      "Attaque": "52",
+      "Défense": "43",
+      "Type": "Feu"
+    },
+    {
+      "Numéro": "005",
+      "Image": "",
+      "Nom": "Reptincel",
+      "PV": "58",
+      "Attaque": "64",
+      "Défense": "58",
+      "Type": "Feu"
+    },
+    {
+      "Numéro": "006",
+      "Image": "",
+      "Nom": "Dracaufeu",
+      "PV": "78",
+      "Attaque": "84",
+      "Défense": "78",
+      "Type": "Feu / Vol"
+    },
+    {
+      "Numéro": "007",
+      "Image": "",
+      "Nom": "Carapuce",
+      "PV": "44",
+      "Attaque": "48",
+      "Défense": "65",
+      "Type": "Eau"
+    },
+    {
+      "Numéro": "008",
+      "Image": "",
+      "Nom": "Carabaffe",
+      "PV": "59",
+      "Attaque": "63",
+      "Défense": "80",
+      "Type": "Eau"
+    },
+    {
+      "Numéro": "009",
+      "Image": "",
+      "Nom": "Tortank",
+      "PV": "79",
+      "Attaque": "83",
+      "Défense": "100",
+      "Type": "Eau"
+    },
+    {
+      "Numéro": "010",
+      "Image": "",
+      "Nom": "Chenipan",
+      "PV": "45",
+      "Attaque": "30",
+      "Défense": "35",
+      "Type": "Insecte"
+    },
+    {
+      "Numéro": "011",
+      "Image": "",
+      "Nom": "Chrysacier",
+      "PV": "50",
+      "Attaque": "20",
+      "Défense": "55",
+      "Type": "Insecte"
+    },
+    {
+      "Numéro": "012",
+      "Image": "",
+      "Nom": "Papilusion",
+      "PV": "60",
+      "Attaque": "45",
+      "Défense": "50",
+      "Type": "Insecte / Vol"
+    },
+    {
+      "Numéro": "013",
+      "Image": "",
+      "Nom": "Aspicot",
+      "PV": "40",
+      "Attaque": "35",
+      "Défense": "30",
+      "Type": "Insecte / Poison"
+    },
+    {
+      "Numéro": "014",
+      "Image": "",
+      "Nom": "Coconfort",
+      "PV": "45",
+      "Attaque": "25",
+      "Défense": "50",
+      "Type": "Insecte / Poison"
+    },
+    {
+      "Numéro": "015",
+      "Image": "",
+      "Nom": "Dardargnan",
+      "PV": "65",
+      "Attaque": "90",
+      "Défense": "40",
+      "Type": "Insecte / Poison"
+    },
+    {
+      "Numéro": "016",
+      "Image": "",
+      "Nom": "Roucool",
+      "PV": "40",
+      "Attaque": "45",
+      "Défense": "40",
+      "Type": "Normal / Vol"
+    },
+    {
+      "Numéro": "017",
+      "Image": "",
+      "Nom": "Roucoups",
+      "PV": "63",
+      "Attaque": "60",
+      "Défense": "55",
+      "Type": "Normal / Vol"
+    },
+    {
+      "Numéro": "018",
+      "Image": "",
+      "Nom": "Roucarnage",
+      "PV": "83",
+      "Attaque": "80",
+      "Défense": "75",
+      "Type": "Normal / Vol"
+    },
+    {
+      "Numéro": "019",
+      "Image": "",
+      "Nom": "Rattata",
+      "PV": "30",
+      "Attaque": "56",
+      "Défense": "35",
+      "Type": "Normal"
+    },
+    {
+      "Numéro": "020",
+      "Image": "",
+      "Nom": "Rattatac",
+      "PV": "55",
+      "Attaque": "81",
+      "Défense": "60",
+      "Type": "Normal"
+    },
+    {
+      "Numéro": "021",
+      "Image": "",
+      "Nom": "Piafabec",
+      "PV": "40",
+      "Attaque": "60",
+      "Défense": "30",
+      "Type": "Normal / Vol"
+    },
+    {
+      "Numéro": "022",
+      "Image": "",
+      "Nom": "Rapasdepic",
+      "PV": "65",
+      "Attaque": "90",
+      "Défense": "65",
+      "Type": "Normal / Vol"
+    },
+    {
+      "Numéro": "023",
+      "Image": "",
+      "Nom": "Abo",
+      "PV": "35",
+      "Attaque": "60",
+      "Défense": "44",
+      "Type": "Poison"
+    },
+    {
+      "Numéro": "024",
+      "Image": "",
+      "Nom": "Arbok",
+      "PV": "60",
+      "Attaque": "85",
+      "Défense": "69",
+      "Type": "Poison"
+    },
+    {
+      "Numéro": "025",
+      "Image": "",
+      "Nom": "Pikachu",
+      "PV": "35",
+      "Attaque": "55",
+      "Défense": "40",
+      "Type": "Électrik"
+    },
+    {
+      "Numéro": "026",
+      "Image": "",
+      "Nom": "Raichu",
+      "PV": "60",
+      "Attaque": "90",
+      "Défense": "55",
+      "Type": "Électrik"
+    },
+    {
+      "Numéro": "027",
+      "Image": "",
+      "Nom": "Sabelette",
+      "PV": "50",
+      "Attaque": "75",
+      "Défense": "85",
+      "Type": "Sol"
+    },
+    {
+      "Numéro": "028",
+      "Image": "",
+      "Nom": "Sablaireau",
+      "PV": "75",
+      "Attaque": "100",
+      "Défense": "110",
+      "Type": "Sol"
+    },
+    {
+      "Numéro": "029",
+      "Image": "",
+      "Nom": "NidoranM",
+      "PV": "55",
+      "Attaque": "47",
+      "Défense": "52",
+      "Type": "Poison"
+    },
+    {
+      "Numéro": "030",
+      "Image": "",
+      "Nom": "Nidorina",
+      "PV": "70",
+      "Attaque": "62",
+      "Défense": "67",
+      "Type": "Poison"
+    },
+    {
+      "Numéro": "031",
+      "Image": "",
+      "Nom": "Nidoqueen",
+      "PV": "90",
+      "Attaque": "92",
+      "Défense": "87",
+      "Type": "Poison / Sol"
+    },
+    {
+      "Numéro": "032",
+      "Image": "",
+      "Nom": "NidoranF‚",
+      "PV": "46",
+      "Attaque": "57",
+      "Défense": "40",
+      "Type": "Poison"
+    },
+    {
+      "Numéro": "033",
+      "Image": "",
+      "Nom": "Nidorino",
+      "PV": "61",
+      "Attaque": "72",
+      "Défense": "57",
+      "Type": "Poison"
+    },
+    {
+      "Numéro": "034",
+      "Image": "",
+      "Nom": "Nidoking",
+      "PV": "81",
+      "Attaque": "102",
+      "Défense": "77",
+      "Type": "Poison / Sol"
+    },
+    {
+      "Numéro": "035",
+      "Image": "",
+      "Nom": "Mélofée",
+      "PV": "70",
+      "Attaque": "45",
+      "Défense": "48",
+      "Type": "Fée"
+    },
+    {
+      "Numéro": "036",
+      "Image": "",
+      "Nom": "Mélodelfe",
+      "PV": "95",
+      "Attaque": "70",
+      "Défense": "73",
+      "Type": "Fée"
+    },
+    {
+      "Numéro": "037",
+      "Image": "",
+      "Nom": "Goupix",
+      "PV": "38",
+      "Attaque": "41",
+      "Défense": "40",
+      "Type": "Feu"
+    },
+    {
+      "Numéro": "038",
+      "Image": "",
+      "Nom": "Feunard",
+      "PV": "73",
+      "Attaque": "76",
+      "Défense": "75",
+      "Type": "Feu"
+    },
+    {
+      "Numéro": "039",
+      "Image": "",
+      "Nom": "Rondoudou",
+      "PV": "115",
+      "Attaque": "45",
+      "Défense": "20",
+      "Type": "Normal / Fée"
+    },
+    {
+      "Numéro": "040",
+      "Image": "",
+      "Nom": "Grodoudou",
+      "PV": "140",
+      "Attaque": "70",
+      "Défense": "45",
+      "Type": "Normal / Fée"
+    },
+    {
+      "Numéro": "041",
+      "Image": "",
+      "Nom": "Nosferapti",
+      "PV": "40",
+      "Attaque": "45",
+      "Défense": "35",
+      "Type": "Poison / Vol"
+    },
+    {
+      "Numéro": "042",
+      "Image": "",
+      "Nom": "Nosferalto",
+      "PV": "75",
+      "Attaque": "80",
+      "Défense": "70",
+      "Type": "Poison / Vol"
+    },
+    {
+      "Numéro": "043",
+      "Image": "",
+      "Nom": "Mystherbe",
+      "PV": "45",
+      "Attaque": "50",
+      "Défense": "55",
+      "Type": "Plante / Poison"
+    },
+    {
+      "Numéro": "044",
+      "Image": "",
+      "Nom": "Ortide",
+      "PV": "60",
+      "Attaque": "65",
+      "Défense": "70",
+      "Type": "Plante / Poison"
+    },
+    {
+      "Numéro": "045",
+      "Image": "",
+      "Nom": "Rafflesia",
+      "PV": "75",
+      "Attaque": "80",
+      "Défense": "85",
+      "Type": "Plante / Poison"
+    },
+    {
+      "Numéro": "046",
+      "Image": "",
+      "Nom": "Paras",
+      "PV": "35",
+      "Attaque": "70",
+      "Défense": "55",
+      "Type": "Insecte / Plante"
+    },
+    {
+      "Numéro": "047",
+      "Image": "",
+      "Nom": "Parasect",
+      "PV": "60",
+      "Attaque": "95",
+      "Défense": "80",
+      "Type": "Insecte / Plante"
+    },
+    {
+      "Numéro": "048",
+      "Image": "",
+      "Nom": "Mimitoss",
+      "PV": "60",
+      "Attaque": "55",
+      "Défense": "50",
+      "Type": "Insecte / Poison"
+    },
+    {
+      "Numéro": "049",
+      "Image": "",
+      "Nom": "Aéromite",
+      "PV": "70",
+      "Attaque": "65",
+      "Défense": "60",
+      "Type": "Insecte / Poison"
+    },
+    {
+      "Numéro": "050",
+      "Image": "",
+      "Nom": "Taupiqueur",
+      "PV": "10",
+      "Attaque": "55",
+      "Défense": "25",
+      "Type": "Sol"
+    },
+    {
+      "Numéro": "051",
+      "Image": "",
+      "Nom": "Triopikeur",
+      "PV": "35",
+      "Attaque": "80",
+      "Défense": "50",
+      "Type": "Sol"
+    },
+    {
+      "Numéro": "052",
+      "Image": "",
+      "Nom": "Miaouss",
+      "PV": "40",
+      "Attaque": "45",
+      "Défense": "35",
+      "Type": "Normal"
+    },
+    {
+      "Numéro": "053",
+      "Image": "",
+      "Nom": "Persian",
+      "PV": "65",
+      "Attaque": "70",
+      "Défense": "60",
+      "Type": "Normal"
+    },
+    {
+      "Numéro": "054",
+      "Image": "",
+      "Nom": "Psykokwak",
+      "PV": "50",
+      "Attaque": "52",
+      "Défense": "48",
+      "Type": "Eau"
+    },
+    {
+      "Numéro": "055",
+      "Image": "",
+      "Nom": "Akwakwak",
+      "PV": "80",
+      "Attaque": "82",
+      "Défense": "78",
+      "Type": "Eau"
+    },
+    {
+      "Numéro": "056",
+      "Image": "",
+      "Nom": "Férosinge",
+      "PV": "40",
+      "Attaque": "80",
+      "Défense": "35",
+      "Type": "Combat"
+    },
+    {
+      "Numéro": "057",
+      "Image": "",
+      "Nom": "Colossinge",
+      "PV": "65",
+      "Attaque": "105",
+      "Défense": "60",
+      "Type": "Combat"
+    },
+    {
+      "Numéro": "058",
+      "Image": "",
+      "Nom": "Caninos",
+      "PV": "55",
+      "Attaque": "70",
+      "Défense": "45",
+      "Type": "Feu"
+    },
+    {
+      "Numéro": "059",
+      "Image": "",
+      "Nom": "Arcanin",
+      "PV": "90",
+      "Attaque": "110",
+      "Défense": "80",
+      "Type": "Feu"
+    },
+    {
+      "Numéro": "060",
+      "Image": "",
+      "Nom": "Ptitard",
+      "PV": "40",
+      "Attaque": "50",
+      "Défense": "40",
+      "Type": "Eau"
+    },
+    {
+      "Numéro": "061",
+      "Image": "",
+      "Nom": "Têtarte",
+      "PV": "65",
+      "Attaque": "65",
+      "Défense": "65",
+      "Type": "Eau"
+    },
+    {
+      "Numéro": "062",
+      "Image": "",
+      "Nom": "Tartard",
+      "PV": "90",
+      "Attaque": "95",
+      "Défense": "95",
+      "Type": "Eau / Combat"
+    },
+    {
+      "Numéro": "063",
+      "Image": "",
+      "Nom": "Abra",
+      "PV": "25",
+      "Attaque": "20",
+      "Défense": "15",
+      "Type": "Psy"
+    },
+    {
+      "Numéro": "064",
+      "Image": "",
+      "Nom": "Kadabra",
+      "PV": "40",
+      "Attaque": "35",
+      "Défense": "30",
+      "Type": "Psy"
+    },
+    {
+      "Numéro": "065",
+      "Image": "",
+      "Nom": "Alakazam",
+      "PV": "55",
+      "Attaque": "50",
+      "Défense": "45",
+      "Type": "Psy"
+    },
+    {
+      "Numéro": "066",
+      "Image": "",
+      "Nom": "Machoc",
+      "PV": "70",
+      "Attaque": "80",
+      "Défense": "50",
+      "Type": "Combat"
+    },
+    {
+      "Numéro": "067",
+      "Image": "",
+      "Nom": "Machopeur",
+      "PV": "80",
+      "Attaque": "100",
+      "Défense": "70",
+      "Type": "Combat"
+    },
+    {
+      "Numéro": "068",
+      "Image": "",
+      "Nom": "Mackogneur",
+      "PV": "90",
+      "Attaque": "130",
+      "Défense": "80",
+      "Type": "Combat"
+    },
+    {
+      "Numéro": "069",
+      "Image": "",
+      "Nom": "Chétiflor",
+      "PV": "50",
+      "Attaque": "75",
+      "Défense": "35",
+      "Type": "Plante / Poison"
+    },
+    {
+      "Numéro": "070",
+      "Image": "",
+      "Nom": "Boustiflor",
+      "PV": "65",
+      "Attaque": "90",
+      "Défense": "50",
+      "Type": "Plante / Poison"
+    },
+    {
+      "Numéro": "071",
+      "Image": "",
+      "Nom": "Empiflor",
+      "PV": "80",
+      "Attaque": "105",
+      "Défense": "65",
+      "Type": "Plante / Poison"
+    },
+    {
+      "Numéro": "072",
+      "Image": "",
+      "Nom": "Tentacool",
+      "PV": "40",
+      "Attaque": "40",
+      "Défense": "35",
+      "Type": "Eau / Poison"
+    },
+    {
+      "Numéro": "073",
+      "Image": "",
+      "Nom": "Tentacruel",
+      "PV": "80",
+      "Attaque": "70",
+      "Défense": "65",
+      "Type": "Eau / Poison"
+    },
+    {
+      "Numéro": "074",
+      "Image": "",
+      "Nom": "Racaillou",
+      "PV": "40",
+      "Attaque": "80",
+      "Défense": "100",
+      "Type": "Roche / Sol"
+    },
+    {
+      "Numéro": "075",
+      "Image": "",
+      "Nom": "Gravalanch",
+      "PV": "55",
+      "Attaque": "95",
+      "Défense": "115",
+      "Type": "Roche / Sol"
+    },
+    {
+      "Numéro": "076",
+      "Image": "",
+      "Nom": "Grolem",
+      "PV": "80",
+      "Attaque": "120",
+      "Défense": "130",
+      "Type": "Roche / Sol"
+    },
+    {
+      "Numéro": "077",
+      "Image": "",
+      "Nom": "Ponyta",
+      "PV": "50",
+      "Attaque": "85",
+      "Défense": "55",
+      "Type": "Feu"
+    },
+    {
+      "Numéro": "078",
+      "Image": "",
+      "Nom": "Galopa",
+      "PV": "65",
+      "Attaque": "100",
+      "Défense": "70",
+      "Type": "Feu"
+    },
+    {
+      "Numéro": "079",
+      "Image": "",
+      "Nom": "Ramoloss",
+      "PV": "90",
+      "Attaque": "65",
+      "Défense": "65",
+      "Type": "Eau / Psy"
+    },
+    {
+      "Numéro": "080",
+      "Image": "",
+      "Nom": "Flagadoss",
+      "PV": "95",
+      "Attaque": "75",
+      "Défense": "110",
+      "Type": "Eau / Psy"
+    },
+    {
+      "Numéro": "081",
+      "Image": "",
+      "Nom": "Magnéti",
+      "PV": "25",
+      "Attaque": "35",
+      "Défense": "70",
+      "Type": "Électrik / Acier"
+    },
+    {
+      "Numéro": "082",
+      "Image": "",
+      "Nom": "Magnéton",
+      "PV": "50",
+      "Attaque": "60",
+      "Défense": "95",
+      "Type": "Électrik / Acier"
+    },
+    {
+      "Numéro": "083",
+      "Image": "",
+      "Nom": "Canarticho",
+      "PV": "52",
+      "Attaque": "65",
+      "Défense": "55",
+      "Type": "Normal / Vol"
+    },
+    {
+      "Numéro": "084",
+      "Image": "",
+      "Nom": "Doduo",
+      "PV": "35",
+      "Attaque": "85",
+      "Défense": "45",
+      "Type": "Normal / Vol"
+    },
+    {
+      "Numéro": "085",
+      "Image": "",
+      "Nom": "Dodrio",
+      "PV": "60",
+      "Attaque": "110",
+      "Défense": "70",
+      "Type": "Normal / Vol"
+    },
+    {
+      "Numéro": "086",
+      "Image": "",
+      "Nom": "Otaria",
+      "PV": "65",
+      "Attaque": "45",
+      "Défense": "55",
+      "Type": "Eau"
+    },
+    {
+      "Numéro": "087",
+      "Image": "",
+      "Nom": "Lamantine",
+      "PV": "90",
+      "Attaque": "70",
+      "Défense": "80",
+      "Type": "Eau / Glace"
+    },
+    {
+      "Numéro": "088",
+      "Image": "",
+      "Nom": "Tadmorv",
+      "PV": "80",
+      "Attaque": "80",
+      "Défense": "50",
+      "Type": "Poison"
+    },
+    {
+      "Numéro": "089",
+      "Image": "",
+      "Nom": "Grotadmorv",
+      "PV": "105",
+      "Attaque": "105",
+      "Défense": "75",
+      "Type": "Poison"
+    },
+    {
+      "Numéro": "090",
+      "Image": "",
+      "Nom": "Kokiyas",
+      "PV": "30",
+      "Attaque": "65",
+      "Défense": "100",
+      "Type": "Eau"
+    },
+    {
+      "Numéro": "091",
+      "Image": "",
+      "Nom": "Crustabri",
+      "PV": "50",
+      "Attaque": "95",
+      "Défense": "180",
+      "Type": "Eau / Glace"
+    },
+    {
+      "Numéro": "092",
+      "Image": "",
+      "Nom": "Fantominus",
+      "PV": "30",
+      "Attaque": "35",
+      "Défense": "30",
+      "Type": "Spectre / Poison"
+    },
+    {
+      "Numéro": "093",
+      "Image": "",
+      "Nom": "Spectrum",
+      "PV": "45",
+      "Attaque": "50",
+      "Défense": "45",
+      "Type": "Spectre / Poison"
+    },
+    {
+      "Numéro": "094",
+      "Image": "",
+      "Nom": "Ectoplasma",
+      "PV": "60",
+      "Attaque": "65",
+      "Défense": "60",
+      "Type": "Spectre / Poison"
+    },
+    {
+      "Numéro": "095",
+      "Image": "",
+      "Nom": "Onix",
+      "PV": "35",
+      "Attaque": "45",
+      "Défense": "160",
+      "Type": "Roche / Sol"
+    },
+    {
+      "Numéro": "096",
+      "Image": "",
+      "Nom": "Soporifik",
+      "PV": "60",
+      "Attaque": "48",
+      "Défense": "45",
+      "Type": "Psy"
+    },
+    {
+      "Numéro": "097",
+      "Image": "",
+      "Nom": "Hypnomade",
+      "PV": "85",
+      "Attaque": "73",
+      "Défense": "70",
+      "Type": "Psy"
+    },
+    {
+      "Numéro": "098",
+      "Image": "",
+      "Nom": "Krabby",
+      "PV": "30",
+      "Attaque": "105",
+      "Défense": "90",
+      "Type": "Eau"
+    },
+    {
+      "Numéro": "099",
+      "Image": "",
+      "Nom": "Krabboss",
+      "PV": "55",
+      "Attaque": "130",
+      "Défense": "115",
+      "Type": "Eau"
+    },
+    {
+      "Numéro": "100",
+      "Image": "",
+      "Nom": "Voltorbe",
+      "PV": "40",
+      "Attaque": "30",
+      "Défense": "50",
+      "Type": "Électrik"
+    },
+    {
+      "Numéro": "101",
+      "Image": "",
+      "Nom": "Électrode",
+      "PV": "60",
+      "Attaque": "50",
+      "Défense": "70",
+      "Type": "Électrik"
+    },
+    {
+      "Numéro": "102",
+      "Image": "",
+      "Nom": "Nœunœuf",
+      "PV": "60",
+      "Attaque": "40",
+      "Défense": "80",
+      "Type": "Plante / Psy"
+    },
+    {
+      "Numéro": "103",
+      "Image": "",
+      "Nom": "Noadkoko",
+      "PV": "95",
+      "Attaque": "95",
+      "Défense": "85",
+      "Type": "Plante / Psy"
+    },
+    {
+      "Numéro": "104",
+      "Image": "",
+      "Nom": "Osselait",
+      "PV": "50",
+      "Attaque": "50",
+      "Défense": "95",
+      "Type": "Sol"
+    },
+    {
+      "Numéro": "105",
+      "Image": "",
+      "Nom": "Ossatueur",
+      "PV": "60",
+      "Attaque": "80",
+      "Défense": "110",
+      "Type": "Sol"
+    },
+    {
+      "Numéro": "106",
+      "Image": "",
+      "Nom": "Kicklee",
+      "PV": "50",
+      "Attaque": "120",
+      "Défense": "53",
+      "Type": "Combat"
+    },
+    {
+      "Numéro": "107",
+      "Image": "",
+      "Nom": "Tygnon",
+      "PV": "50",
+      "Attaque": "105",
+      "Défense": "79",
+      "Type": "Combat"
+    },
+    {
+      "Numéro": "108",
+      "Image": "",
+      "Nom": "Excelangue",
+      "PV": "90",
+      "Attaque": "55",
+      "Défense": "75",
+      "Type": "Normal"
+    },
+    {
+      "Numéro": "109",
+      "Image": "",
+      "Nom": "Smogo",
+      "PV": "40",
+      "Attaque": "65",
+      "Défense": "95",
+      "Type": "Poison"
+    },
+    {
+      "Numéro": "110",
+      "Image": "",
+      "Nom": "Smogogo",
+      "PV": "65",
+      "Attaque": "90",
+      "Défense": "120",
+      "Type": "Poison"
+    },
+    {
+      "Numéro": "111",
+      "Image": "",
+      "Nom": "Rhinocorne",
+      "PV": "80",
+      "Attaque": "85",
+      "Défense": "95",
+      "Type": "Sol / Roche"
+    },
+    {
+      "Numéro": "112",
+      "Image": "",
+      "Nom": "Rhinoféros",
+      "PV": "105",
+      "Attaque": "130",
+      "Défense": "120",
+      "Type": "Sol / Roche"
+    },
+    {
+      "Numéro": "113",
+      "Image": "",
+      "Nom": "Leveinard",
+      "PV": "250",
+      "Attaque": "5",
+      "Défense": "5",
+      "Type": "Normal"
+    },
+    {
+      "Numéro": "114",
+      "Image": "",
+      "Nom": "Saquedeneu",
+      "PV": "65",
+      "Attaque": "55",
+      "Défense": "115",
+      "Type": "Plante"
+    },
+    {
+      "Numéro": "115",
+      "Image": "",
+      "Nom": "Kangourex",
+      "PV": "105",
+      "Attaque": "95",
+      "Défense": "80",
+      "Type": "Normal"
+    },
+    {
+      "Numéro": "116",
+      "Image": "",
+      "Nom": "Hypotrempe",
+      "PV": "30",
+      "Attaque": "40",
+      "Défense": "70",
+      "Type": "Eau"
+    },
+    {
+      "Numéro": "117",
+      "Image": "",
+      "Nom": "Hypocéan",
+      "PV": "55",
+      "Attaque": "55",
+      "Défense": "65",
+      "Type": "Eau"
+    },
+    {
+      "Numéro": "118",
+      "Image": "",
+      "Nom": "Poissirène",
+      "PV": "45",
+      "Attaque": "67",
+      "Défense": "60",
+      "Type": "Eau"
+    },
+    {
+      "Numéro": "119",
+      "Image": "",
+      "Nom": "Poissoroy",
+      "PV": "80",
+      "Attaque": "92",
+      "Défense": "65",
+      "Type": "Eau"
+    },
+    {
+      "Numéro": "120",
+      "Image": "",
+      "Nom": "Stari",
+      "PV": "30",
+      "Attaque": "45",
+      "Défense": "55",
+      "Type": "Eau"
+    },
+    {
+      "Numéro": "121",
+      "Image": "",
+      "Nom": "Staross",
+      "PV": "60",
+      "Attaque": "75",
+      "Défense": "85",
+      "Type": "Eau / Psy"
+    },
+    {
+      "Numéro": "122",
+      "Image": "",
+      "Nom": "M. Mime",
+      "PV": "40",
+      "Attaque": "45",
+      "Défense": "65",
+      "Type": "Psy / Fée"
+    },
+    {
+      "Numéro": "123",
+      "Image": "",
+      "Nom": "Insécateur",
+      "PV": "70",
+      "Attaque": "110",
+      "Défense": "80",
+      "Type": "Insecte / Vol"
+    },
+    {
+      "Numéro": "124",
+      "Image": "",
+      "Nom": "Lippoutou",
+      "PV": "65",
+      "Attaque": "50",
+      "Défense": "35",
+      "Type": "Glace / Psy"
+    },
+    {
+      "Numéro": "125",
+      "Image": "",
+      "Nom": "Élektek",
+      "PV": "65",
+      "Attaque": "83",
+      "Défense": "57",
+      "Type": "Électrik"
+    },
+    {
+      "Numéro": "126",
+      "Image": "",
+      "Nom": "Magmar",
+      "PV": "65",
+      "Attaque": "95",
+      "Défense": "57",
+      "Type": "Feu"
+    },
+    {
+      "Numéro": "127",
+      "Image": "",
+      "Nom": "Scarabrute",
+      "PV": "65",
+      "Attaque": "125",
+      "Défense": "100",
+      "Type": "Insecte"
+    },
+    {
+      "Numéro": "128",
+      "Image": "",
+      "Nom": "Tauros",
+      "PV": "75",
+      "Attaque": "100",
+      "Défense": "95",
+      "Type": "Normal"
+    },
+    {
+      "Numéro": "129",
+      "Image": "",
+      "Nom": "Magicarpe",
+      "PV": "20",
+      "Attaque": "10",
+      "Défense": "55",
+      "Type": "Eau"
+    },
+    {
+      "Numéro": "130",
+      "Image": "",
+      "Nom": "Léviator",
+      "PV": "95",
+      "Attaque": "125",
+      "Défense": "79",
+      "Type": "Eau / Vol"
+    },
+    {
+      "Numéro": "131",
+      "Image": "",
+      "Nom": "Lokhlass",
+      "PV": "130",
+      "Attaque": "85",
+      "Défense": "80",
+      "Type": "Eau / Glace"
+    },
+    {
+      "Numéro": "132",
+      "Image": "",
+      "Nom": "Métamorph",
+      "PV": "48",
+      "Attaque": "48",
+      "Défense": "48",
+      "Type": "Normal"
+    },
+    {
+      "Numéro": "133",
+      "Image": "",
+      "Nom": "Évoli",
+      "PV": "55",
+      "Attaque": "55",
+      "Défense": "50",
+      "Type": "Normal"
+    },
+    {
+      "Numéro": "134",
+      "Image": "",
+      "Nom": "Aquali",
+      "PV": "130",
+      "Attaque": "65",
+      "Défense": "60",
+      "Type": "Eau"
+    },
+    {
+      "Numéro": "135",
+      "Image": "",
+      "Nom": "Voltali",
+      "PV": "65",
+      "Attaque": "65",
+      "Défense": "60",
+      "Type": "Électrik"
+    },
+    {
+      "Numéro": "136",
+      "Image": "",
+      "Nom": "Pyroli",
+      "PV": "65",
+      "Attaque": "130",
+      "Défense": "60",
+      "Type": "Feu"
+    },
+    {
+      "Numéro": "137",
+      "Image": "",
+      "Nom": "Porygon",
+      "PV": "65",
+      "Attaque": "60",
+      "Défense": "70",
+      "Type": "Normal"
+    },
+    {
+      "Numéro": "138",
+      "Image": "",
+      "Nom": "Amonita",
+      "PV": "35",
+      "Attaque": "40",
+      "Défense": "100",
+      "Type": "Roche / Eau"
+    },
+    {
+      "Numéro": "139",
+      "Image": "",
+      "Nom": "Amonistar",
+      "PV": "70",
+      "Attaque": "60",
+      "Défense": "125",
+      "Type": "Roche / Eau"
+    },
+    {
+      "Numéro": "140",
+      "Image": "",
+      "Nom": "Kabuto",
+      "PV": "30",
+      "Attaque": "80",
+      "Défense": "90",
+      "Type": "Roche / Eau"
+    },
+    {
+      "Numéro": "141",
+      "Image": "",
+      "Nom": "Kabutops",
+      "PV": "60",
+      "Attaque": "115",
+      "Défense": "105",
+      "Type": "Roche / Eau"
+    },
+    {
+      "Numéro": "142",
+      "Image": "",
+      "Nom": "Ptéra",
+      "PV": "80",
+      "Attaque": "105",
+      "Défense": "65",
+      "Type": "Roche / Vol"
+    },
+    {
+      "Numéro": "143",
+      "Image": "",
+      "Nom": "Ronflex",
+      "PV": "160",
+      "Attaque": "110",
+      "Défense": "65",
+      "Type": "Normal"
+    },
+    {
+      "Numéro": "144",
+      "Image": "",
+      "Nom": "Artikodin",
+      "PV": "90",
+      "Attaque": "85",
+      "Défense": "100",
+      "Type": "Glace / Vol"
+    },
+    {
+      "Numéro": "145",
+      "Image": "",
+      "Nom": "Électhor",
+      "PV": "90",
+      "Attaque": "90",
+      "Défense": "85",
+      "Type": "Électrik / Vol"
+    },
+    {
+      "Numéro": "146",
+      "Image": "",
+      "Nom": "Sulfura",
+      "PV": "90",
+      "Attaque": "100",
+      "Défense": "90",
+      "Type": "Feu / Vol"
+    },
+    {
+      "Numéro": "147",
+      "Image": "",
+      "Nom": "Minidraco",
+      "PV": "41",
+      "Attaque": "64",
+      "Défense": "45",
+      "Type": "Dragon"
+    },
+    {
+      "Numéro": "148",
+      "Image": "",
+      "Nom": "Draco",
+      "PV": "61",
+      "Attaque": "84",
+      "Défense": "65",
+      "Type": "Dragon"
+    },
+    {
+      "Numéro": "149",
+      "Image": "",
+      "Nom": "Dracolosse",
+      "PV": "91",
+      "Attaque": "134",
+      "Défense": "95",
+      "Type": "Dragon / Vol"
+    },
+    {
+      "Numéro": "150",
+      "Image": "",
+      "Nom": "Mewtwo",
+      "PV": "106",
+      "Attaque": "110",
+      "Défense": "90",
+      "Type": "Psy"
+    },
+    {
+      "Numéro": "151",
+      "Image": "",
+      "Nom": "Mew",
+      "PV": "100",
+      "Attaque": "100",
+      "Défense": "100",
+      "Type": "Psy"
+    }
+  ]
+}

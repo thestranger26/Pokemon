@@ -6,7 +6,14 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import fr.pokemonteam.pokemon.model.Element;
 import fr.pokemonteam.pokemon.model.ElementSac;
@@ -16,29 +23,32 @@ import fr.pokemonteam.pokemon.model.Utilisateur;
 
 public class Database extends SQLiteOpenHelper {
     private static Database instance = null;
+    private static ArrayList<HashMap<String, String>> pokemons = null;
+
 
     public Database(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }
 
     public static Database getInstance(Context context) {
-        if (instance == null)
+        if (instance == null) {
             instance = new Database(context, "pokemon.db", null, 1);
+            pokemons = getAllPokemonFromJson(context);
+        }
         return instance;
     }
 
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-       System.out.println("Creation de la BDD");
+        System.out.println("Creation de la BDD");
         try {
             db.beginTransaction();
-            db.execSQL("CREATE TABLE utilisateur (idUtilisateur INT, pseudo VARCHAR(20), nom VARCHAR(20), prenom VARCHAR(20));");
+            db.execSQL("CREATE TABLE utilisateur (idUtilisateur INT, pseudo VARCHAR(20), mail VARCHAR(50), motDePasse VARCHAR(255), nom VARCHAR(20), prenom VARCHAR(20));");
             db.execSQL("CREATE TABLE sacADos (idUtilisateur INT, idElement INT, nombre INT);");
             db.execSQL("CREATE TABLE element (idElement INT, libelle VARCHAR(50), effet VARCHAR(255));");
             db.execSQL("CREATE TABLE pokemonReel (idPokemonReel INT, idUtilisateur INT, idPokemon INT, pseudo VARCHAR(20), equipe BOOL, atk INT, def INT, niveau INT, exp INT, longitude REAL, latitude REAL, vieActuelle INT, maxVie INT );");
-            db.execSQL("CREATE TABLE infosPokemon (idPokemon INT , idTypePokemon INT, numero INT, nom VARCHAR(255), description TEXT, nomImage VARCHAR(255), vue BOOL, capture BOOL, tauxCapture INT);");
-            db.execSQL("CREATE TABLE typePokemon (idTypePokemon INT, libelle VARCHAR(50));");
+            db.execSQL("CREATE TABLE infosPokemon (idPokemon INT , type VARCHAR(255), numero INT, nom VARCHAR(255), attaque INT, defense INT, pv INT, nomImage VARCHAR(255), vue BOOL, capture BOOL, tauxCapture INT);");
             db.execSQL("CREATE TABLE lieu (idLieu INT, libelle VARCHAR(50), typeLieu VARCHAR(50), longitude REAL, latitude REAL );");
             db.execSQL("CREATE TABLE lieuFavoris (idLieu INT, idUtilisateur INT );");
             db.setTransactionSuccessful();
@@ -60,82 +70,39 @@ public class Database extends SQLiteOpenHelper {
             values.put("pseudo", "Regis");
             values.put("nom", "Professeur Chen");
             values.put("prenom", "Fils du");
+            values.put("mail","pastrou@gmail.com");
+            values.put("motDePasse","jeSuisPastrou");
             db.insert("utilisateur", null, values);
 
-
-            //// CREATION DES TYPES DE POKEMON
-            values = new ContentValues();
-            values.put("idTypePokemon", 0);
-            values.put("Libelle", "Feuille");
-            db.insert("typePokemon", null, values);
-
-            values = new ContentValues();
-            values.put("idTypePokemon", 1);
-            values.put("Libelle", "Eau");
-            db.insert("typePokemon", null, values);
-
-
             //// CREATION DE POKEMONS
-            values = new ContentValues();
-            values.put("idPokemon", 0);
-            values.put("idTypePokemon", 1);
-            values.put("nom", "Bulbizarre");
-            values.put("description", "Bulbizarre est un petit quadrupède vert avec une tête large. Il porte un bulbe sur son dos.");
-            values.put("nomImage", " ");
-            values.put("vue", 1);
-            values.put("capture", 1);
-            values.put("numero", 1);
-            values.put("tauxCapture", 65);
-            db.insert("infosPokemon", null, values);
 
-            values = new ContentValues();
-            values.put("idPokemon", 1);
-            values.put("idTypePokemon", 1);
-            values.put("nom", "Carapuce");
-            values.put("description", "Carapuce est une petite tortue bipède de couleur bleue. Il possède une carapace majoritairement brune, jaune pâle au niveau du ventre. Ses yeux sont grands et rouges. Il a une queue avec un motif de spirale à son extrémité. Il possède quatre pattes avec chacune trois doigts.");
-            values.put("nomImage", " ");
-            values.put("vue", 1);
-            values.put("capture", 0);
-            values.put("numero", 4);
-            values.put("tauxCapture", 13);
-            db.insert("infosPokemon", null, values);
-
-            values = new ContentValues();
-            values.put("idPokemon", 2);
-            values.put("idTypePokemon", 1);
-            values.put("nom", "Draco");
-            values.put("description", "Draco est un long dragon sans membre, pouvant faire penser à un serpent de mer.");
-            values.put("nomImage", " ");
-            values.put("vue", 0);
-            values.put("capture", 0);
-            values.put("numero", 5);
-            values.put("tauxCapture", 30);
-            db.insert("infosPokemon", null, values);
-
-            values = new ContentValues();
-            values.put("idPokemon", 3);
-            values.put("idTypePokemon", 1);
-            values.put("nom", "Ramoloss");
-            values.put("description", "Ramoloss ressemble à un hippopotame rose. Ses yeux sont vides et ses oreilles sont arrondies. Chacune de ses jambes se termine par une unique griffe blanche et sa queue ressemble à une pointe.");
-            values.put("nomImage", " ");
-            values.put("vue", 0);
-            values.put("capture", 0);
-            values.put("numero", 6);
-            values.put("tauxCapture", 180);
-            db.insert("infosPokemon", null, values);
-
+            for(int i = 0; i < pokemons.size(); i++) {
+                values = new ContentValues();
+                values.put("idPokemon", i);
+                values.put("type", pokemons.get(i).get("Type"));
+                values.put("nom", pokemons.get(i).get("Nom"));
+                values.put("attaque", pokemons.get(i).get("Défense"));
+                values.put("defense", pokemons.get(i).get("Attaque"));
+                values.put("pv", pokemons.get(i).get("PV"));
+                values.put("nomImage", pokemons.get(i).get("Image"));
+                values.put("vue", 0);
+                values.put("capture", 0);
+                values.put("numero", pokemons.get(i).get("Numéro"));
+                db.insert("infosPokemon", null, values);
+            }
 
             //// CREATION DE POKEMONS REELS
+
             values = new ContentValues();
             values.put("idPokemonReel", 0);
             values.put("idPokemon", 1);
-            values.put("idUtilisateur",0);
+            values.put("idUtilisateur", 0);
             values.put("pseudo", "Pupuce");
             values.put("equipe", true);
             values.put("atk", 50);
             values.put("def", 40);
-            values.put("niveau",60);
-            values.put("exp",18657);
+            values.put("niveau", 60);
+            values.put("exp", 18657);
             values.put("longitude", "43.2");
             values.put("latitude", "151");
             values.put("vieActuelle", 130);
@@ -145,13 +112,13 @@ public class Database extends SQLiteOpenHelper {
             values = new ContentValues();
             values.put("idPokemonReel", 1);
             values.put("idPokemon", 2);
-            values.put("idUtilisateur",0);
+            values.put("idUtilisateur", 0);
             values.put("pseudo", "Dracouille");
             values.put("equipe", true);
             values.put("atk", 45);
             values.put("def", 23);
-            values.put("niveau",50);
-            values.put("exp",13400);
+            values.put("niveau", 50);
+            values.put("exp", 13400);
             values.put("longitude", "43.2");
             values.put("latitude", "151");
             values.put("vieActuelle", 30);
@@ -161,14 +128,14 @@ public class Database extends SQLiteOpenHelper {
             values = new ContentValues();
             values.put("idPokemonReel", 2);
             values.put("idPokemon", 3);
-            values.put("idUtilisateur",0);
+            values.put("idUtilisateur", 0);
             values.put("equipe", true);
             values.put("atk", 10);
             values.put("def", 50);
-            values.put("niveau",25);
-            values.put("exp",5400);
+            values.put("niveau", 25);
+            values.put("exp", 5400);
             values.put("longitude", "43.2");
-            values.put("latitude","151");
+            values.put("latitude", "151");
             values.put("vieActuelle", 90);
             values.put("maxVie", 130);
             db.insert("pokemonReel", null, values);
@@ -225,7 +192,7 @@ public class Database extends SQLiteOpenHelper {
             db.insert("sacADos", null, values);
 
             db.setTransactionSuccessful();
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         } finally {
             db.endTransaction();
@@ -280,6 +247,7 @@ public class Database extends SQLiteOpenHelper {
                 do {
                     PokemonReel p = new PokemonReel();
 
+                    p.setId(c.getInt(c.getColumnIndex("idPokemonReel")));
                     p.setPseudo(c.getString(c.getColumnIndex("pseudo")));
                     p.setAtk(c.getInt(c.getColumnIndex("atk")));
                     p.setDef(c.getInt(c.getColumnIndex("def")));
@@ -291,6 +259,43 @@ public class Database extends SQLiteOpenHelper {
                     p.setMaxVie(c.getInt(c.getColumnIndex("maxVie")));
 
                     p.setPokemon(this.getPokemon(c.getInt(c.getColumnIndex("idPokemon"))));
+
+                    liste.add(p);
+
+                } while (c.moveToNext());
+            }
+            db.setTransactionSuccessful();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            db.endTransaction();
+        }
+        return liste;
+    }
+
+    public ArrayList<Pokemon> getPokedex() {
+        ArrayList<Pokemon> liste = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        try {
+            db.beginTransaction();
+            Cursor c = db.query("infosPokemon", new String[]{"idPokemon", "type", "numero", "nom", "attaque", "defense", "pv", "nomImage", "vue", "capture"}, null, null, null, null, null);
+
+
+            if (c.getCount() > 0) {
+                c.moveToFirst();
+                do {
+                    Pokemon p = new Pokemon();
+
+                    p.setId(c.getInt(c.getColumnIndex("idPokemon")));
+                    p.setType(c.getString(c.getColumnIndex("type")));
+                    p.setNumero(c.getInt(c.getColumnIndex("numero")));
+                    p.setNom(c.getString(c.getColumnIndex("nom")));
+                    p.setAttaque(c.getInt(c.getColumnIndex("attaque")));
+                    p.setDefense(c.getInt(c.getColumnIndex("defense")));
+                    p.setPv(c.getInt(c.getColumnIndex("pv")));
+                    p.setNomImage(c.getString(c.getColumnIndex("nomImage")));
+                    p.setVue(c.getInt(c.getColumnIndex("vue")) == 1);
+                    p.setCapture(c.getInt(c.getColumnIndex("capture")) == 1);
 
                     liste.add(p);
 
@@ -317,19 +322,17 @@ public class Database extends SQLiteOpenHelper {
             if (c.getCount() == 1) {
                 c.moveToFirst();
                 p.setNom(c.getString(c.getColumnIndex("nom")));
-                p.setDescription(c.getString(c.getColumnIndex("description")));
-                p.setLienImage(c.getString(c.getColumnIndex("nomImage")));
+                p.setId(c.getInt(c.getColumnIndex("id")));
+                p.setType(c.getString(c.getColumnIndex("type")));
+                p.setNumero(c.getInt(c.getColumnIndex("numero")));
+                p.setNom(c.getString(c.getColumnIndex("nom")));
+                p.setAttaque(c.getInt(c.getColumnIndex("attaque")));
+                p.setDefense(c.getInt(c.getColumnIndex("defense")));
+                p.setPv(c.getInt(c.getColumnIndex("pv")));
+                p.setNomImage(c.getString(c.getColumnIndex("nomImage")));
+                p.setVue(c.getInt(c.getColumnIndex("vue")) == 1);
+                p.setCapture(c.getInt(c.getColumnIndex("capture")) == 1);
 
-                if (c.getInt(c.getColumnIndex("vue"))==1) {
-                    p.setVue(true);
-                } else {
-                    p.setVue(false);
-                }
-                if (c.getInt(c.getColumnIndex("capture"))==1) {
-                    p.setCapture(true);
-                } else {
-                    p.setCapture(false);
-                }
             }
             db.setTransactionSuccessful();
         } catch (Exception e) {
@@ -370,7 +373,7 @@ public class Database extends SQLiteOpenHelper {
         return liste;
     }
 
-    private Element getElementById(int idElement){
+    private Element getElementById(int idElement) {
         Element el = new Element();
         SQLiteDatabase db = this.getReadableDatabase();
         try {
@@ -383,13 +386,74 @@ public class Database extends SQLiteOpenHelper {
                 el.setLibelle(c.getString(c.getColumnIndex("libelle")));
                 el.setEffet(c.getString(c.getColumnIndex("effet")));
             }
-            db.setTransactionSuccessful();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
             db.endTransaction();
         }
         return el;
+    }
+    private static ArrayList<HashMap<String, String>> getAllPokemonFromJson(Context context) {
+        String json = null;
+        try {
+            InputStream is = context.getResources().openRawResource(fr.pokemonteam.pokemon.R.raw.pokemons);
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            json = new String(buffer, "UTF-8");
+            JSONObject obj = new JSONObject(json);
+            JSONArray m_jArry = obj.getJSONArray("Pokémons");
+            ArrayList<HashMap<String, String>> formList = new ArrayList<HashMap<String, String>>();
+            HashMap<String, String> m_li;
+
+            for (int i = 0; i < m_jArry.length(); i++) {
+                JSONObject jo_inside = m_jArry.getJSONObject(i);
+                String num = jo_inside.getString("Numéro");
+                String image = "pokemon" + (i+1);
+                String nom = jo_inside.getString("Nom");
+                String pv = jo_inside.getString("PV");
+                String atk = jo_inside.getString("Attaque");
+                String def = jo_inside.getString("Défense");
+                String type = jo_inside.getString("Type");
+
+                //Add your values in your `ArrayList` as below:
+                m_li = new HashMap<String, String>();
+                m_li.put("Numéro", num);
+                m_li.put("Image", image);
+                m_li.put("Nom", nom);
+                m_li.put("PV", pv);
+                m_li.put("Attaque", atk);
+                m_li.put("Défense", def);
+                m_li.put("Type", type);
+
+                formList.add(m_li);
+            }
+
+            return formList;
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            return null;
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public Boolean verifieDonneesUsers(String email, String password) {
+        SQLiteDatabase db = this.getReadableDatabase();
+       Boolean ret = false;
+        try {
+            db.beginTransaction();
+            Cursor c = db.query("utilisateur", new String[]{"idUtilisateur", "nom"}, "mail=\"" + email + "\" AND motDePasse=\""+password+"\"", null, null, null, null);
+            if (c.getCount()==1) ret = true;
+            db.setTransactionSuccessful();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            db.endTransaction();
+        }
+        return ret;
     }
 
 //

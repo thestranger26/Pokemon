@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Pokemon</string>
     <string name="title_activity_main">Accueil</string>
-    <string name="title_activity_pokedex">PokedexActivity</string>
-    <string name="title_activity_sac_consultation">SacConsultation</string>
+    <string name="title_activity_pokedex">Pokedex</string>
+    <string name="title_sac_activity">SacConsultation</string>
     <string name="action_settings">Menu</string>
     <string name="title_activity_combat">CombatActivity</string>
     <string name="button_atk">Attaque</string>
@@ -10,4 +10,18 @@
     <string name="button_pkball">Pokéball</string>
     <string name="button_fuite">Fuite</string>
     <string name="title_activity_my_team">MyTeamActivity</string>
+    <string name="title_activity_login">Sign in</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password (optional)</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
 </resources>

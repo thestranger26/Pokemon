@@ -21,7 +21,7 @@ public class AdapterSac extends ArrayAdapter<ElementSac> {
     int layoutId;
 
     public AdapterSac(Context context, int resource, List<ElementSac> Objects) {
-        super(context, resource);
+        super(context, resource, Objects);
         layoutId = resource;
     }
 
