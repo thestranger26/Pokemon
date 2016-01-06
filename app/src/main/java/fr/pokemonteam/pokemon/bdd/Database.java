@@ -344,7 +344,7 @@ public class Database extends SQLiteOpenHelper {
         return p;
     }
 
-    private ArrayList<ElementSac> getSacADos(int idUtilisateur) {
+    public ArrayList<ElementSac> getSacADos(int idUtilisateur) {
 
         ArrayList<ElementSac> liste = new ArrayList<ElementSac>();
         SQLiteDatabase db = this.getReadableDatabase();
