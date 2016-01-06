@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Pokemon</string>
     <string name="title_activity_main">Accueil</string>
-    <string name="title_activity_pokedex">PokedexActivity</string>
-    <string name="title_activity_sac_consultation">SacConsultation</string>
+    <string name="title_activity_pokedex">Pokedex</string>
+    <string name="title_sac_activity">SacConsultation</string>
     <string name="action_settings">Menu</string>
     <string name="title_activity_combat">CombatActivity</string>
     <string name="button_atk">Attaque</string>

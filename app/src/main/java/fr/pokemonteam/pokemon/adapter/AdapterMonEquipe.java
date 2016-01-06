@@ -44,7 +44,7 @@ public class AdapterMonEquipe extends ArrayAdapter<PokemonReel> {
         exp.setText(exp.getText() + Integer.toString(pkm.getExp()));
         nom.setText(pkm.getPokemon().getNom());
 
-        if(pkm.getPseudo() == null || pkm.getPseudo().isEmpty()) {
+        if (pkm.getPseudo() == null || pkm.getPseudo().isEmpty()) {
             pseudo.setText(pkm.getPokemon().getNom());
         } else {
             pseudo.setText(pkm.getPseudo());

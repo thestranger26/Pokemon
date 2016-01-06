@@ -29,13 +29,11 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
         System.out.println(u.getNom());
         System.out.println("BDD OK");
 
-        setContentView(R.layout.activity_sac_consultation);
+        setContentView(R.layout.activity_main);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-//        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-//                .findFragmentById(R.id.map);
-//        mapFragment.getMapAsync(this);
-
-
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
     }
 
 

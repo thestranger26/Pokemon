@@ -51,7 +51,7 @@ public class Database extends SQLiteOpenHelper {
             db.execSQL("CREATE TABLE sacADos (idUtilisateur INT, idElement INT, nombre INT);");
             db.execSQL("CREATE TABLE element (idElement INT, libelle VARCHAR(50), effet VARCHAR(255));");
             db.execSQL("CREATE TABLE pokemonReel (idPokemonReel INT, idUtilisateur INT, idPokemon INT, pseudo VARCHAR(20), equipe BOOL, atk INT, def INT, niveau INT, exp INT, longitude REAL, latitude REAL, vieActuelle INT, maxVie INT );");
-            db.execSQL("CREATE TABLE infosPokemon (idPokemon INT , type INT, numero INT, nom VARCHAR(255), attaque INT, defense INT, pv INT, nomImage VARCHAR(255), vue BOOL, capture BOOL);");
+            db.execSQL("CREATE TABLE infosPokemon (idPokemon INT , type VARCHAR(255), numero INT, nom VARCHAR(255), attaque INT, defense INT, pv INT, nomImage VARCHAR(255), vue BOOL, capture BOOL);");
             db.execSQL("CREATE TABLE lieu (idLieu INT, libelle VARCHAR(50), typeLieu VARCHAR(50), longitude REAL, latitude REAL );");
             db.execSQL("CREATE TABLE lieuFavoris (idLieu INT, idUtilisateur INT );");
             db.setTransactionSuccessful();
@@ -79,15 +79,15 @@ public class Database extends SQLiteOpenHelper {
             for(int i = 0; i < pokemons.size(); i++) {
                 values = new ContentValues();
                 values.put("idPokemon", i);
-                values.put("type", pokemons.get(0).get("Type"));
-                values.put("nom", pokemons.get(0).get("Nom"));
-                values.put("attaque", pokemons.get(0).get("Défense"));
-                values.put("defense", pokemons.get(0).get("Attaque"));
-                values.put("pv", pokemons.get(0).get("PV"));
-                values.put("nomImage", pokemons.get(0).get("Nom"));
+                values.put("type", pokemons.get(i).get("Type"));
+                values.put("nom", pokemons.get(i).get("Nom"));
+                values.put("attaque", pokemons.get(i).get("Défense"));
+                values.put("defense", pokemons.get(i).get("Attaque"));
+                values.put("pv", pokemons.get(i).get("PV"));
+                values.put("nomImage", pokemons.get(i).get("Image"));
                 values.put("vue", 0);
                 values.put("capture", 0);
-                values.put("numero", pokemons.get(0).get("Numéro"));
+                values.put("numero", pokemons.get(i).get("Numéro"));
                 db.insert("infosPokemon", null, values);
             }
 
@@ -247,6 +247,7 @@ public class Database extends SQLiteOpenHelper {
                 do {
                     PokemonReel p = new PokemonReel();
 
+                    p.setId(c.getInt(c.getColumnIndex("idPokemonReel")));
                     p.setPseudo(c.getString(c.getColumnIndex("pseudo")));
                     p.setAtk(c.getInt(c.getColumnIndex("atk")));
                     p.setDef(c.getInt(c.getColumnIndex("def")));
@@ -258,6 +259,43 @@ public class Database extends SQLiteOpenHelper {
                     p.setMaxVie(c.getInt(c.getColumnIndex("maxVie")));
 
                     p.setPokemon(this.getPokemon(c.getInt(c.getColumnIndex("idPokemon"))));
+
+                    liste.add(p);
+
+                } while (c.moveToNext());
+            }
+            db.setTransactionSuccessful();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            db.endTransaction();
+        }
+        return liste;
+    }
+
+    public ArrayList<Pokemon> getPokedex() {
+        ArrayList<Pokemon> liste = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        try {
+            db.beginTransaction();
+            Cursor c = db.query("infosPokemon", new String[]{"idPokemon", "type", "numero", "nom", "attaque", "defense", "pv", "nomImage", "vue", "capture"}, null, null, null, null, null);
+
+
+            if (c.getCount() > 0) {
+                c.moveToFirst();
+                do {
+                    Pokemon p = new Pokemon();
+
+                    p.setId(c.getInt(c.getColumnIndex("idPokemon")));
+                    p.setType(c.getString(c.getColumnIndex("type")));
+                    p.setNumero(c.getInt(c.getColumnIndex("numero")));
+                    p.setNom(c.getString(c.getColumnIndex("nom")));
+                    p.setAttaque(c.getInt(c.getColumnIndex("attaque")));
+                    p.setDefense(c.getInt(c.getColumnIndex("defense")));
+                    p.setPv(c.getInt(c.getColumnIndex("pv")));
+                    p.setNomImage(c.getString(c.getColumnIndex("nomImage")));
+                    p.setVue(c.getInt(c.getColumnIndex("vue")) == 1);
+                    p.setCapture(c.getInt(c.getColumnIndex("capture")) == 1);
 
                     liste.add(p);
 
@@ -284,19 +322,17 @@ public class Database extends SQLiteOpenHelper {
             if (c.getCount() == 1) {
                 c.moveToFirst();
                 p.setNom(c.getString(c.getColumnIndex("nom")));
-                p.setDescription(c.getString(c.getColumnIndex("description")));
-                p.setLienImage(c.getString(c.getColumnIndex("nomImage")));
+                p.setId(c.getInt(c.getColumnIndex("id")));
+                p.setType(c.getString(c.getColumnIndex("type")));
+                p.setNumero(c.getInt(c.getColumnIndex("numero")));
+                p.setNom(c.getString(c.getColumnIndex("nom")));
+                p.setAttaque(c.getInt(c.getColumnIndex("attaque")));
+                p.setDefense(c.getInt(c.getColumnIndex("defense")));
+                p.setPv(c.getInt(c.getColumnIndex("pv")));
+                p.setNomImage(c.getString(c.getColumnIndex("nomImage")));
+                p.setVue(c.getInt(c.getColumnIndex("vue")) == 1);
+                p.setCapture(c.getInt(c.getColumnIndex("capture")) == 1);
 
-                if (c.getInt(c.getColumnIndex("vue")) == 1) {
-                    p.setVue(true);
-                } else {
-                    p.setVue(false);
-                }
-                if (c.getInt(c.getColumnIndex("capture")) == 1) {
-                    p.setCapture(true);
-                } else {
-                    p.setCapture(false);
-                }
             }
             db.setTransactionSuccessful();
         } catch (Exception e) {

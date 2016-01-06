@@ -4,22 +4,30 @@ package fr.pokemonteam.pokemon.model;
  * Created by Tristan on 04/01/16.
  */
 public class Pokemon {
+
     int id;
+    String type;
+    int numero;
     String nom;
-    String description;
-    String lienImage;
+    int attaque;
+    int defense;
+    int pv;
+    String nomImage;
     Boolean vue;
     Boolean capture;
 
-    public Pokemon(int id, String nom, String description, String lienImage, Boolean vue, Boolean capture) {
+    public Pokemon(int id, String type, int numero, String nom, int attage, int defense, int pv, String nomImage, Boolean vue, Boolean capture) {
         this.id = id;
+        this.type = type;
+        this.numero = numero;
         this.nom = nom;
-        this.description = description;
-        this.lienImage = lienImage;
+        this.attaque = attage;
+        this.defense = defense;
+        this.pv = pv;
+        this.nomImage = nomImage;
         this.vue = vue;
         this.capture = capture;
     }
-
 
     public Pokemon() {
 
@@ -33,6 +41,14 @@ public class Pokemon {
         this.id = id;
     }
 
+    public int getNumero() {
+        return numero;
+    }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }
+
     public String getNom() {
         return nom;
     }
@@ -41,20 +57,46 @@ public class Pokemon {
         this.nom = nom;
     }
 
-    public String getDescription() {
-        return description;
+
+    public String getType() {
+        return type;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setType(String type) {
+        this.type = type;
     }
 
-    public String getLienImage() {
-        return lienImage;
+
+    public int getAttaque() {
+        return attaque;
     }
 
-    public void setLienImage(String lienImage) {
-        this.lienImage = lienImage;
+    public void setAttaque(int attaque) {
+        this.attaque = attaque;
+    }
+
+    public int getDefense() {
+        return defense;
+    }
+
+    public void setDefense(int defense) {
+        this.defense = defense;
+    }
+
+    public int getPv() {
+        return pv;
+    }
+
+    public void setPv(int pv) {
+        this.pv = pv;
+    }
+
+    public String getNomImage() {
+        return nomImage;
+    }
+
+    public void setNomImage(String nomImage) {
+        this.nomImage = nomImage;
     }
 
     public Boolean getVue() {
