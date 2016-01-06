@@ -1,9 +1,11 @@
 package fr.pokemonteam.pokemon.model;
 
+import java.io.Serializable;
+
 /**
  * Created by Tristan on 04/01/16.
  */
-public class Pokemon {
+public class Pokemon implements Serializable {
 
     int id;
     String type;
