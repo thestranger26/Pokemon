@@ -88,6 +88,7 @@ public class Database extends SQLiteOpenHelper {
                 values.put("vue", 0);
                 values.put("capture", 0);
                 values.put("numero", pokemons.get(i).get("Numéro"));
+                values.put("tauxCapture", pokemons.get(i).get("Taux Capture"));
                 db.insert("infosPokemon", null, values);
             }
 
@@ -416,6 +417,7 @@ public class Database extends SQLiteOpenHelper {
                 String atk = jo_inside.getString("Attaque");
                 String def = jo_inside.getString("Défense");
                 String type = jo_inside.getString("Type");
+                String tauxCapture = jo_inside.getString("Catch rate");
 
                 //Add your values in your `ArrayList` as below:
                 m_li = new HashMap<String, String>();
@@ -426,6 +428,7 @@ public class Database extends SQLiteOpenHelper {
                 m_li.put("Attaque", atk);
                 m_li.put("Défense", def);
                 m_li.put("Type", type);
+                m_li.put("Taux Capture", tauxCapture);
 
                 formList.add(m_li);
             }

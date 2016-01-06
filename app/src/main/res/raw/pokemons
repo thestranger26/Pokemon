@@ -1,5 +1,5 @@
 {
-  "Pokémons": [
+  "Pokémon": [
     {
       "Numéro": "001",
       "Image": "",
@@ -7,7 +7,8 @@
       "PV": "45",
       "Attaque": "49",
       "Défense": "49",
-      "Type": "Plante / Poison"
+      "Type": "Plante / Poison",
+      "Catch rate": "45"
     },
     {
       "Numéro": "002",
@@ -16,7 +17,8 @@
       "PV": "60",
       "Attaque": "62",
       "Défense": "63",
-      "Type": "Plante / Poison"
+      "Type": "Plante / Poison",
+      "Catch rate": "45"
     },
     {
       "Numéro": "003",
@@ -25,7 +27,8 @@
       "PV": "80",
       "Attaque": "82",
       "Défense": "83",
-      "Type": "Plante / Poison"
+      "Type": "Plante / Poison",
+      "Catch rate": "45"
     },
     {
       "Numéro": "004",
@@ -34,7 +37,8 @@
       "PV": "39",
       "Attaque": "52",
       "Défense": "43",
-      "Type": "Feu"
+      "Type": "Feu",
+      "Catch rate": "45"
     },
     {
       "Numéro": "005",
@@ -43,7 +47,8 @@
       "PV": "58",
       "Attaque": "64",
       "Défense": "58",
-      "Type": "Feu"
+      "Type": "Feu",
+      "Catch rate": "45"
     },
     {
       "Numéro": "006",
@@ -52,7 +57,8 @@
       "PV": "78",
       "Attaque": "84",
       "Défense": "78",
-      "Type": "Feu / Vol"
+      "Type": "Feu / Vol",
+      "Catch rate": "45"
     },
     {
       "Numéro": "007",
@@ -61,7 +67,8 @@
       "PV": "44",
       "Attaque": "48",
       "Défense": "65",
-      "Type": "Eau"
+      "Type": "Eau",
+      "Catch rate": "45"
     },
     {
       "Numéro": "008",
@@ -70,7 +77,8 @@
       "PV": "59",
       "Attaque": "63",
       "Défense": "80",
-      "Type": "Eau"
+      "Type": "Eau",
+      "Catch rate": "45"
     },
     {
       "Numéro": "009",
@@ -79,7 +87,8 @@
       "PV": "79",
       "Attaque": "83",
       "Défense": "100",
-      "Type": "Eau"
+      "Type": "Eau",
+      "Catch rate": "45"
     },
     {
       "Numéro": "010",
@@ -88,7 +97,8 @@
       "PV": "45",
       "Attaque": "30",
       "Défense": "35",
-      "Type": "Insecte"
+      "Type": "Insecte",
+      "Catch rate": "255"
     },
     {
       "Numéro": "011",
@@ -97,7 +107,8 @@
       "PV": "50",
       "Attaque": "20",
       "Défense": "55",
-      "Type": "Insecte"
+      "Type": "Insecte",
+      "Catch rate": "120"
     },
     {
       "Numéro": "012",
@@ -106,7 +117,8 @@
       "PV": "60",
       "Attaque": "45",
       "Défense": "50",
-      "Type": "Insecte / Vol"
+      "Type": "Insecte / Vol",
+      "Catch rate": "45"
     },
     {
       "Numéro": "013",
@@ -115,7 +127,8 @@
       "PV": "40",
       "Attaque": "35",
       "Défense": "30",
-      "Type": "Insecte / Poison"
+      "Type": "Insecte / Poison",
+      "Catch rate": "255"
     },
     {
       "Numéro": "014",
@@ -124,7 +137,8 @@
       "PV": "45",
       "Attaque": "25",
       "Défense": "50",
-      "Type": "Insecte / Poison"
+      "Type": "Insecte / Poison",
+      "Catch rate": "120"
     },
     {
       "Numéro": "015",
@@ -133,7 +147,8 @@
       "PV": "65",
       "Attaque": "90",
       "Défense": "40",
-      "Type": "Insecte / Poison"
+      "Type": "Insecte / Poison",
+      "Catch rate": "45"
     },
     {
       "Numéro": "016",
@@ -142,7 +157,8 @@
       "PV": "40",
       "Attaque": "45",
       "Défense": "40",
-      "Type": "Normal / Vol"
+      "Type": "Normal / Vol",
+      "Catch rate": "255"
     },
     {
       "Numéro": "017",
@@ -151,7 +167,8 @@
       "PV": "63",
       "Attaque": "60",
       "Défense": "55",
-      "Type": "Normal / Vol"
+      "Type": "Normal / Vol",
+      "Catch rate": "120"
     },
     {
       "Numéro": "018",
@@ -160,7 +177,8 @@
       "PV": "83",
       "Attaque": "80",
       "Défense": "75",
-      "Type": "Normal / Vol"
+      "Type": "Normal / Vol",
+      "Catch rate": "45"
     },
     {
       "Numéro": "019",
@@ -169,7 +187,8 @@
       "PV": "30",
       "Attaque": "56",
       "Défense": "35",
-      "Type": "Normal"
+      "Type": "Normal",
+      "Catch rate": "255"
     },
     {
       "Numéro": "020",
@@ -178,7 +197,8 @@
       "PV": "55",
       "Attaque": "81",
       "Défense": "60",
-      "Type": "Normal"
+      "Type": "Normal",
+      "Catch rate": "127"
     },
     {
       "Numéro": "021",
@@ -187,7 +207,8 @@
       "PV": "40",
       "Attaque": "60",
       "Défense": "30",
-      "Type": "Normal / Vol"
+      "Type": "Normal / Vol",
+      "Catch rate": "255"
     },
     {
       "Numéro": "022",
@@ -196,7 +217,8 @@
       "PV": "65",
       "Attaque": "90",
       "Défense": "65",
-      "Type": "Normal / Vol"
+      "Type": "Normal / Vol",
+      "Catch rate": "90"
     },
     {
       "Numéro": "023",
@@ -205,7 +227,8 @@
       "PV": "35",
       "Attaque": "60",
       "Défense": "44",
-      "Type": "Poison"
+      "Type": "Poison",
+      "Catch rate": "255"
     },
     {
       "Numéro": "024",
@@ -214,7 +237,8 @@
       "PV": "60",
       "Attaque": "85",
       "Défense": "69",
-      "Type": "Poison"
+      "Type": "Poison",
+      "Catch rate": "90"
     },
     {
       "Numéro": "025",
@@ -223,7 +247,8 @@
       "PV": "35",
       "Attaque": "55",
       "Défense": "40",
-      "Type": "Électrik"
+      "Type": "Électrik",
+      "Catch rate": "190"
     },
     {
       "Numéro": "026",
@@ -232,7 +257,8 @@
       "PV": "60",
       "Attaque": "90",
       "Défense": "55",
-      "Type": "Électrik"
+      "Type": "Électrik",
+      "Catch rate": "75"
     },
     {
       "Numéro": "027",
@@ -241,7 +267,8 @@
       "PV": "50",
       "Attaque": "75",
       "Défense": "85",
-      "Type": "Sol"
+      "Type": "Sol",
+      "Catch rate": "255"
     },
     {
       "Numéro": "028",
@@ -250,7 +277,8 @@
       "PV": "75",
       "Attaque": "100",
       "Défense": "110",
-      "Type": "Sol"
+      "Type": "Sol",
+      "Catch rate": "90"
     },
     {
       "Numéro": "029",
@@ -259,7 +287,8 @@
       "PV": "55",
       "Attaque": "47",
       "Défense": "52",
-      "Type": "Poison"
+      "Type": "Poison",
+      "Catch rate": "235"
     },
     {
       "Numéro": "030",
@@ -268,7 +297,8 @@
       "PV": "70",
       "Attaque": "62",
       "Défense": "67",
-      "Type": "Poison"
+      "Type": "Poison",
+      "Catch rate": "120"
     },
     {
       "Numéro": "031",
@@ -277,7 +307,8 @@
       "PV": "90",
       "Attaque": "92",
       "Défense": "87",
-      "Type": "Poison / Sol"
+      "Type": "Poison / Sol",
+      "Catch rate": "45"
     },
     {
       "Numéro": "032",
@@ -286,7 +317,8 @@
       "PV": "46",
       "Attaque": "57",
       "Défense": "40",
-      "Type": "Poison"
+      "Type": "Poison",
+      "Catch rate": "235"
     },
     {
       "Numéro": "033",
@@ -295,7 +327,8 @@
       "PV": "61",
       "Attaque": "72",
       "Défense": "57",
-      "Type": "Poison"
+      "Type": "Poison",
+      "Catch rate": "120"
     },
     {
       "Numéro": "034",
@@ -304,7 +337,8 @@
       "PV": "81",
       "Attaque": "102",
       "Défense": "77",
-      "Type": "Poison / Sol"
+      "Type": "Poison / Sol",
+      "Catch rate": "45"
     },
     {
       "Numéro": "035",
@@ -313,7 +347,8 @@
       "PV": "70",
       "Attaque": "45",
       "Défense": "48",
-      "Type": "Fée"
+      "Type": "Fée",
+      "Catch rate": "150"
     },
     {
       "Numéro": "036",
@@ -322,7 +357,8 @@
       "PV": "95",
       "Attaque": "70",
       "Défense": "73",
-      "Type": "Fée"
+      "Type": "Fée",
+      "Catch rate": "25"
     },
     {
       "Numéro": "037",
@@ -331,7 +367,8 @@
       "PV": "38",
       "Attaque": "41",
       "Défense": "40",
-      "Type": "Feu"
+      "Type": "Feu",
+      "Catch rate": "190"
     },
     {
       "Numéro": "038",
@@ -340,7 +377,8 @@
       "PV": "73",
       "Attaque": "76",
       "Défense": "75",
-      "Type": "Feu"
+      "Type": "Feu",
+      "Catch rate": "75"
     },
     {
       "Numéro": "039",
@@ -349,7 +387,8 @@
       "PV": "115",
       "Attaque": "45",
       "Défense": "20",
-      "Type": "Normal / Fée"
+      "Type": "Normal / Fée",
+      "Catch rate": "170"
     },
     {
       "Numéro": "040",
@@ -358,7 +397,8 @@
       "PV": "140",
       "Attaque": "70",
       "Défense": "45",
-      "Type": "Normal / Fée"
+      "Type": "Normal / Fée",
+      "Catch rate": "50"
     },
     {
       "Numéro": "041",
@@ -367,7 +407,8 @@
       "PV": "40",
       "Attaque": "45",
       "Défense": "35",
-      "Type": "Poison / Vol"
+      "Type": "Poison / Vol",
+      "Catch rate": "255"
     },
     {
       "Numéro": "042",
@@ -376,7 +417,8 @@
       "PV": "75",
       "Attaque": "80",
       "Défense": "70",
-      "Type": "Poison / Vol"
+      "Type": "Poison / Vol",
+      "Catch rate": "90"
     },
     {
       "Numéro": "043",
@@ -385,7 +427,8 @@
       "PV": "45",
       "Attaque": "50",
       "Défense": "55",
-      "Type": "Plante / Poison"
+      "Type": "Plante / Poison",
+      "Catch rate": "255"
     },
     {
       "Numéro": "044",
@@ -394,7 +437,8 @@
       "PV": "60",
       "Attaque": "65",
       "Défense": "70",
-      "Type": "Plante / Poison"
+      "Type": "Plante / Poison",
+      "Catch rate": "120"
     },
     {
       "Numéro": "045",
@@ -403,7 +447,8 @@
       "PV": "75",
       "Attaque": "80",
       "Défense": "85",
-      "Type": "Plante / Poison"
+      "Type": "Plante / Poison",
+      "Catch rate": "45"
     },
     {
       "Numéro": "046",
@@ -412,7 +457,8 @@
       "PV": "35",
       "Attaque": "70",
       "Défense": "55",
-      "Type": "Insecte / Plante"
+      "Type": "Insecte / Plante",
+      "Catch rate": "190"
     },
     {
       "Numéro": "047",
@@ -421,7 +467,8 @@
       "PV": "60",
       "Attaque": "95",
       "Défense": "80",
-      "Type": "Insecte / Plante"
+      "Type": "Insecte / Plante",
+      "Catch rate": "75"
     },
     {
       "Numéro": "048",
@@ -430,7 +477,8 @@
       "PV": "60",
       "Attaque": "55",
       "Défense": "50",
-      "Type": "Insecte / Poison"
+      "Type": "Insecte / Poison",
+      "Catch rate": "190"
     },
     {
       "Numéro": "049",
@@ -439,7 +487,8 @@
       "PV": "70",
       "Attaque": "65",
       "Défense": "60",
-      "Type": "Insecte / Poison"
+      "Type": "Insecte / Poison",
+      "Catch rate": "75"
     },
     {
       "Numéro": "050",
@@ -448,7 +497,8 @@
       "PV": "10",
       "Attaque": "55",
       "Défense": "25",
-      "Type": "Sol"
+      "Type": "Sol",
+      "Catch rate": "255"
     },
     {
       "Numéro": "051",
@@ -457,7 +507,8 @@
       "PV": "35",
       "Attaque": "80",
       "Défense": "50",
-      "Type": "Sol"
+      "Type": "Sol",
+      "Catch rate": "50"
     },
     {
       "Numéro": "052",
@@ -466,7 +517,8 @@
       "PV": "40",
       "Attaque": "45",
       "Défense": "35",
-      "Type": "Normal"
+      "Type": "Normal",
+      "Catch rate": "255"
     },
     {
       "Numéro": "053",
@@ -475,7 +527,8 @@
       "PV": "65",
       "Attaque": "70",
       "Défense": "60",
-      "Type": "Normal"
+      "Type": "Normal",
+      "Catch rate": "90"
     },
     {
       "Numéro": "054",
@@ -484,7 +537,8 @@
       "PV": "50",
       "Attaque": "52",
       "Défense": "48",
-      "Type": "Eau"
+      "Type": "Eau",
+      "Catch rate": "190"
     },
     {
       "Numéro": "055",
@@ -493,7 +547,8 @@
       "PV": "80",
       "Attaque": "82",
       "Défense": "78",
-      "Type": "Eau"
+      "Type": "Eau",
+      "Catch rate": "75"
     },
     {
       "Numéro": "056",
@@ -502,7 +557,8 @@
       "PV": "40",
       "Attaque": "80",
       "Défense": "35",
-      "Type": "Combat"
+      "Type": "Combat",
+      "Catch rate": "190"
     },
     {
       "Numéro": "057",
@@ -511,7 +567,8 @@
       "PV": "65",
       "Attaque": "105",
       "Défense": "60",
-      "Type": "Combat"
+      "Type": "Combat",
+      "Catch rate": "75"
     },
     {
       "Numéro": "058",
@@ -520,7 +577,8 @@
       "PV": "55",
       "Attaque": "70",
       "Défense": "45",
-      "Type": "Feu"
+      "Type": "Feu",
+      "Catch rate": "190"
     },
     {
       "Numéro": "059",
@@ -529,7 +587,8 @@
       "PV": "90",
       "Attaque": "110",
       "Défense": "80",
-      "Type": "Feu"
+      "Type": "Feu",
+      "Catch rate": "75"
     },
     {
       "Numéro": "060",
@@ -538,7 +597,8 @@
       "PV": "40",
       "Attaque": "50",
       "Défense": "40",
-      "Type": "Eau"
+      "Type": "Eau",
+      "Catch rate": "255"
     },
     {
       "Numéro": "061",
@@ -547,7 +607,8 @@
       "PV": "65",
       "Attaque": "65",
       "Défense": "65",
-      "Type": "Eau"
+      "Type": "Eau",
+      "Catch rate": "120"
     },
     {
       "Numéro": "062",
@@ -556,7 +617,8 @@
       "PV": "90",
       "Attaque": "95",
       "Défense": "95",
-      "Type": "Eau / Combat"
+      "Type": "Eau / Combat",
+      "Catch rate": "45"
     },
     {
       "Numéro": "063",
@@ -565,7 +627,8 @@
       "PV": "25",
       "Attaque": "20",
       "Défense": "15",
-      "Type": "Psy"
+      "Type": "Psy",
+      "Catch rate": "200"
     },
     {
       "Numéro": "064",
@@ -574,7 +637,8 @@
       "PV": "40",
       "Attaque": "35",
       "Défense": "30",
-      "Type": "Psy"
+      "Type": "Psy",
+      "Catch rate": "100"
     },
     {
       "Numéro": "065",
@@ -583,7 +647,8 @@
       "PV": "55",
       "Attaque": "50",
       "Défense": "45",
-      "Type": "Psy"
+      "Type": "Psy",
+      "Catch rate": "50"
     },
     {
       "Numéro": "066",
@@ -592,7 +657,8 @@
       "PV": "70",
       "Attaque": "80",
       "Défense": "50",
-      "Type": "Combat"
+      "Type": "Combat",
+      "Catch rate": "180"
     },
     {
       "Numéro": "067",
@@ -601,7 +667,8 @@
       "PV": "80",
       "Attaque": "100",
       "Défense": "70",
-      "Type": "Combat"
+      "Type": "Combat",
+      "Catch rate": "90"
     },
     {
       "Numéro": "068",
@@ -610,7 +677,8 @@
       "PV": "90",
       "Attaque": "130",
       "Défense": "80",
-      "Type": "Combat"
+      "Type": "Combat",
+      "Catch rate": "45"
     },
     {
       "Numéro": "069",
@@ -619,7 +687,8 @@
       "PV": "50",
       "Attaque": "75",
       "Défense": "35",
-      "Type": "Plante / Poison"
+      "Type": "Plante / Poison",
+      "Catch rate": "255"
     },
     {
       "Numéro": "070",
@@ -628,7 +697,8 @@
       "PV": "65",
       "Attaque": "90",
       "Défense": "50",
-      "Type": "Plante / Poison"
+      "Type": "Plante / Poison",
+      "Catch rate": "120"
     },
     {
       "Numéro": "071",
@@ -637,7 +707,8 @@
       "PV": "80",
       "Attaque": "105",
       "Défense": "65",
-      "Type": "Plante / Poison"
+      "Type": "Plante / Poison",
+      "Catch rate": "45"
     },
     {
       "Numéro": "072",
@@ -646,7 +717,8 @@
       "PV": "40",
       "Attaque": "40",
       "Défense": "35",
-      "Type": "Eau / Poison"
+      "Type": "Eau / Poison",
+      "Catch rate": "190"
     },
     {
       "Numéro": "073",
@@ -655,7 +727,8 @@
       "PV": "80",
       "Attaque": "70",
       "Défense": "65",
-      "Type": "Eau / Poison"
+      "Type": "Eau / Poison",
+      "Catch rate": "60"
     },
     {
       "Numéro": "074",
@@ -664,7 +737,8 @@
       "PV": "40",
       "Attaque": "80",
       "Défense": "100",
-      "Type": "Roche / Sol"
+      "Type": "Roche / Sol",
+      "Catch rate": "255"
     },
     {
       "Numéro": "075",
@@ -673,7 +747,8 @@
       "PV": "55",
       "Attaque": "95",
       "Défense": "115",
-      "Type": "Roche / Sol"
+      "Type": "Roche / Sol",
+      "Catch rate": "120"
     },
     {
       "Numéro": "076",
@@ -682,7 +757,8 @@
       "PV": "80",
       "Attaque": "120",
       "Défense": "130",
-      "Type": "Roche / Sol"
+      "Type": "Roche / Sol",
+      "Catch rate": "45"
     },
     {
       "Numéro": "077",
@@ -691,7 +767,8 @@
       "PV": "50",
       "Attaque": "85",
       "Défense": "55",
-      "Type": "Feu"
+      "Type": "Feu",
+      "Catch rate": "190"
     },
     {
       "Numéro": "078",
@@ -700,7 +777,8 @@
       "PV": "65",
       "Attaque": "100",
       "Défense": "70",
-      "Type": "Feu"
+      "Type": "Feu",
+      "Catch rate": "60"
     },
     {
       "Numéro": "079",
@@ -709,7 +787,8 @@
       "PV": "90",
       "Attaque": "65",
       "Défense": "65",
-      "Type": "Eau / Psy"
+      "Type": "Eau / Psy",
+      "Catch rate": "190"
     },
     {
       "Numéro": "080",
@@ -718,7 +797,8 @@
       "PV": "95",
       "Attaque": "75",
       "Défense": "110",
-      "Type": "Eau / Psy"
+      "Type": "Eau / Psy",
+      "Catch rate": "75"
     },
     {
       "Numéro": "081",
@@ -727,7 +807,8 @@
       "PV": "25",
       "Attaque": "35",
       "Défense": "70",
-      "Type": "Électrik / Acier"
+      "Type": "Électrik / Acier",
+      "Catch rate": "190"
     },
     {
       "Numéro": "082",
@@ -736,7 +817,8 @@
       "PV": "50",
       "Attaque": "60",
       "Défense": "95",
-      "Type": "Électrik / Acier"
+      "Type": "Électrik / Acier",
+      "Catch rate": "60"
     },
     {
       "Numéro": "083",
@@ -745,7 +827,8 @@
       "PV": "52",
       "Attaque": "65",
       "Défense": "55",
-      "Type": "Normal / Vol"
+      "Type": "Normal / Vol",
+      "Catch rate": "45"
     },
     {
       "Numéro": "084",
@@ -754,7 +837,8 @@
       "PV": "35",
       "Attaque": "85",
       "Défense": "45",
-      "Type": "Normal / Vol"
+      "Type": "Normal / Vol",
+      "Catch rate": "190"
     },
     {
       "Numéro": "085",
@@ -763,7 +847,8 @@
       "PV": "60",
       "Attaque": "110",
       "Défense": "70",
-      "Type": "Normal / Vol"
+      "Type": "Normal / Vol",
+      "Catch rate": "45"
     },
     {
       "Numéro": "086",
@@ -772,7 +857,8 @@
       "PV": "65",
       "Attaque": "45",
       "Défense": "55",
-      "Type": "Eau"
+      "Type": "Eau",
+      "Catch rate": "190"
     },
     {
       "Numéro": "087",
@@ -781,7 +867,8 @@
       "PV": "90",
       "Attaque": "70",
       "Défense": "80",
-      "Type": "Eau / Glace"
+      "Type": "Eau / Glace",
+      "Catch rate": "75"
     },
     {
       "Numéro": "088",
@@ -790,7 +877,8 @@
       "PV": "80",
       "Attaque": "80",
       "Défense": "50",
-      "Type": "Poison"
+      "Type": "Poison",
+      "Catch rate": "190"
     },
     {
       "Numéro": "089",
@@ -799,7 +887,8 @@
       "PV": "105",
       "Attaque": "105",
       "Défense": "75",
-      "Type": "Poison"
+      "Type": "Poison",
+      "Catch rate": "75"
     },
     {
       "Numéro": "090",
@@ -808,7 +897,8 @@
       "PV": "30",
       "Attaque": "65",
       "Défense": "100",
-      "Type": "Eau"
+      "Type": "Eau",
+      "Catch rate": "190"
     },
     {
       "Numéro": "091",
@@ -817,7 +907,8 @@
       "PV": "50",
       "Attaque": "95",
       "Défense": "180",
-      "Type": "Eau / Glace"
+      "Type": "Eau / Glace",
+      "Catch rate": "60"
     },
     {
       "Numéro": "092",
@@ -826,7 +917,8 @@
       "PV": "30",
       "Attaque": "35",
       "Défense": "30",
-      "Type": "Spectre / Poison"
+      "Type": "Spectre / Poison",
+      "Catch rate": "190"
     },
     {
       "Numéro": "093",
@@ -835,7 +927,8 @@
       "PV": "45",
       "Attaque": "50",
       "Défense": "45",
-      "Type": "Spectre / Poison"
+      "Type": "Spectre / Poison",
+      "Catch rate": "90"
     },
     {
       "Numéro": "094",
@@ -844,7 +937,8 @@
       "PV": "60",
       "Attaque": "65",
       "Défense": "60",
-      "Type": "Spectre / Poison"
+      "Type": "Spectre / Poison",
+      "Catch rate": "45"
     },
     {
       "Numéro": "095",
@@ -853,7 +947,8 @@
       "PV": "35",
       "Attaque": "45",
       "Défense": "160",
-      "Type": "Roche / Sol"
+      "Type": "Roche / Sol",
+      "Catch rate": "45"
     },
     {
       "Numéro": "096",
@@ -862,7 +957,8 @@
       "PV": "60",
       "Attaque": "48",
       "Défense": "45",
-      "Type": "Psy"
+      "Type": "Psy",
+      "Catch rate": "190"
     },
     {
       "Numéro": "097",
@@ -871,7 +967,8 @@
       "PV": "85",
       "Attaque": "73",
       "Défense": "70",
-      "Type": "Psy"
+      "Type": "Psy",
+      "Catch rate": "75"
     },
     {
       "Numéro": "098",
@@ -880,7 +977,8 @@
       "PV": "30",
       "Attaque": "105",
       "Défense": "90",
-      "Type": "Eau"
+      "Type": "Eau",
+      "Catch rate": "225"
     },
     {
       "Numéro": "099",
@@ -889,7 +987,8 @@
       "PV": "55",
       "Attaque": "130",
       "Défense": "115",
-      "Type": "Eau"
+      "Type": "Eau",
+      "Catch rate": "60"
     },
     {
       "Numéro": "100",
@@ -898,7 +997,8 @@
       "PV": "40",
       "Attaque": "30",
       "Défense": "50",
-      "Type": "Électrik"
+      "Type": "Électrik",
+      "Catch rate": "190"
     },
     {
       "Numéro": "101",
@@ -907,7 +1007,8 @@
       "PV": "60",
       "Attaque": "50",
       "Défense": "70",
-      "Type": "Électrik"
+      "Type": "Électrik",
+      "Catch rate": "60"
     },
     {
       "Numéro": "102",
@@ -916,7 +1017,8 @@
       "PV": "60",
       "Attaque": "40",
       "Défense": "80",
-      "Type": "Plante / Psy"
+      "Type": "Plante / Psy",
+      "Catch rate": "90"
     },
     {
       "Numéro": "103",
@@ -925,7 +1027,8 @@
       "PV": "95",
       "Attaque": "95",
       "Défense": "85",
-      "Type": "Plante / Psy"
+      "Type": "Plante / Psy",
+      "Catch rate": "45"
     },
     {
       "Numéro": "104",
@@ -934,7 +1037,8 @@
       "PV": "50",
       "Attaque": "50",
       "Défense": "95",
-      "Type": "Sol"
+      "Type": "Sol",
+      "Catch rate": "190"
     },
     {
       "Numéro": "105",
@@ -943,7 +1047,8 @@
       "PV": "60",
       "Attaque": "80",
       "Défense": "110",
-      "Type": "Sol"
+      "Type": "Sol",
+      "Catch rate": "75"
     },
     {
       "Numéro": "106",
@@ -952,7 +1057,8 @@
       "PV": "50",
       "Attaque": "120",
       "Défense": "53",
-      "Type": "Combat"
+      "Type": "Combat",
+      "Catch rate": "45"
     },
     {
       "Numéro": "107",
@@ -961,7 +1067,8 @@
       "PV": "50",
       "Attaque": "105",
       "Défense": "79",
-      "Type": "Combat"
+      "Type": "Combat",
+      "Catch rate": "45"
     },
     {
       "Numéro": "108",
@@ -970,7 +1077,8 @@
       "PV": "90",
       "Attaque": "55",
       "Défense": "75",
-      "Type": "Normal"
+      "Type": "Normal",
+      "Catch rate": "45"
     },
     {
       "Numéro": "109",
@@ -979,7 +1087,8 @@
       "PV": "40",
       "Attaque": "65",
       "Défense": "95",
-      "Type": "Poison"
+      "Type": "Poison",
+      "Catch rate": "190"
     },
     {
       "Numéro": "110",
@@ -988,7 +1097,8 @@
       "PV": "65",
       "Attaque": "90",
       "Défense": "120",
-      "Type": "Poison"
+      "Type": "Poison",
+      "Catch rate": "60"
     },
     {
       "Numéro": "111",
@@ -997,7 +1107,8 @@
       "PV": "80",
       "Attaque": "85",
       "Défense": "95",
-      "Type": "Sol / Roche"
+      "Type": "Sol / Roche",
+      "Catch rate": "120"
     },
     {
       "Numéro": "112",
@@ -1006,7 +1117,8 @@
       "PV": "105",
       "Attaque": "130",
       "Défense": "120",
-      "Type": "Sol / Roche"
+      "Type": "Sol / Roche",
+      "Catch rate": "60"
     },
     {
       "Numéro": "113",
@@ -1015,7 +1127,8 @@
       "PV": "250",
       "Attaque": "5",
       "Défense": "5",
-      "Type": "Normal"
+      "Type": "Normal",
+      "Catch rate": "30"
     },
     {
       "Numéro": "114",
@@ -1024,7 +1137,8 @@
       "PV": "65",
       "Attaque": "55",
       "Défense": "115",
-      "Type": "Plante"
+      "Type": "Plante",
+      "Catch rate": "45"
     },
     {
       "Numéro": "115",
@@ -1033,7 +1147,8 @@
       "PV": "105",
       "Attaque": "95",
       "Défense": "80",
-      "Type": "Normal"
+      "Type": "Normal",
+      "Catch rate": "45"
     },
     {
       "Numéro": "116",
@@ -1042,7 +1157,8 @@
       "PV": "30",
       "Attaque": "40",
       "Défense": "70",
-      "Type": "Eau"
+      "Type": "Eau",
+      "Catch rate": "225"
     },
     {
       "Numéro": "117",
@@ -1051,7 +1167,8 @@
       "PV": "55",
       "Attaque": "55",
       "Défense": "65",
-      "Type": "Eau"
+      "Type": "Eau",
+      "Catch rate": "75"
     },
     {
       "Numéro": "118",
@@ -1060,7 +1177,8 @@
       "PV": "45",
       "Attaque": "67",
       "Défense": "60",
-      "Type": "Eau"
+      "Type": "Eau",
+      "Catch rate": "225"
     },
     {
       "Numéro": "119",
@@ -1069,7 +1187,8 @@
       "PV": "80",
       "Attaque": "92",
       "Défense": "65",
-      "Type": "Eau"
+      "Type": "Eau",
+      "Catch rate": "60"
     },
     {
       "Numéro": "120",
@@ -1078,7 +1197,8 @@
       "PV": "30",
       "Attaque": "45",
       "Défense": "55",
-      "Type": "Eau"
+      "Type": "Eau",
+      "Catch rate": "225"
     },
     {
       "Numéro": "121",
@@ -1087,7 +1207,8 @@
       "PV": "60",
       "Attaque": "75",
       "Défense": "85",
-      "Type": "Eau / Psy"
+      "Type": "Eau / Psy",
+      "Catch rate": "60"
     },
     {
       "Numéro": "122",
@@ -1096,7 +1217,8 @@
       "PV": "40",
       "Attaque": "45",
       "Défense": "65",
-      "Type": "Psy / Fée"
+      "Type": "Psy / Fée",
+      "Catch rate": "45"
     },
     {
       "Numéro": "123",
@@ -1105,7 +1227,8 @@
       "PV": "70",
       "Attaque": "110",
       "Défense": "80",
-      "Type": "Insecte / Vol"
+      "Type": "Insecte / Vol",
+      "Catch rate": "45"
     },
     {
       "Numéro": "124",
@@ -1114,7 +1237,8 @@
       "PV": "65",
       "Attaque": "50",
       "Défense": "35",
-      "Type": "Glace / Psy"
+      "Type": "Glace / Psy",
+      "Catch rate": "45"
     },
     {
       "Numéro": "125",
@@ -1123,7 +1247,8 @@
       "PV": "65",
       "Attaque": "83",
       "Défense": "57",
-      "Type": "Électrik"
+      "Type": "Électrik",
+      "Catch rate": "45"
     },
     {
       "Numéro": "126",
@@ -1132,7 +1257,8 @@
       "PV": "65",
       "Attaque": "95",
       "Défense": "57",
-      "Type": "Feu"
+      "Type": "Feu",
+      "Catch rate": "45"
     },
     {
       "Numéro": "127",
@@ -1141,7 +1267,8 @@
       "PV": "65",
       "Attaque": "125",
       "Défense": "100",
-      "Type": "Insecte"
+      "Type": "Insecte",
+      "Catch rate": "45"
     },
     {
       "Numéro": "128",
@@ -1150,7 +1277,8 @@
       "PV": "75",
       "Attaque": "100",
       "Défense": "95",
-      "Type": "Normal"
+      "Type": "Normal",
+      "Catch rate": "45"
     },
     {
       "Numéro": "129",
@@ -1159,7 +1287,8 @@
       "PV": "20",
       "Attaque": "10",
       "Défense": "55",
-      "Type": "Eau"
+      "Type": "Eau",
+      "Catch rate": "255"
     },
     {
       "Numéro": "130",
@@ -1168,7 +1297,8 @@
       "PV": "95",
       "Attaque": "125",
       "Défense": "79",
-      "Type": "Eau / Vol"
+      "Type": "Eau / Vol",
+      "Catch rate": "45"
     },
     {
       "Numéro": "131",
@@ -1177,7 +1307,8 @@
       "PV": "130",
       "Attaque": "85",
       "Défense": "80",
-      "Type": "Eau / Glace"
+      "Type": "Eau / Glace",
+      "Catch rate": "45"
     },
     {
       "Numéro": "132",
@@ -1186,7 +1317,8 @@
       "PV": "48",
       "Attaque": "48",
       "Défense": "48",
-      "Type": "Normal"
+      "Type": "Normal",
+      "Catch rate": "35"
     },
     {
       "Numéro": "133",
@@ -1195,7 +1327,8 @@
       "PV": "55",
       "Attaque": "55",
       "Défense": "50",
-      "Type": "Normal"
+      "Type": "Normal",
+      "Catch rate": "45"
     },
     {
       "Numéro": "134",
@@ -1204,7 +1337,8 @@
       "PV": "130",
       "Attaque": "65",
       "Défense": "60",
-      "Type": "Eau"
+      "Type": "Eau",
+      "Catch rate": "45"
     },
     {
       "Numéro": "135",
@@ -1213,7 +1347,8 @@
       "PV": "65",
       "Attaque": "65",
       "Défense": "60",
-      "Type": "Électrik"
+      "Type": "Électrik",
+      "Catch rate": "45"
     },
     {
       "Numéro": "136",
@@ -1222,7 +1357,8 @@
       "PV": "65",
       "Attaque": "130",
       "Défense": "60",
-      "Type": "Feu"
+      "Type": "Feu",
+      "Catch rate": "45"
     },
     {
       "Numéro": "137",
@@ -1231,7 +1367,8 @@
       "PV": "65",
       "Attaque": "60",
       "Défense": "70",
-      "Type": "Normal"
+      "Type": "Normal",
+      "Catch rate": "45"
     },
     {
       "Numéro": "138",
@@ -1240,7 +1377,8 @@
       "PV": "35",
       "Attaque": "40",
       "Défense": "100",
-      "Type": "Roche / Eau"
+      "Type": "Roche / Eau",
+      "Catch rate": "45"
     },
     {
       "Numéro": "139",
@@ -1249,7 +1387,8 @@
       "PV": "70",
       "Attaque": "60",
       "Défense": "125",
-      "Type": "Roche / Eau"
+      "Type": "Roche / Eau",
+      "Catch rate": "45"
     },
     {
       "Numéro": "140",
@@ -1258,7 +1397,8 @@
       "PV": "30",
       "Attaque": "80",
       "Défense": "90",
-      "Type": "Roche / Eau"
+      "Type": "Roche / Eau",
+      "Catch rate": "45"
     },
     {
       "Numéro": "141",
@@ -1267,7 +1407,8 @@
       "PV": "60",
       "Attaque": "115",
       "Défense": "105",
-      "Type": "Roche / Eau"
+      "Type": "Roche / Eau",
+      "Catch rate": "45"
     },
     {
       "Numéro": "142",
@@ -1276,7 +1417,8 @@
       "PV": "80",
       "Attaque": "105",
       "Défense": "65",
-      "Type": "Roche / Vol"
+      "Type": "Roche / Vol",
+      "Catch rate": "45"
     },
     {
       "Numéro": "143",
@@ -1285,7 +1427,8 @@
       "PV": "160",
       "Attaque": "110",
       "Défense": "65",
-      "Type": "Normal"
+      "Type": "Normal",
+      "Catch rate": "25"
     },
     {
       "Numéro": "144",
@@ -1294,7 +1437,8 @@
       "PV": "90",
       "Attaque": "85",
       "Défense": "100",
-      "Type": "Glace / Vol"
+      "Type": "Glace / Vol",
+      "Catch rate": "3"
     },
     {
       "Numéro": "145",
@@ -1303,7 +1447,8 @@
       "PV": "90",
       "Attaque": "90",
       "Défense": "85",
-      "Type": "Électrik / Vol"
+      "Type": "Électrik / Vol",
+      "Catch rate": "3"
     },
     {
       "Numéro": "146",
@@ -1312,7 +1457,8 @@
       "PV": "90",
       "Attaque": "100",
       "Défense": "90",
-      "Type": "Feu / Vol"
+      "Type": "Feu / Vol",
+      "Catch rate": "3"
     },
     {
       "Numéro": "147",
@@ -1321,7 +1467,8 @@
       "PV": "41",
       "Attaque": "64",
       "Défense": "45",
-      "Type": "Dragon"
+      "Type": "Dragon",
+      "Catch rate": "45"
     },
     {
       "Numéro": "148",
@@ -1330,7 +1477,8 @@
       "PV": "61",
       "Attaque": "84",
       "Défense": "65",
-      "Type": "Dragon"
+      "Type": "Dragon",
+      "Catch rate": "45"
     },
     {
       "Numéro": "149",
@@ -1339,7 +1487,8 @@
       "PV": "91",
       "Attaque": "134",
       "Défense": "95",
-      "Type": "Dragon / Vol"
+      "Type": "Dragon / Vol",
+      "Catch rate": "45"
     },
     {
       "Numéro": "150",
@@ -1348,7 +1497,8 @@
       "PV": "106",
       "Attaque": "110",
       "Défense": "90",
-      "Type": "Psy"
+      "Type": "Psy",
+      "Catch rate": "3"
     },
     {
       "Numéro": "151",
@@ -1357,7 +1507,8 @@
       "PV": "100",
       "Attaque": "100",
       "Défense": "100",
-      "Type": "Psy"
+      "Type": "Psy",
+      "Catch rate": "45"
     }
   ]
 }
