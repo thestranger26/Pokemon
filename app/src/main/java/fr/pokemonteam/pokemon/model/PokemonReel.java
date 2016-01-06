@@ -40,7 +40,6 @@ public class PokemonReel {
         this.id = id;
     }
 
-
     public Pokemon getPokemon() {
         return pokemon;
     }

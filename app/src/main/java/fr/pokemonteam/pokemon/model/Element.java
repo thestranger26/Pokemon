@@ -21,6 +21,9 @@ public class Element {
         this.libelle = libelle;
     }
 
+    public Element(){
+    }
+
     public int getId() {
         return id;
     }
@@ -36,4 +39,6 @@ public class Element {
     public void setLibelle(String libelle) {
         this.libelle = libelle;
     }
+
+
 }

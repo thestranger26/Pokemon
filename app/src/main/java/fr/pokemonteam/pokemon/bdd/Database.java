@@ -8,6 +8,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
 
+import fr.pokemonteam.pokemon.model.Element;
+import fr.pokemonteam.pokemon.model.ElementSac;
 import fr.pokemonteam.pokemon.model.Pokemon;
 import fr.pokemonteam.pokemon.model.PokemonReel;
 import fr.pokemonteam.pokemon.model.Utilisateur;
@@ -35,7 +37,7 @@ public class Database extends SQLiteOpenHelper {
             db.execSQL("CREATE TABLE sacADos (idUtilisateur INT, idElement INT, nombre INT);");
             db.execSQL("CREATE TABLE element (idElement INT, libelle VARCHAR(50), effet VARCHAR(255));");
             db.execSQL("CREATE TABLE pokemonReel (idPokemonReel INT, idUtilisateur INT, idPokemon INT, pseudo VARCHAR(20), equipe BOOL, atk INT, def INT, niveau INT, exp INT, longitude REAL, latitude REAL, vieActuelle INT, maxVie INT );");
-            db.execSQL("CREATE TABLE infosPokemon (idPokemon INT , idTypePokemon INT, numero INT, nom VARCHAR(255), description TEXT, nomImage VARCHAR(255), vue BOOL, capture BOOL);");
+            db.execSQL("CREATE TABLE infosPokemon (idPokemon INT , idTypePokemon INT, numero INT, nom VARCHAR(255), description TEXT, nomImage VARCHAR(255), vue BOOL, capture BOOL, tauxCapture INT);");
             db.execSQL("CREATE TABLE typePokemon (idTypePokemon INT, libelle VARCHAR(50));");
             db.execSQL("CREATE TABLE lieu (idLieu INT, libelle VARCHAR(50), typeLieu VARCHAR(50), longitude REAL, latitude REAL );");
             db.execSQL("CREATE TABLE lieuFavoris (idLieu INT, idUtilisateur INT );");
@@ -83,6 +85,7 @@ public class Database extends SQLiteOpenHelper {
             values.put("vue", 1);
             values.put("capture", 1);
             values.put("numero", 1);
+            values.put("tauxCapture", 65);
             db.insert("infosPokemon", null, values);
 
             values = new ContentValues();
@@ -94,6 +97,7 @@ public class Database extends SQLiteOpenHelper {
             values.put("vue", 1);
             values.put("capture", 0);
             values.put("numero", 4);
+            values.put("tauxCapture", 13);
             db.insert("infosPokemon", null, values);
 
             values = new ContentValues();
@@ -105,6 +109,7 @@ public class Database extends SQLiteOpenHelper {
             values.put("vue", 0);
             values.put("capture", 0);
             values.put("numero", 5);
+            values.put("tauxCapture", 30);
             db.insert("infosPokemon", null, values);
 
             values = new ContentValues();
@@ -116,6 +121,7 @@ public class Database extends SQLiteOpenHelper {
             values.put("vue", 0);
             values.put("capture", 0);
             values.put("numero", 6);
+            values.put("tauxCapture", 180);
             db.insert("infosPokemon", null, values);
 
 
@@ -250,8 +256,8 @@ public class Database extends SQLiteOpenHelper {
             }
 
             user.setEquipe(this.getEquipeUtilisateur(id));
-            //
-            // user.setSacADos();
+
+            user.setSacADos(this.getSacADos(id));
             db.setTransactionSuccessful();
         } catch (Exception e) {
             e.printStackTrace();
@@ -332,6 +338,58 @@ public class Database extends SQLiteOpenHelper {
             db.endTransaction();
         }
         return p;
+    }
+
+    private ArrayList<ElementSac> getSacADos(int idUtilisateur) {
+
+        ArrayList<ElementSac> liste = new ArrayList<ElementSac>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        try {
+            db.beginTransaction();
+            Cursor c = db.query("sacADos", new String[]{"idUtilisateur", "idElement", "nombre"}, "idUtilisateur=" + idUtilisateur, null, null, null, null);
+
+            if (c.getCount() > 0) {
+                c.moveToFirst();
+                do {
+                    Element e = getElementById(c.getInt(c.getColumnIndex("idElement")));
+                    ElementSac es = new ElementSac();
+
+                    es.setElement(e);
+                    es.setNombre(c.getInt(c.getColumnIndex("nombre")));
+
+                    liste.add(es);
+
+                } while (c.moveToNext());
+            }
+            db.setTransactionSuccessful();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            db.endTransaction();
+        }
+        return liste;
+    }
+
+    private Element getElementById(int idElement){
+        Element el = new Element();
+        SQLiteDatabase db = this.getReadableDatabase();
+        try {
+            db.beginTransaction();
+            Cursor c = db.query("element", new String[]{"idElement", "libelle", "effet"}, "idElement=" + idElement, null, null, null, null);
+
+            el.setId(idElement);
+            if (c.getCount() == 1) {
+                c.moveToFirst();
+                el.setLibelle(c.getString(c.getColumnIndex("libelle")));
+                el.setEffet(c.getString(c.getColumnIndex("effet")));
+            }
+            db.setTransactionSuccessful();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            db.endTransaction();
+        }
+        return el;
     }
 
 //

@@ -33,7 +33,6 @@ public class MonEquipeActivity extends AppCompatActivity {
 
         if (monEquipe != null) {
 
-
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {

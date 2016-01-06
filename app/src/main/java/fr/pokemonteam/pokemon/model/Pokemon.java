@@ -10,14 +10,16 @@ public class Pokemon {
     String lienImage;
     Boolean vue;
     Boolean capture;
+    int tauxCapture;
 
-    public Pokemon(int id, String nom, String description, String lienImage, Boolean vue, Boolean capture) {
+    public Pokemon(int id, String nom, String description, String lienImage, Boolean vue, Boolean capture, int tauxCapture) {
         this.id = id;
         this.nom = nom;
         this.description = description;
         this.lienImage = lienImage;
         this.vue = vue;
         this.capture = capture;
+        this.tauxCapture = tauxCapture;
     }
 
 
@@ -71,5 +73,13 @@ public class Pokemon {
 
     public void setCapture(Boolean capture) {
         this.capture = capture;
+    }
+
+    public int getTauxCapture() {
+        return tauxCapture;
+    }
+
+    public void setTauxCapture(int tauxCapture) {
+        this.tauxCapture = tauxCapture;
     }
 }

@@ -12,6 +12,10 @@ public class ElementSac {
         this.nombre = nombre;
     }
 
+    public ElementSac(){
+
+    }
+
     public Element getElement() {
         return element;
     }

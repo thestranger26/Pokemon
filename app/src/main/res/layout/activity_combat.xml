@@ -72,6 +72,7 @@
             android:layout_weight="1">
 
             <Button
+                android:id="@+id/buttonAtk"
                 android:layout_width="180dp"
                 android:layout_height="95dp"
                 android:layout_alignParentLeft="true"
@@ -81,6 +82,7 @@
                 />
 
             <Button
+                android:id="@+id/buttonDef"
                 android:layout_width="180dp"
                 android:layout_height="95dp"
                 android:layout_alignParentLeft="true"
@@ -90,6 +92,7 @@
                 />
 
             <Button
+                android:id="@+id/buttonPokeball"
                 android:layout_width="180dp"
                 android:layout_height="95dp"
                 android:layout_alignParentRight="true"
@@ -99,6 +102,7 @@
                 />
 
             <Button
+                android:id="@+id/buttonFuite"
                 android:layout_width="180dp"
                 android:layout_height="95dp"
                 android:layout_alignParentRight="true"
