@@ -57,6 +57,7 @@
         <activity
             android:name=".controller.PokedexActivity"
             android:label="@string/title_activity_pokedex"
+            android:exported="true"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".controller.CombatActivity"
@@ -73,6 +74,10 @@
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login" />
+        <activity
+            android:name=".controller.PokedexDetailActivity"
+            android:label="@string/title_activity_pokedex_detail"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>

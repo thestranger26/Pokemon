@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Pokemon</string>
+    <string name="app_name">Pokémon</string>
     <string name="title_activity_main">Accueil</string>
     <string name="title_activity_pokedex">Pokedex</string>
     <string name="title_sac_activity">SacConsultation</string>
@@ -11,6 +11,11 @@
     <string name="button_fuite">Fuite</string>
     <string name="title_activity_my_team">MyTeamActivity</string>
     <string name="title_activity_login">Sign in</string>
+
+    <!-- Strings related to details pokedex -->
+    <string name="attaque_pokemon_detail">Attaque</string>
+    <string name="defense_pokemon_detail">Défense</string>
+    <string name="pv_pokemon_detail">PV</string>
 
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
@@ -24,4 +29,5 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+    <string name="title_activity_pokedex_detail">Détails du Pokémon</string>
 </resources>
