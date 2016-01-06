@@ -51,8 +51,7 @@ public class Database extends SQLiteOpenHelper {
             db.execSQL("CREATE TABLE sacADos (idUtilisateur INT, idElement INT, nombre INT);");
             db.execSQL("CREATE TABLE element (idElement INT, libelle VARCHAR(50), effet VARCHAR(255));");
             db.execSQL("CREATE TABLE pokemonReel (idPokemonReel INT, idUtilisateur INT, idPokemon INT, pseudo VARCHAR(20), equipe BOOL, atk INT, def INT, niveau INT, exp INT, longitude REAL, latitude REAL, vieActuelle INT, maxVie INT );");
-            db.execSQL("CREATE TABLE infosPokemon (idPokemon INT , idTypePokemon INT, numero INT, nom VARCHAR(255), description TEXT, nomImage VARCHAR(255), vue BOOL, capture BOOL);");
-            db.execSQL("CREATE TABLE typePokemon (idTypePokemon INT, libelle VARCHAR(50));");
+            db.execSQL("CREATE TABLE infosPokemon (idPokemon INT , type INT, numero INT, nom VARCHAR(255), attaque INT, defense INT, pv INT, nomImage VARCHAR(255), vue BOOL, capture BOOL);");
             db.execSQL("CREATE TABLE lieu (idLieu INT, libelle VARCHAR(50), typeLieu VARCHAR(50), longitude REAL, latitude REAL );");
             db.execSQL("CREATE TABLE lieuFavoris (idLieu INT, idUtilisateur INT );");
             db.setTransactionSuccessful();
@@ -76,79 +75,21 @@ public class Database extends SQLiteOpenHelper {
             values.put("prenom", "Fils du");
             db.insert("utilisateur", null, values);
 
-
-            //// CREATION DES TYPES DE POKEMON
-            values = new ContentValues();
-            values.put("idTypePokemon", 0);
-            values.put("Libelle", "Feuille");
-            db.insert("typePokemon", null, values);
-
-            values = new ContentValues();
-            values.put("idTypePokemon", 1);
-            values.put("Libelle", "Eau");
-            db.insert("typePokemon", null, values);
-
-
             //// CREATION DE POKEMONS
             for(int i = 0; i < pokemons.size(); i++) {
                 values = new ContentValues();
                 values.put("idPokemon", i);
-                values.put("idTypePokemon", pokemons.get(0).get("Type"));
+                values.put("type", pokemons.get(0).get("Type"));
                 values.put("nom", pokemons.get(0).get("Nom"));
-                values.put("description", "Bulbizarre est un petit quadrupède vert avec une tête large. Il porte un bulbe sur son dos."); //TODO
+                values.put("attaque", pokemons.get(0).get("Défense"));
+                values.put("defense", pokemons.get(0).get("Attaque"));
+                values.put("pv", pokemons.get(0).get("PV"));
                 values.put("nomImage", pokemons.get(0).get("Nom"));
                 values.put("vue", 0);
                 values.put("capture", 0);
                 values.put("numero", pokemons.get(0).get("Numéro"));
                 db.insert("infosPokemon", null, values);
             }
-
-            // à ajouter attaque, défense,
-
-            values = new ContentValues();
-            values.put("idPokemon", 0);
-            values.put("idTypePokemon", 1);
-            values.put("nom", "Bulbizarre");
-            values.put("description", "Bulbizarre est un petit quadrupède vert avec une tête large. Il porte un bulbe sur son dos.");
-            values.put("nomImage", " ");
-            values.put("vue", 1);
-            values.put("capture", 1);
-            values.put("numero", 1);
-            db.insert("infosPokemon", null, values);
-
-            values = new ContentValues();
-            values.put("idPokemon", 1);
-            values.put("idTypePokemon", 1);
-            values.put("nom", "Carapuce");
-            values.put("description", "Carapuce est une petite tortue bipède de couleur bleue. Il possède une carapace majoritairement brune, jaune pâle au niveau du ventre. Ses yeux sont grands et rouges. Il a une queue avec un motif de spirale à son extrémité. Il possède quatre pattes avec chacune trois doigts.");
-            values.put("nomImage", " ");
-            values.put("vue", 1);
-            values.put("capture", 0);
-            values.put("numero", 4);
-            db.insert("infosPokemon", null, values);
-
-            values = new ContentValues();
-            values.put("idPokemon", 2);
-            values.put("idTypePokemon", 1);
-            values.put("nom", "Draco");
-            values.put("description", "Draco est un long dragon sans membre, pouvant faire penser à un serpent de mer.");
-            values.put("nomImage", " ");
-            values.put("vue", 0);
-            values.put("capture", 0);
-            values.put("numero", 5);
-            db.insert("infosPokemon", null, values);
-
-            values = new ContentValues();
-            values.put("idPokemon", 3);
-            values.put("idTypePokemon", 1);
-            values.put("nom", "Ramoloss");
-            values.put("description", "Ramoloss ressemble à un hippopotame rose. Ses yeux sont vides et ses oreilles sont arrondies. Chacune de ses jambes se termine par une unique griffe blanche et sa queue ressemble à une pointe.");
-            values.put("nomImage", " ");
-            values.put("vue", 0);
-            values.put("capture", 0);
-            values.put("numero", 6);
-            db.insert("infosPokemon", null, values);
-
 
             //// CREATION DE POKEMONS REELS
 
