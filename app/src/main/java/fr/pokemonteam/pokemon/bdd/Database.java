@@ -5,9 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
-
-import com.google.android.gms.common.api.Result;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -17,9 +14,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
-import fr.pokemonteam.pokemon.R;
 import fr.pokemonteam.pokemon.model.Pokemon;
 import fr.pokemonteam.pokemon.model.PokemonReel;
 import fr.pokemonteam.pokemon.model.Utilisateur;
@@ -354,6 +349,7 @@ public class Database extends SQLiteOpenHelper {
             e.printStackTrace();
             return null;
         }
+    }
 
     public Boolean verifieDonneesUsers(String email, String password) {
         SQLiteDatabase db = this.getReadableDatabase();
