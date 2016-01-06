@@ -47,7 +47,7 @@ public class Database extends SQLiteOpenHelper {
         System.out.println("Creation de la BDD");
         try {
             db.beginTransaction();
-            db.execSQL("CREATE TABLE utilisateur (idUtilisateur INT, pseudo VARCHAR(20), nom VARCHAR(20), prenom VARCHAR(20));");
+            db.execSQL("CREATE TABLE utilisateur (idUtilisateur INT, pseudo VARCHAR(20), mail VARCHAR(50), motDePasse VARCHAR(255), nom VARCHAR(20), prenom VARCHAR(20));");
             db.execSQL("CREATE TABLE sacADos (idUtilisateur INT, idElement INT, nombre INT);");
             db.execSQL("CREATE TABLE element (idElement INT, libelle VARCHAR(50), effet VARCHAR(255));");
             db.execSQL("CREATE TABLE pokemonReel (idPokemonReel INT, idUtilisateur INT, idPokemon INT, pseudo VARCHAR(20), equipe BOOL, atk INT, def INT, niveau INT, exp INT, longitude REAL, latitude REAL, vieActuelle INT, maxVie INT );");
@@ -73,6 +73,8 @@ public class Database extends SQLiteOpenHelper {
             values.put("pseudo", "Regis");
             values.put("nom", "Professeur Chen");
             values.put("prenom", "Fils du");
+            values.put("mail","pastrou@gmail.com");
+            values.put("motDePasse","jeSuisPastrou");
             db.insert("utilisateur", null, values);
 
             //// CREATION DE POKEMONS
@@ -352,6 +354,22 @@ public class Database extends SQLiteOpenHelper {
             e.printStackTrace();
             return null;
         }
+
+    public Boolean verifieDonneesUsers(String email, String password) {
+        SQLiteDatabase db = this.getReadableDatabase();
+       Boolean ret = false;
+        try {
+            db.beginTransaction();
+            Cursor c = db.query("utilisateur", new String[]{"idUtilisateur", "nom"}, "mail=\"" + email + "\" AND motDePasse=\""+password+"\"", null, null, null, null);
+            if (c.getCount()==1) ret = true;
+            db.setTransactionSuccessful();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            db.endTransaction();
+        }
+
+        return ret;
     }
 
 //
