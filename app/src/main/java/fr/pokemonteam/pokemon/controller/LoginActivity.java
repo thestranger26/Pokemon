@@ -1,4 +1,4 @@
-package fr.pokemonteam.pokemon;
+package fr.pokemonteam.pokemon.controller;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -28,8 +28,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import fr.pokemonteam.pokemon.R;
 import fr.pokemonteam.pokemon.bdd.Database;
-import fr.pokemonteam.pokemon.controller.MainActivity;
 
 
 /**

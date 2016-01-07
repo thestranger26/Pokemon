@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -12,19 +12,30 @@
     tools:context=".controller.SacActivity"
     tools:showIn="@layout/activity_sac_consultation">
 
-    <TextView
-        android:layout_alignParentTop="true"
-        android:id="@+id/element_libelle"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    <TextView
-        android:layout_below="@+id/element_libelle"
-        android:id="@+id/element_nombre"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="@color/primary_dark_material_dark"
-        android:singleLine="false"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+    <ImageView
+        android:id="@+id/image_objet"
+        android:layout_width="50dp"
+        android:layout_height="50dp" />
 
-</RelativeLayout>
+    <RelativeLayout
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/element_libelle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <TextView
+            android:id="@+id/element_nombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/element_libelle"
+            android:singleLine="false"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/primary_dark_material_dark" />
+    </RelativeLayout>
+</LinearLayout>

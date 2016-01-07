@@ -46,7 +46,7 @@ public class Database extends SQLiteOpenHelper {
             db.beginTransaction();
             db.execSQL("CREATE TABLE utilisateur (idUtilisateur INT, pseudo VARCHAR(20), mail VARCHAR(50), motDePasse VARCHAR(255), nom VARCHAR(20), prenom VARCHAR(20));");
             db.execSQL("CREATE TABLE sacADos (idUtilisateur INT, idElement INT, nombre INT);");
-            db.execSQL("CREATE TABLE element (idElement INT, libelle VARCHAR(50), effet VARCHAR(255));");
+            db.execSQL("CREATE TABLE element (idElement INT, libelle VARCHAR(50), effet VARCHAR(255), image VARCHAR(255));");
             db.execSQL("CREATE TABLE pokemonReel (idPokemonReel INT, idUtilisateur INT, idPokemon INT, pseudo VARCHAR(20), equipe BOOL, atk INT, def INT, niveau INT, exp INT, longitude REAL, latitude REAL, vieActuelle INT, maxVie INT );");
             db.execSQL("CREATE TABLE infosPokemon (idPokemon INT , type VARCHAR(255), numero INT, nom VARCHAR(255), attaque INT, defense INT, pv INT, nomImage VARCHAR(255), vue BOOL, capture BOOL, tauxCapture INT);");
             db.execSQL("CREATE TABLE lieu (idLieu INT, libelle VARCHAR(50), typeLieu VARCHAR(50), longitude REAL, latitude REAL );");
@@ -146,51 +146,46 @@ public class Database extends SQLiteOpenHelper {
             values.put("idElement", 0);
             values.put("libelle", "pokeball");
             values.put("effet", "Pour capturer des petits pokemons");
+            values.put("image", "pokeball");
             db.insert("element", null, values);
 
             values = new ContentValues();
             values.put("idElement", 1);
-            values.put("libelle", "superball");
-            values.put("effet", "Pour capturer des petits pokemons un peu plus grand");
-            db.insert("element", null, values);
-
-            values = new ContentValues();
-            values.put("idElement", 2);
-            values.put("libelle", "megaball");
-            values.put("effet", "Pour capturer des pokemons très grand");
-            db.insert("element", null, values);
-
-            values = new ContentValues();
-            values.put("idElement", 3);
             values.put("libelle", "potion");
             values.put("effet", "Pour guérir ton petit mignon tout doux pokemon adoré <3 <3 <3 XO XO XO ");
+            values.put("image", "potion");
             db.insert("element", null, values);
 
 
             // CREATION DU SAC A DOS DU USER
             values = new ContentValues();
             values.put("idUtilisateur", 0);
-            values.put("idElement", 3);
+            values.put("idElement", 0);
             values.put("nombre", 3);
             db.insert("sacADos", null, values);
 
             values = new ContentValues();
             values.put("idUtilisateur", 0);
             values.put("idElement", 1);
-            values.put("nombre", 10);
+            values.put("nombre", 5);
             db.insert("sacADos", null, values);
 
+            // CREATION DE LIEUX
             values = new ContentValues();
-            values.put("idUtilisateur", 0);
-            values.put("idElement", 0);
-            values.put("nombre", 25);
-            db.insert("sacADos", null, values);
+            values.put("idLieu", 0);
+            values.put("libelle", "CPE");
+            values.put("typeLieu", "Ecole");
+            values.put("longitude", 45.784807 );
+            values.put("latitude", 4.869069);
+            db.insert("lieu", null, values);
 
             values = new ContentValues();
-            values.put("idUtilisateur", 0);
-            values.put("idElement", 2);
-            values.put("nombre", 3);
-            db.insert("sacADos", null, values);
+            values.put("idLieu", 1);
+            values.put("libelle", "Home");
+            values.put("typeLieu", "Maison");
+            values.put("longitude", 45.770255);
+            values.put("latitude", 4.868170);
+            db.insert("lieu", null, values);
 
             db.setTransactionSuccessful();
         } catch (Exception e) {
@@ -374,13 +369,14 @@ public class Database extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         try {
             db.beginTransaction();
-            Cursor c = db.query("element", new String[]{"idElement", "libelle", "effet"}, "idElement=" + idElement, null, null, null, null);
+            Cursor c = db.query("element", new String[]{"idElement", "libelle", "effet", "image"}, "idElement=" + idElement, null, null, null, null);
 
             el.setId(idElement);
             if (c.getCount() == 1) {
                 c.moveToFirst();
                 el.setLibelle(c.getString(c.getColumnIndex("libelle")));
                 el.setEffet(c.getString(c.getColumnIndex("effet")));
+                el.setImage(c.getString(c.getColumnIndex("image")));
             }
         } catch (Exception e) {
             e.printStackTrace();
