@@ -43,7 +43,7 @@ public class CombatActivity extends AppCompatActivity {
 
         // Définition des infos du pokémon adverse
         ImageView imageViewAdverse = (ImageView) findViewById(R.id.imagePokemonAdverse);
-        imageViewAdverse.setImageResource(this.getResources().getIdentifier("magikarp", "mipmap", this.getPackageName()));
+        imageViewAdverse.setImageResource(this.getResources().getIdentifier(pkmnAdverse.getPokemon().getNomImage(), "drawable", this.getPackageName()));
 
         ProgressBar progressBarAdverse = (ProgressBar) findViewById(R.id.progressBarPokemonAdverse);
         progressBarAdverse.setMax(100);
@@ -61,7 +61,7 @@ public class CombatActivity extends AppCompatActivity {
         textNomAllie.setText(pkmnCourant.getPseudo() + " N." + pkmnCourant.getNiveau());
 
         ImageView imageViewAllie = (ImageView) findViewById(R.id.imagePokemonAllie);
-        imageViewAllie.setImageResource(R.mipmap.chrysacier);
+        imageViewAllie.setImageResource(this.getResources().getIdentifier(pkmnCourant.getPokemon().getNomImage(), "drawable", this.getPackageName()));
 
         TextView textVieAllie = (TextView) findViewById(R.id.textViePokemonAllie);
         textVieAllie.setText(pkmnCourant.getVieActuelle() + "/" + pkmnCourant.getMaxVie());
