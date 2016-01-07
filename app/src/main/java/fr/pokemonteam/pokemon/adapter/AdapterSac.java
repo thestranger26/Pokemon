@@ -34,7 +34,7 @@ public class AdapterSac extends ArrayAdapter<ElementSac> {
         TextView libelle = (TextView) convertView.findViewById(R.id.element_libelle);
         TextView nombre = (TextView) convertView.findViewById(R.id.element_nombre);
         libelle.setText(item.getElement().getLibelle());
-        nombre.setText(item.getNombre());
+        nombre.setText(Integer.toString(item.getNombre()));
 
         return convertView;
     }
