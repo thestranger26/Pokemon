@@ -11,8 +11,8 @@ public class PokemonReel {
     int def;
     int niveau;
     int exp;
-    long latitude;
-    long longitude;
+    double latitude;
+    double longitude;
     int maxVie;
     int vieActuelle;
 
@@ -20,7 +20,7 @@ public class PokemonReel {
     public PokemonReel() {
     }
 
-    public PokemonReel(Pokemon pokemon, String pseudo, int atk, int def, int niveau, int exp, long latitude, long longitude) {
+    public PokemonReel(Pokemon pokemon, String pseudo, int atk, int def, int niveau, int exp, double latitude, double longitude) {
         this.pokemon = pokemon;
         this.pseudo = pseudo;
         this.atk = atk;
@@ -88,19 +88,19 @@ public class PokemonReel {
         this.exp = exp;
     }
 
-    public long getLatitude() {
+    public double getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(long latitude) {
+    public void setLatitude(double latitude) {
         this.latitude = latitude;
     }
 
-    public long getLongitude() {
+    public double getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(long longitude) {
+    public void setLongitude(double longitude) {
         this.longitude = longitude;
     }
 
