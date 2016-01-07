@@ -41,6 +41,9 @@ public class CombatActivity extends AppCompatActivity {
         pkmnCourant = monEquipe.get(0);
         pkmnAdverse = monEquipe.get(1);
 
+        pkmnAdverse.getPokemon().setVue(true);
+        db.updatePokemont(pkmnAdverse.getPokemon());
+
         // Définition des infos du pokémon adverse
         ImageView imageViewAdverse = (ImageView) findViewById(R.id.imagePokemonAdverse);
         imageViewAdverse.setImageResource(this.getResources().getIdentifier(pkmnAdverse.getPokemon().getNomImage(), "drawable", this.getPackageName()));
@@ -172,6 +175,7 @@ public class CombatActivity extends AppCompatActivity {
         buttonPokeball.setText(getResources().getString(R.string.button_pkball) + " (" + nbrePokeball + ")");
 
     }
+
     public void fuite(View view){
 
     }
@@ -184,6 +188,8 @@ public class CombatActivity extends AppCompatActivity {
     }
 
     private boolean pokemonEstCapture(){
+        //TODO si le pokémon est capturé faire :  pkmnAdverse.getPokemon().setCapture(true);
+        // db.updatePokemont(pkmnAdverse.getPokemon());
         boolean ret = false;
         System.out.println("Etape 1 :" + (3*pkmnAdverse.getMaxVie() - 2*pkmnAdverse.getVieActuelle()));
         System.out.println("Pokemon : " + pkmnAdverse.getPokemon());
@@ -193,6 +199,25 @@ public class CombatActivity extends AppCompatActivity {
         System.out.println("chance de capture : " + a);
         if(a>255){ret=true;}
         return ret;
+    }
+
+    public void potion(View view){
+        int nbrePotions = 0;
+        for (ElementSac e : u.getSacADos()) {
+            if(e.getElement().getLibelle().equals("potion")){
+                if(e.getNombre() >0) {
+                    nbrePotions = e.getNombre() - 1;
+                    e.setNombre(nbrePotions);
+                    pkmnCourant.setVieActuelle(pkmnCourant.getMaxVie());
+                }
+                else{
+                    System.out.println("NOOOOOOOOOOPE");
+                }
+            }
+        }
+//        Button buttonPokeball = (Button) findViewById(R.id.buttonPokeball);
+//        buttonPokeball.setText(getResources().getString(R.string.button_pkball) + " (" + nbrePokeball + ")");
+// TODO bouton potion
     }
 
 

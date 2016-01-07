@@ -70,13 +70,13 @@ public class Database extends SQLiteOpenHelper {
             values.put("pseudo", "Regis");
             values.put("nom", "Professeur Chen");
             values.put("prenom", "Fils du");
-            values.put("mail","pastrou@gmail.com");
-            values.put("motDePasse","jeSuisPastrou");
+            values.put("mail", "pastrou@gmail.com");
+            values.put("motDePasse", "jeSuisPastrou");
             db.insert("utilisateur", null, values);
 
             //// CREATION DE POKEMONS
 
-            for(int i = 0; i < pokemons.size(); i++) {
+            for (int i = 0; i < pokemons.size(); i++) {
                 values = new ContentValues();
                 values.put("idPokemon", i);
                 values.put("type", pokemons.get(i).get("Type"));
@@ -175,7 +175,7 @@ public class Database extends SQLiteOpenHelper {
             values.put("idLieu", 0);
             values.put("libelle", "CPE");
             values.put("typeLieu", "Ecole");
-            values.put("longitude", 45.784807 );
+            values.put("longitude", 45.784807);
             values.put("latitude", 4.869069);
             db.insert("lieu", null, values);
 
@@ -307,6 +307,23 @@ public class Database extends SQLiteOpenHelper {
         return liste;
     }
 
+    public void updatePokemont(Pokemon pokemon) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        db.beginTransaction();
+        ContentValues values = new ContentValues();
+        values.put("type", pokemon.getType());
+        values.put("nom", pokemon.getNom());
+        values.put("attaque", pokemon.getAttaque());
+        values.put("defense", pokemon.getDefense());
+        values.put("pv", pokemon.getPv());
+        values.put("nomImage", pokemon.getNomImage());
+        values.put("vue", pokemon.getVue());
+        values.put("capture", pokemon.getCapture());
+        values.put("numero", pokemon.getNumero());
+        values.put("tauxCapture", pokemon.getTauxCapture());
+        db.update("infosPokemon", values, "idPokemon="+pokemon.getId(), null);
+    }
+
     public Pokemon getPokemon(int idPokemon) {
 
         Pokemon p = new Pokemon();
@@ -385,6 +402,7 @@ public class Database extends SQLiteOpenHelper {
         }
         return el;
     }
+
     private static ArrayList<HashMap<String, String>> getAllPokemonFromJson(Context context) {
         String json = null;
         try {
@@ -402,7 +420,7 @@ public class Database extends SQLiteOpenHelper {
             for (int i = 0; i < m_jArry.length(); i++) {
                 JSONObject jo_inside = m_jArry.getJSONObject(i);
                 String num = jo_inside.getString("Numéro");
-                String image = "pokemon" + (i+1);
+                String image = "pokemon" + (i + 1);
                 String nom = jo_inside.getString("Nom");
                 String pv = jo_inside.getString("PV");
                 String atk = jo_inside.getString("Attaque");
@@ -436,11 +454,11 @@ public class Database extends SQLiteOpenHelper {
 
     public Boolean verifieDonneesUsers(String email, String password) {
         SQLiteDatabase db = this.getReadableDatabase();
-       Boolean ret = false;
+        Boolean ret = false;
         try {
             db.beginTransaction();
-            Cursor c = db.query("utilisateur", new String[]{"idUtilisateur", "nom"}, "mail=\"" + email + "\" AND motDePasse=\""+password+"\"", null, null, null, null);
-            if (c.getCount()==1) ret = true;
+            Cursor c = db.query("utilisateur", new String[]{"idUtilisateur", "nom"}, "mail=\"" + email + "\" AND motDePasse=\"" + password + "\"", null, null, null, null);
+            if (c.getCount() == 1) ret = true;
             db.setTransactionSuccessful();
         } catch (Exception e) {
             e.printStackTrace();

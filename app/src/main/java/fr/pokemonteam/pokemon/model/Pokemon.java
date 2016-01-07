@@ -62,7 +62,6 @@ public class Pokemon implements Serializable {
         this.nom = nom;
     }
 
-
     public String getType() {
         return type;
     }
@@ -70,7 +69,6 @@ public class Pokemon implements Serializable {
     public void setType(String type) {
         this.type = type;
     }
-
 
     public int getAttaque() {
         return attaque;
