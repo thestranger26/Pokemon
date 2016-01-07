@@ -304,7 +304,7 @@ Boolean ret = db.verifieDonneesUsers(email,password);
 
             if (success) {
 
-                Intent newIntent = new Intent(LoginActivity.this, MainActivity.class);
+                Intent newIntent = new Intent(LoginActivity.this, HomeActivity.class);
                 startActivity(newIntent);
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));

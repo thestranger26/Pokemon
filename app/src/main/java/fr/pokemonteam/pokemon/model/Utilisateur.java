@@ -10,6 +10,7 @@ public class Utilisateur {
     String pseudo;
     String nom;
     String prenom;
+    String mail;
     ArrayList<PokemonReel> equipe = new ArrayList<>();
     ArrayList<ElementSac> sacADos = new ArrayList<>();
     ArrayList<Lieu> lieuxFavoris = new ArrayList<>();
@@ -82,5 +83,13 @@ public class Utilisateur {
 
     public void setLieuxFavoris(ArrayList<Lieu> lieuxFavoris) {
         this.lieuxFavoris = lieuxFavoris;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
     }
 }
