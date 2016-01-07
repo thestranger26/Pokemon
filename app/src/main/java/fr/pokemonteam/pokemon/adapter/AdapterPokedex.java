@@ -35,9 +35,15 @@ public class AdapterPokedex extends ArrayAdapter<Pokemon> {
         ImageView imageView = (ImageView) convertView.findViewById(R.id.image_pokemon);
         TextView numero = (TextView) convertView.findViewById(R.id.num_pokemon);
         TextView nom = (TextView) convertView.findViewById(R.id.nom_pokemon);
+        ImageView capture = (ImageView) convertView.findViewById(R.id.pokemon_capture);
         numero.setText(Integer.toString(item.getNumero()));
         nom.setText(item.getNom());
         imageView.setImageResource(getContext().getResources().getIdentifier(item.getNomImage(), "drawable", getContext().getPackageName()));
+        if(item.getCapture()) {
+            capture.setImageResource(getContext().getResources().getIdentifier("pokeball", "mipmap", getContext().getPackageName()));
+        } else if (item.getVue()){
+            capture.setImageResource(getContext().getResources().getIdentifier("vu", "mipmap", getContext().getPackageName()));
+        }
 
         return convertView;
     }

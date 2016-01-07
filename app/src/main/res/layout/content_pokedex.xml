@@ -34,6 +34,15 @@
             android:id="@+id/nom_pokemon"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+        <LinearLayout
+            android:layout_below="@+id/nom_pokemon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/pokemon_capture"
+            android:layout_width="15dp"
+            android:layout_height="15dp" />
+        </LinearLayout>
     </RelativeLayout>
 
 
