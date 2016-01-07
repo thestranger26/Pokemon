@@ -16,10 +16,12 @@ import fr.pokemonteam.pokemon.adapter.AdapterSac;
 import fr.pokemonteam.pokemon.bdd.Database;
 import fr.pokemonteam.pokemon.model.Element;
 import fr.pokemonteam.pokemon.model.ElementSac;
+import fr.pokemonteam.pokemon.model.PokemonReel;
+import fr.pokemonteam.pokemon.model.Utilisateur;
 
 public class SacActivity extends AppCompatActivity {
 
-    ArrayList<ElementSac> sac = new ArrayList<>();
+    ArrayList<ElementSac> monSac;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,24 +31,20 @@ public class SacActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         Database db = Database.getInstance(this);
-        sac = db.getSacADos(0);
+        Utilisateur u = db.getUser(0);
 
-        if (sac != null) {
-            remplirList();
+        monSac = u.getSacADos();
+
+        if (monSac != null) {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    AdapterSac adapter = new AdapterSac(SacActivity.this, R.layout.content_sac_consultation, SacActivity.this.monSac);
+                    ListView listView = (ListView) findViewById(R.id.list_sac);
+                    listView.setAdapter(adapter);
+                }
+            });
         }
-    }
-
-    private void remplirList() {
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                AdapterSac adapter = new AdapterSac(SacActivity.this, R.layout.content_sac_consultation, SacActivity.this.sac);
-                ListView listView = (ListView) findViewById(R.id.list_sac);
-                listView.setAdapter(adapter);
-
-            }
-        });
-
     }
 
 }
