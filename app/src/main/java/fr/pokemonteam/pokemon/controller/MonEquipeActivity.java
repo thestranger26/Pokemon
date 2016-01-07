@@ -1,8 +1,10 @@
 package fr.pokemonteam.pokemon.controller;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -13,18 +15,21 @@ import fr.pokemonteam.pokemon.bdd.Database;
 import fr.pokemonteam.pokemon.model.PokemonReel;
 import fr.pokemonteam.pokemon.model.Utilisateur;
 
-public class MonEquipeActivity extends AppCompatActivity {
+public class MonEquipeActivity extends Fragment {
 
     ArrayList<PokemonReel> monEquipe;
+View view = null;
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mon_equipe);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        if (view == null)
+            view = inflater.inflate(R.layout.activity_mon_equipe,container,false);
+//        super.onCreate(savedInstanceState);
+//        setContentView(R.layout.activity_mon_equipe);
+//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
 
-        Database db = Database.getInstance(this);
+        Database db = Database.getInstance(this.getActivity());
         Utilisateur u = db.getUser(0);
 
         System.out.println(u.getNom());
@@ -33,17 +38,18 @@ public class MonEquipeActivity extends AppCompatActivity {
 
         if (monEquipe != null) {
 
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    AdapterMonEquipe adapter = new AdapterMonEquipe(MonEquipeActivity.this, R.layout.content_mon_equipe, MonEquipeActivity.this.monEquipe);
-                    ListView listView = (ListView) findViewById(R.id.monEquipe_listView);
+
+AdapterMonEquipe adapter = new AdapterMonEquipe(this.getActivity(), R.layout.content_mon_equipe, monEquipe);
+                    ListView listView = (ListView) view.findViewById(R.id.monEquipe_listView);
+
                     listView.setAdapter(adapter);
-                }
-            });
+
+
         } else {
             System.out.println("C'etait null....");
         }
+
+        return view;
     }
 
 }

@@ -70,8 +70,8 @@ public class Database extends SQLiteOpenHelper {
             values.put("pseudo", "Regis");
             values.put("nom", "Professeur Chen");
             values.put("prenom", "Fils du");
-            values.put("mail", "pastrou@gmail.com");
-            values.put("motDePasse", "jeSuisPastrou");
+            values.put("mail","a@a");
+            values.put("motDePasse","aaaaa");
             db.insert("utilisateur", null, values);
 
             //// CREATION DE POKEMONS
@@ -206,7 +206,7 @@ public class Database extends SQLiteOpenHelper {
         try {
             db.beginTransaction();
 
-            Cursor c = db.query("utilisateur", new String[]{"pseudo", "nom", "prenom"}, "idUtilisateur=" + id, null, null, null, null);
+            Cursor c = db.query("utilisateur", new String[]{"pseudo", "nom", "prenom", "mail"}, "idUtilisateur=" + id, null, null, null, null);
 
 
             if (c.getCount() == 1) {
@@ -214,6 +214,7 @@ public class Database extends SQLiteOpenHelper {
                 user.setPseudo(c.getString(c.getColumnIndex("pseudo")));
                 user.setNom(c.getString(c.getColumnIndex("nom")));
                 user.setPrenom(c.getString(c.getColumnIndex("prenom")));
+                user.setMail(c.getString(c.getColumnIndex("mail")));
             } else {
                 System.out.println("Il y a eu une petite erreur qque part.... " + c.getCount());
             }
@@ -340,7 +341,6 @@ public class Database extends SQLiteOpenHelper {
                 p.setVue(c.getInt(c.getColumnIndex("vue")) == 1);
                 p.setCapture(c.getInt(c.getColumnIndex("capture")) == 1);
                 p.setTauxCapture(c.getInt(c.getColumnIndex("tauxCapture")));
-
             }
             db.setTransactionSuccessful();
         } catch (Exception e) {
