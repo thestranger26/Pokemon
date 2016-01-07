@@ -186,6 +186,7 @@ public class CombatActivity extends AppCompatActivity {
     private boolean pokemonEstCapture(){
         boolean ret = false;
         System.out.println("Etape 1 :" + (3*pkmnAdverse.getMaxVie() - 2*pkmnAdverse.getVieActuelle()));
+        System.out.println("Pokemon : " + pkmnAdverse.getPokemon());
         System.out.println("Taux de capture : " + pkmnAdverse.getPokemon().getTauxCapture());
         System.out.println("Etape 2 :" + ((3*pkmnAdverse.getMaxVie() - 2*pkmnAdverse.getVieActuelle())*pkmnAdverse.getPokemon().getTauxCapture()));
         int a = ((3*pkmnAdverse.getMaxVie() - 2*pkmnAdverse.getVieActuelle())*pkmnAdverse.getPokemon().getTauxCapture())/(3*pkmnAdverse.getMaxVie());

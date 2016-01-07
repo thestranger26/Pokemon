@@ -279,7 +279,7 @@ public class Database extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         try {
             db.beginTransaction();
-            Cursor c = db.query("infosPokemon", new String[]{"idPokemon", "type", "numero", "nom", "attaque", "defense", "pv", "nomImage", "vue", "capture"}, null, null, null, null, null);
+            Cursor c = db.query("infosPokemon", new String[]{"idPokemon", "type", "numero", "nom", "attaque", "defense", "pv", "nomImage", "vue", "capture", "tauxCapture"}, null, null, null, null, null);
 
 
             if (c.getCount() > 0) {
@@ -297,6 +297,7 @@ public class Database extends SQLiteOpenHelper {
                     p.setNomImage(c.getString(c.getColumnIndex("nomImage")));
                     p.setVue(c.getInt(c.getColumnIndex("vue")) == 1);
                     p.setCapture(c.getInt(c.getColumnIndex("capture")) == 1);
+                    p.setTauxCapture(c.getInt(c.getColumnIndex("tauxCapture")));
 
                     liste.add(p);
 
@@ -317,7 +318,7 @@ public class Database extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         try {
             db.beginTransaction();
-            Cursor c = db.query("infosPokemon", new String[]{"idPokemon", "nom", "description", "nomImage", "vue", "capture"}, "idPokemon=" + idPokemon, null, null, null, null);
+            Cursor c = db.query("infosPokemon", new String[]{"idPokemon", "nom", "description", "nomImage", "vue", "capture", "tauxCapture"}, "idPokemon=" + idPokemon, null, null, null, null);
 
             p.setId(idPokemon);
             if (c.getCount() == 1) {
@@ -333,6 +334,7 @@ public class Database extends SQLiteOpenHelper {
                 p.setNomImage(c.getString(c.getColumnIndex("nomImage")));
                 p.setVue(c.getInt(c.getColumnIndex("vue")) == 1);
                 p.setCapture(c.getInt(c.getColumnIndex("capture")) == 1);
+                p.setTauxCapture(c.getInt(c.getColumnIndex("tauxCapture")));
 
             }
             db.setTransactionSuccessful();
