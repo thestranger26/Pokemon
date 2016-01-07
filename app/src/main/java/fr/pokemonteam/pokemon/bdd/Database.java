@@ -307,7 +307,7 @@ public class Database extends SQLiteOpenHelper {
         return liste;
     }
 
-    private Pokemon getPokemon(int idPokemon) {
+    public Pokemon getPokemon(int idPokemon) {
 
         Pokemon p = new Pokemon();
         SQLiteDatabase db = this.getReadableDatabase();

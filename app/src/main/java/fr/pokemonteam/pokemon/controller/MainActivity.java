@@ -11,8 +11,12 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.util.Random;
+
 import fr.pokemonteam.pokemon.R;
 import fr.pokemonteam.pokemon.bdd.Database;
+import fr.pokemonteam.pokemon.model.Pokemon;
+import fr.pokemonteam.pokemon.model.PokemonReel;
 import fr.pokemonteam.pokemon.model.Utilisateur;
 
 public class MainActivity extends FragmentActivity implements OnMapReadyCallback {
@@ -71,6 +75,29 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
 
         mMap.setOnInfoWindowClickListener(markerClic);
 
+    }
+
+    public PokemonReel genererPokemon(double latitude, double longitude ){
+        PokemonReel pkmn = new PokemonReel();
+        Database db = Database.getInstance(this);
+        Random randomGenerator = new Random();
+        Pokemon p = db.getPokemon(randomGenerator.nextInt(151));
+        pkmn.setAtk(generateRandomValue(p.getAttaque()));
+        pkmn.setDef(generateRandomValue(p.getDefense()));
+        pkmn.setMaxVie(generateRandomValue(p.getPv()));
+        pkmn.setExp(0);
+        pkmn.setVieActuelle(pkmn.getMaxVie());
+        pkmn.setNiveau(randomGenerator.nextInt(100));
+        pkmn.setLatitude(latitude);
+        pkmn.setLongitude(longitude);
+        return pkmn;
+    }
+
+    public int generateRandomValue(int val){
+        Random randomGenerator = new Random();
+        double coeff = randomGenerator.nextDouble()*(1.5-0.5) + 0.5;
+        double ret = val*coeff;
+        return (int) ret;
     }
 
 }
