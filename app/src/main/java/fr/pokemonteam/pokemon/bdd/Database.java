@@ -47,7 +47,7 @@ public class Database extends SQLiteOpenHelper {
             db.execSQL("CREATE TABLE utilisateur (idUtilisateur INT, pseudo VARCHAR(20), mail VARCHAR(50), motDePasse VARCHAR(255), nom VARCHAR(20), prenom VARCHAR(20));");
             db.execSQL("CREATE TABLE sacADos (idUtilisateur INT, idElement INT, nombre INT);");
             db.execSQL("CREATE TABLE element (idElement INT, libelle VARCHAR(50), effet VARCHAR(255), image VARCHAR(255));");
-            db.execSQL("CREATE TABLE pokemonReel (idPokemonReel INT, idUtilisateur INT, idPokemon INT, pseudo VARCHAR(20), equipe BOOL, atk INT, def INT, niveau INT, exp INT, longitude REAL, latitude REAL, vieActuelle INT, maxVie INT );");
+            db.execSQL("CREATE TABLE pokemonReel (idPokemonReel INTEGER primary key autoincrement not null , idUtilisateur INT, idPokemon INT, pseudo VARCHAR(20), equipe BOOL, atk INT, def INT, niveau INT, exp INT, longitude REAL, latitude REAL, vieActuelle INT, maxVie INT );");
             db.execSQL("CREATE TABLE infosPokemon (idPokemon INT , type VARCHAR(255), numero INT, nom VARCHAR(255), attaque INT, defense INT, pv INT, nomImage VARCHAR(255), vue BOOL, capture BOOL, tauxCapture INT);");
             db.execSQL("CREATE TABLE lieu (idLieu INT, libelle VARCHAR(50), typeLieu VARCHAR(50), longitude REAL, latitude REAL );");
             db.execSQL("CREATE TABLE lieuFavoris (idLieu INT, idUtilisateur INT );");
@@ -95,7 +95,6 @@ public class Database extends SQLiteOpenHelper {
             //// CREATION DE POKEMONS REELS
 
             values = new ContentValues();
-            values.put("idPokemonReel", 0);
             values.put("idPokemon", 1);
             values.put("idUtilisateur", 0);
             values.put("pseudo", "Pupuce");
@@ -111,7 +110,6 @@ public class Database extends SQLiteOpenHelper {
             db.insert("pokemonReel", null, values);
 
             values = new ContentValues();
-            values.put("idPokemonReel", 1);
             values.put("idPokemon", 2);
             values.put("idUtilisateur", 0);
             values.put("pseudo", "Dracouille");
@@ -127,7 +125,6 @@ public class Database extends SQLiteOpenHelper {
             db.insert("pokemonReel", null, values);
 
             values = new ContentValues();
-            values.put("idPokemonReel", 2);
             values.put("idPokemon", 3);
             values.put("idUtilisateur", 0);
             values.put("equipe", true);
@@ -324,6 +321,45 @@ public class Database extends SQLiteOpenHelper {
         values.put("tauxCapture", pokemon.getTauxCapture());
         db.update("infosPokemon", values, "idPokemon="+pokemon.getId(), null);
     }
+
+    public void setPokemonReel(PokemonReel pokemon, int idUser) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        db.beginTransaction();
+        ContentValues values = new ContentValues();
+        values.put("idPokemon", pokemon.getPokemon().getId());
+        values.put("idUtilisateur", idUser);
+        values.put("equipe", true);
+        values.put("atk", pokemon.getAtk());
+        values.put("def", pokemon.getDef());
+        values.put("niveau", pokemon.getNiveau());
+        values.put("exp", pokemon.getExp());
+        values.put("longitude", pokemon.getLongitude());
+        values.put("latitude", pokemon.getLatitude());
+        values.put("vieActuelle", pokemon.getVieActuelle());
+        values.put("maxVie", pokemon.getMaxVie());
+        db.insert("pokemonReel", null, values);
+    }
+
+    public void updatePokemonReel(PokemonReel pokemon, int idUser) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        db.beginTransaction();
+        ContentValues values = new ContentValues();
+        values.put("idPokemonReel", pokemon.getId());
+        values.put("idPokemon", pokemon.getPokemon().getId());
+        values.put("idUtilisateur", idUser);
+        values.put("equipe", true);
+        values.put("atk", pokemon.getAtk());
+        values.put("def", pokemon.getDef());
+        values.put("niveau", pokemon.getNiveau());
+        values.put("exp", pokemon.getExp());
+        values.put("longitude", pokemon.getLongitude());
+        values.put("latitude", pokemon.getLatitude());
+        values.put("vieActuelle", pokemon.getVieActuelle());
+        values.put("maxVie", pokemon.getMaxVie());
+        db.update("pokemonReel", values, "idPokemonReel="+pokemon.getId(), null);
+    }
+
+
 
     public Pokemon getPokemon(int idPokemon) {
 

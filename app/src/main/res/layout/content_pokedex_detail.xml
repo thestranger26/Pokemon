@@ -16,6 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/numero_pokemon_detail"
+        android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_gravity="center" />
 
     <TextView
@@ -23,6 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/nom_pokemon_detail"
+        android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_gravity="center" />
 
     <ImageView
@@ -38,6 +40,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/type_pokemon_detail"
+        android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_gravity="center" />
 
     <LinearLayout
@@ -53,6 +56,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/attaque_pokemon_detail"
+                android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="@string/attaque_pokemon_detail"
                 android:layout_gravity="center" />
 
@@ -61,6 +65,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/attaque_valeur_pokemon_detail"
+                android:textAppearance="?android:attr/textAppearanceLarge"
                 android:layout_gravity="center" />
         </RelativeLayout>
         <RelativeLayout
@@ -71,6 +76,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/defense_pokemon_detail"
+                android:textAppearance="?android:attr/textAppearanceLarge"
                 android:id="@+id/defense_pokemon_detail"
                 android:layout_gravity="center" />
 
@@ -79,6 +85,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/defense_valeur_pokemon_detail"
+                android:textAppearance="?android:attr/textAppearanceLarge"
                 android:layout_gravity="center" />
         </RelativeLayout>
     </LinearLayout>
@@ -88,6 +95,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/pv_pokemon_detail"
+        android:textAppearance="?android:attr/textAppearanceLarge"
         android:id="@+id/pv_pokemon_detail"
         android:layout_gravity="center" />
 
@@ -96,6 +104,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/pv_valeur_pokemon_detail"
+        android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_gravity="center" />
 
 
