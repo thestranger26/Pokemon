@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -32,17 +33,17 @@ public class AdapterMonEquipe extends ArrayAdapter<PokemonReel> {
             convertView = LayoutInflater.from(getContext()).inflate(layoutId, parent, false);
         }
         TextView pseudo = (TextView) convertView.findViewById(R.id.monEquipe_pseudoPkm);
-        TextView nom = (TextView) convertView.findViewById(R.id.monEquipe_nomPokemon);
-        TextView niv = (TextView) convertView.findViewById(R.id.monEquipe_niveauPkm);
+        ImageView image = (ImageView) convertView.findViewById(R.id.monEquipe_imagePokemon);
+        TextView niv = (TextView) convertView.findViewById(R.id.monEquipe_nivPkm);
         TextView atk = (TextView) convertView.findViewById(R.id.monEquipe_atkPkm);
         TextView def = (TextView) convertView.findViewById(R.id.monEquipe_defPkm);
         TextView exp = (TextView) convertView.findViewById(R.id.monEquipe_expPkm);
 
-        niv.setText(Integer.toString(pkm.getNiveau()));
+        niv.setText(niv.getText() + Integer.toString(pkm.getNiveau()));
         atk.setText(atk.getText() + Integer.toString(pkm.getAtk()));
         def.setText(def.getText() + Integer.toString(pkm.getDef()));
         exp.setText(exp.getText() + Integer.toString(pkm.getExp()));
-        nom.setText(pkm.getPokemon().getNom());
+        image.setImageResource(getContext().getResources().getIdentifier(pkm.getPokemon().getNomImage(), "drawable", getContext().getPackageName()));
 
         if (pkm.getPseudo() == null || pkm.getPseudo().isEmpty()) {
             pseudo.setText(pkm.getPokemon().getNom());
