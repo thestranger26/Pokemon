@@ -4,9 +4,9 @@
     <string name="title_activity_pokedex">Pokedex</string>
     <string name="title_sac_activity">Sac à Dos</string>
     <string name="action_settings">Menu</string>
-    <string name="title_activity_combat">CombatActivity</string>
+    <string name="title_activity_combat">Combat</string>
 
-    <string name="title_activity_my_team">MyTeamActivity</string>
+    <string name="title_activity_my_team">Mon Équipe</string>
     <string name="title_activity_login">Sign in</string>
 
     <!-- Strings related to details pokedex -->
