@@ -3,17 +3,21 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
+            android:id="@+id/nav_carte"
             android:icon="@drawable/ic_menu_camera"
-            android:title="Afficher la carte" />
+            android:title="@string/title_activity_main" />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/nav_monEquipe"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="Mon Equipe" />
+            android:title="@string/title_activity_my_team" />
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/nav_pokedex"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="Pokedex" />
+            android:title="@string/title_activity_pokedex" />
+        <item
+            android:id="@+id/nav_sacADos"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="@string/title_sac_activity" />
     </group>
 
 </menu>

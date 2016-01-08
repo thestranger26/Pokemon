@@ -76,10 +76,11 @@
             android:name=".controller.HomeActivity"
             android:label="@string/title_activity_home"
             android:theme="@style/AppTheme.NoActionBar"/>
+
         <activity
             android:name=".controller.MapsActivity"
-            android:label="@string/title_activity_maps"></activity>
-
+            android:label="@string/title_activity_main"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>
