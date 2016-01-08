@@ -1,11 +1,13 @@
 package fr.pokemonteam.pokemon.controller;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -46,10 +48,19 @@ public class MonEquipeActivity extends Fragment {
 
 
             AdapterMonEquipe adapter = new AdapterMonEquipe(this.getActivity(), R.layout.content_mon_equipe, monEquipe);
+
             ListView listView = (ListView) view.findViewById(R.id.monEquipe_listView);
+
 
             listView.setAdapter(adapter);
 
+            ((ListView) view.findViewById(R.id.monEquipe_listView)).setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    MonEquipeActivity.this.afficheInfosPokemon(position);
+                }
+            });
 
         } else {
             System.out.println("C'etait null....");
@@ -58,4 +69,28 @@ public class MonEquipeActivity extends Fragment {
         return view;
     }
 
+    private void afficheInfosPokemon(int position) {
+
+
+        Intent monIntent = new Intent(MonEquipeActivity.this.getActivity().getBaseContext(), DetailPokemonMonEquipeActivity.class);
+        monIntent.putExtra("idPkmnReel", position);
+        startActivity(monIntent);
+
+    }
+
+    public void suppPokemon(int position) {
+        int id_pokemon = MonEquipeActivity.this.monEquipe.get(position).getId();
+
+        Database db = Database.getInstance(this.getActivity());
+        // db.suppPokemonEquipe(id_pokemon);
+        System.out.println(this.monEquipe.size());
+        this.monEquipe.remove(position);
+        System.out.println(this.monEquipe.size());
+
+        AdapterMonEquipe adapter = new AdapterMonEquipe(this.getActivity(), R.layout.content_mon_equipe, monEquipe);
+        final ListView listView = (ListView) view.findViewById(R.id.monEquipe_listView);
+
+        listView.setAdapter(adapter);
+
+    }
 }

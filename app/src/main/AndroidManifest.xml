@@ -40,7 +40,6 @@
         <activity
             android:name=".controller.LoginActivity"
             android:label="@string/title_main_acitivty">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -57,30 +56,25 @@
 
         <activity
             android:name=".controller.CombatActivity"
-            android:label="@string/title_activity_combat"
             android:exported="true"
+            android:label="@string/title_activity_combat"
             android:theme="@style/AppTheme.NoActionBar" />
-
-        <activity
-            android:name=".controller.SacActivity"
-            android:label="@string/title_sac_activity"
-            android:theme="@style/AppTheme.NoActionBar" />
-
-
         <activity
             android:name=".controller.PokedexDetailActivity"
             android:label="@string/title_activity_pokedex_detail"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".controller.HomeActivity"
             android:label="@string/title_activity_home"
-            android:theme="@style/AppTheme.NoActionBar"/>
-
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".controller.MapsActivity"
             android:label="@string/title_activity_main"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".controller.DetailPokemonMonEquipeActivity"
+            android:label="@string/title_activity_detail_pokemon_mon_equipe"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>
