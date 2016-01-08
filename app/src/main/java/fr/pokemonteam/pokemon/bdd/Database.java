@@ -182,7 +182,7 @@ public class Database extends SQLiteOpenHelper {
             values.put("libelle", "Home");
             values.put("typeLieu", "hopital");
             values.put("latitude", 45.770255);
-            values.put("longtiude", 4.869100);
+            values.put("longitude", 4.869100);
             db.insert("lieu", null, values);
 
 

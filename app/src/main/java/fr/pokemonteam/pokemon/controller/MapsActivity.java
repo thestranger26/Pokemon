@@ -37,15 +37,15 @@ import java.util.Random;
 
 import fr.pokemonteam.pokemon.R;
 import fr.pokemonteam.pokemon.bdd.Database;
+import fr.pokemonteam.pokemon.model.ElementSac;
 import fr.pokemonteam.pokemon.model.Lieu;
-import fr.pokemonteam.pokemon.model.Pokemon;
-import fr.pokemonteam.pokemon.model.PokemonReel;
 import fr.pokemonteam.pokemon.model.Utilisateur;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, NavigationView.OnNavigationItemSelectedListener {
 
     private GoogleMap mMap;
     private Context context;
+    private LatLng latLon;
 
     final float ICONE_POKEMON = BitmapDescriptorFactory.HUE_YELLOW;
     final float ICONE_UTILISATEUR = BitmapDescriptorFactory.HUE_BLUE;
@@ -123,18 +123,23 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             mMap.moveCamera(CameraUpdateFactory.newLatLng(myLatLng));
         }
 
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(45.782649, 4.865827)));
-        generationPokemon();
-        generationDesLieux();
+        //mMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(45.782649, 4.865827)));
+        //generationPokemon();
+        //generationDesLieux();
+        //generationObjets();
         mMap.setOnMyLocationButtonClickListener(new GoogleMap.OnMyLocationButtonClickListener() {
 
             @Override
             public boolean onMyLocationButtonClick() {
                 Location loc = mMap.getMyLocation();
                 if (loc != null) {
-                    LatLng myLatLng = new LatLng(loc.getLatitude(),
+                    latLon = new LatLng(loc.getLatitude(),
                             loc.getLongitude());
-                    mMap.moveCamera(CameraUpdateFactory.newLatLng(myLatLng));
+                    mMap.clear();
+                    mMap.moveCamera(CameraUpdateFactory.newLatLng(latLon));
+                    generationPokemon();
+                    generationDesLieux();
+                    generationObjets();
                 }
                 return true;
             }
@@ -142,11 +147,24 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
-                Intent newIntent = new Intent(MapsActivity.this, CombatActivity.class);
-                newIntent.putExtra("idPokemon", Integer.parseInt(marker.getTitle()));
-                newIntent.putExtra("latitude", marker.getPosition().latitude);
-                newIntent.putExtra("longitude", marker.getPosition().longitude);
-                startActivity(newIntent);
+                int u = Integer.parseInt(marker.getTitle());
+                if (u < 200) {
+                    Intent newIntent = new Intent(MapsActivity.this, CombatActivity.class);
+                    newIntent.putExtra("idPokemon", Integer.parseInt(marker.getTitle()));
+                    newIntent.putExtra("latitude", marker.getPosition().latitude);
+                    newIntent.putExtra("longitude", marker.getPosition().longitude);
+                    marker.remove();
+                    startActivity(newIntent);
+
+                }
+                if (u == 200) {
+                    ajoutPokeball();
+                    marker.remove();
+                }
+                if (u == 201) {
+                    ajoutPotion();
+                    marker.remove();
+                }
 
                 return true;
             }
@@ -155,79 +173,52 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     }
 
-    public PokemonReel genererPokemon(double latitude, double longitude) {
-        PokemonReel pkmn = new PokemonReel();
-        Database db = Database.getInstance(this);
-        Random randomGenerator = new Random();
-        Pokemon p = db.getPokemon(randomGenerator.nextInt(151));
-        pkmn.setAtk(generateRandomValue(p.getAttaque()));
-        pkmn.setDef(generateRandomValue(p.getDefense()));
-        pkmn.setMaxVie(generateRandomValue(p.getPv()));
-        pkmn.setExp(0);
-        pkmn.setVieActuelle(pkmn.getMaxVie());
-        pkmn.setNiveau(randomGenerator.nextInt(100));
-        pkmn.setLatitude(latitude);
-        pkmn.setLongitude(longitude);
-        return pkmn;
-    }
 
-    public int generateRandomValue(int val) {
-        Random randomGenerator = new Random();
-        double coeff = randomGenerator.nextDouble() * (1.5 - 0.5) + 0.5;
-        double ret = val * coeff;
-        return (int) ret;
-    }
+    private void generationObjets() {
+        System.out.println("Generation des objets");
+        System.out.println("***************************");
+        Location loc = mMap.getMyLocation();
+        if (loc != null) {
+            Random randomGenerator = new Random();
+            int u = randomGenerator.nextInt(15);
 
-    private void changeMarker(Marker marker) {
-        ArrayList<String> a = listeMarkers.get(marker.getId());
-        if (a.get(1).equals("vueMkr")) {
-            View v_marker = ((LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.marker_pokemon_layout, null);
-            TextView numTxt = (TextView) v_marker.findViewById(R.id.mkrPkm_nomPkm);
-            numTxt.setText("27");
-            marker.setIcon(BitmapDescriptorFactory.fromBitmap(createDrawableFromView(this, v_marker)));
-            a.set(1, "vueInfos");
-            listeMarkers.put(marker.getId(), a);
-        } else {
-            a.set(1, "vueMkr");
-            listeMarkers.put(marker.getId(), a);
-            marker.setIcon(BitmapDescriptorFactory.defaultMarker(ICONE_POKEMON));
+            if (u>=8 && u<=11){
+                LatLng objCoord = ramdomCoordonnes();
+                creerMarker(objCoord.latitude,objCoord.longitude,"pokeball",200);
+            }
+            if (u>=10 && u<=13 ){
+                LatLng objCoord = ramdomCoordonnes();
+                creerMarker(objCoord.latitude,objCoord.longitude,"potion",201);
+            }
         }
+
     }
+
+
 
     private void generationDesLieux() {
+        System.out.println("Generation des lieux");
+        System.out.println("***************************");
         Database db = Database.getInstance(this);
         ArrayList<Lieu> u = db.envoieLieu();
-        for (Lieu l : u) {
-            System.out.println("*********************");
-            System.out.println(l.toString());
-            System.out.println("*********************");
-            creerMarker(l.getLatitude(),l.getLongitude(),l.getType(), 0);
+
+        for (Lieu l : u ) {
+            creerMarker(l.getLatitude(),l.getLongitude(),l.getType(),202);
+
         }
     }
 
     private void generationPokemon() {
-        LatLng myLatLng = new LatLng(45.782649, 4.865827);
-
-        for (int i = 0; i < 5; i++) {
-            System.out.println("pokemon num :" + i);
-
+        System.out.println("Generation des pokemons");
+        System.out.println("***************************");
+        for (int i=0;i<5;i++){
+            System.out.println("pokemon num :"+ i);
             Database db = Database.getInstance(this);
             Random randomGenerator = new Random();
             int u = randomGenerator.nextInt(151);
-            int y = randomGenerator.nextInt(50);
+            LatLng pokemCoord = ramdomCoordonnes();
+            creerMarker(pokemCoord.latitude,pokemCoord.longitude,"pokemon"+(u+1),u);
 
-            Double r = Double.parseDouble("-1");
-            if (y > 25) {
-                r = Double.parseDouble("1");
-            }
-            Double d_1 = r * (Double.parseDouble(Integer.toString(randomGenerator.nextInt(8))) / (Double.parseDouble("1000")));
-            y = randomGenerator.nextInt(50);
-            r = Double.parseDouble("-1");
-            if (y > 25) {
-                r = Double.parseDouble("1");
-            }
-            Double d_2 = r* ( Double.parseDouble( Integer.toString( randomGenerator.nextInt(8)))/ (Double.parseDouble("1000")));
-            creerMarker(myLatLng.latitude+d_1,myLatLng.longitude+d_2, "pokemon"+(u+1), u);
         }
 
 
@@ -255,6 +246,23 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         imageView.setImageResource(this.getResources().getIdentifier(libelle, "drawable", this.getPackageName()));
         mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromBitmap(createDrawableFromView(this, marker))).position(new LatLng(lat, lon)).title(Integer.toString(id)));
 
+    }
+    public LatLng ramdomCoordonnes()
+    {
+        LatLng coord = new LatLng(0,0);
+        Random randomGenerator = new Random();
+        int y = randomGenerator.nextInt(50);
+        Double r= Double.parseDouble("-1");
+        if (y>25) {r = Double.parseDouble("1");
+        }
+        Double d_1 = r*   ( Double.parseDouble( Integer.toString( randomGenerator.nextInt(8)))/ (Double.parseDouble("1000")));
+        y = randomGenerator.nextInt(50);
+        r= Double.parseDouble("-1");
+        if (y>25) {r = Double.parseDouble("1");
+        }
+        Double d_2 = r* ( Double.parseDouble( Integer.toString( randomGenerator.nextInt(8)))/ (Double.parseDouble("1000")));
+        coord = new LatLng(latLon.latitude+d_1,latLon.longitude+d_2);
+        return  coord;
     }
 
 
@@ -323,5 +331,28 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         drawer.closeDrawer(GravityCompat.START);
 
         return true;
+    }
+    public void ajoutPokeball(){
+        Database db = Database.getInstance(this);
+        Utilisateur u = db.getUser(0);
+        ArrayList<ElementSac> monSac = u.getSacADos();
+        for(int i=0; i<monSac.size();i++) {
+            if(monSac.get(i).getElement().getLibelle().equals("pokeball")) {
+                monSac.get(i).setNombre(monSac.get(i).getNombre() + 1);
+            }
+        }
+        u.setSacADos(monSac);
+    }
+    public void ajoutPotion(){
+        Database db = Database.getInstance(this);
+        Utilisateur u = db.getUser(0);
+        ArrayList<ElementSac> monSac = u.getSacADos();
+        for(int i=0; i<monSac.size();i++) {
+            if(monSac.get(i).getElement().getLibelle().equals("potion")) {
+                monSac.get(i).setNombre(monSac.get(i).getNombre() + 1);
+            }
+        }
+        u.setSacADos(monSac);
+
     }
 }
