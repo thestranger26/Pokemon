@@ -297,5 +297,10 @@ public class CombatActivity extends AppCompatActivity {
         }
         db.setPokemonReel(p, u.getId());
     }
+    
+    public void finDeCombat() {
+        db.updatePokemonReel(pkmnCourant, u.getId());
+    }
+
 
 }
