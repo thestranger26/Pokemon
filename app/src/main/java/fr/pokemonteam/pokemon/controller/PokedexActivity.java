@@ -18,9 +18,8 @@ import fr.pokemonteam.pokemon.model.Pokemon;
 
 public class PokedexActivity extends Fragment {
 
-    ArrayList<Pokemon> pokemons = null;
-
-    View view = null;
+    private ArrayList<Pokemon> pokemons = null;
+    private View view = null;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

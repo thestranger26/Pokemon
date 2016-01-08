@@ -1,5 +1,7 @@
 package fr.pokemonteam.pokemon.controller;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -21,9 +24,10 @@ import fr.pokemonteam.pokemon.model.Utilisateur;
 
 public class CombatActivity extends AppCompatActivity {
 
-    PokemonReel pkmnCourant;
-    PokemonReel pkmnAdverse;
-    Utilisateur u;
+    private PokemonReel pkmnCourant;
+    private PokemonReel pkmnAdverse;
+    private Utilisateur u;
+    private Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +46,8 @@ public class CombatActivity extends AppCompatActivity {
 
         ArrayList<PokemonReel> monEquipe = u.getEquipe();
         pkmnCourant = monEquipe.get(0);
-        pkmnAdverse = genererPokemon(idPokemon, longitude, latitude);
+        pkmnAdverse = monEquipe.get(1);
+        ///pkmnAdverse = genererPokemon(idPokemon, longitude, latitude);
 
         pkmnAdverse.getPokemon().setVue(true);
         db.updatePokemont(pkmnAdverse.getPokemon());
@@ -72,24 +77,25 @@ public class CombatActivity extends AppCompatActivity {
         TextView textVieAllie = (TextView) findViewById(R.id.textViePokemonAllie);
         textVieAllie.setText(pkmnCourant.getVieActuelle() + "/" + pkmnCourant.getMaxVie());
 
-        Button buttonPokeball = (Button) findViewById(R.id.buttonPokeball);
+        button = (Button) findViewById(R.id.buttonShowDialogSac);
+
         int nbrePokeball = 0;
         for (ElementSac e : u.getSacADos()) {
-            if(e.getElement().getLibelle().equals("pokeball")){
-                nbrePokeball = e.getNombre();}
+            if (e.getElement().getLibelle().equals("pokeball")) {
+                nbrePokeball = e.getNombre();
+            }
         }
-        buttonPokeball.setText(buttonPokeball.getText() + " ("+String.valueOf(nbrePokeball) +")");
     }
 
-    public void attaque(View view){
+    public void attaque(View view) {
         int actionPkmnAdverse = getActionPkmnAdverse();
         // Cas où l'adeversaire est en mode défense
-        if(actionPkmnAdverse == 0){
+        if (actionPkmnAdverse == 0) {
             System.out.println("L'adversaire se défend");
             System.out.println("Attaque de votre pokémon : " + pkmnCourant.getAtk());
             System.out.println("Défense du pokémon adverse : " + pkmnAdverse.getDef());
             int differenceAtkDef = pkmnCourant.getAtk() - pkmnAdverse.getDef();
-            if(differenceAtkDef < 0){
+            if (differenceAtkDef < 0) {
                 System.out.println("Votre pokémon perd " + differenceAtkDef + " points de vie !");
                 pkmnCourant.setVieActuelle(pkmnCourant.getVieActuelle() - differenceAtkDef);
                 ProgressBar progressBarAllie = (ProgressBar) findViewById(R.id.progressBarPokemonAllie);
@@ -97,7 +103,7 @@ public class CombatActivity extends AppCompatActivity {
                 TextView textVieAllie = (TextView) findViewById(R.id.textViePokemonAllie);
                 textVieAllie.setText(pkmnCourant.getVieActuelle() + "/" + pkmnCourant.getMaxVie());
             }
-            if(differenceAtkDef >= 0){
+            if (differenceAtkDef >= 0) {
                 System.out.println("Le pokémon adverse perd " + differenceAtkDef + " points de vie !");
                 pkmnAdverse.setVieActuelle(pkmnAdverse.getVieActuelle() - differenceAtkDef);
                 ProgressBar progressBarAdverse = (ProgressBar) findViewById(R.id.progressBarPokemonAdverse);
@@ -105,7 +111,7 @@ public class CombatActivity extends AppCompatActivity {
             }
         }
         // Cas où l'adeversaire est en mode attaque
-        if(actionPkmnAdverse == 1){
+        if (actionPkmnAdverse == 1) {
             System.out.println("L'adversaire attaque");
             System.out.println("Attaque de votre pokémon : " + pkmnCourant.getAtk());
             System.out.println("Attaque du pokémon adverse : " + pkmnAdverse.getAtk());
@@ -125,16 +131,16 @@ public class CombatActivity extends AppCompatActivity {
         }
     }
 
-    public void defense(View view){
+    public void defense(View view) {
         int actionPkmnAdverse = getActionPkmnAdverse();
 
         // Cas où l'adeversaire est en mode attaque
-        if(actionPkmnAdverse == 1){
+        if (actionPkmnAdverse == 1) {
             System.out.println("L'adversaire attaque");
             System.out.println("Défense de votre pokémon : " + pkmnCourant.getDef());
             System.out.println("Attaque du pokémon adverse : " + pkmnAdverse.getAtk());
             int differenceAtkDef = pkmnAdverse.getAtk() - pkmnCourant.getDef();
-            if(differenceAtkDef >= 0){
+            if (differenceAtkDef >= 0) {
                 System.out.println("Votre pokémon perd " + differenceAtkDef + " points de vie !");
                 pkmnCourant.setVieActuelle(pkmnCourant.getVieActuelle() - differenceAtkDef);
                 ProgressBar progressBarAllie = (ProgressBar) findViewById(R.id.progressBarPokemonAllie);
@@ -142,7 +148,7 @@ public class CombatActivity extends AppCompatActivity {
                 TextView textVieAllie = (TextView) findViewById(R.id.textViePokemonAllie);
                 textVieAllie.setText(pkmnCourant.getVieActuelle() + "/" + pkmnCourant.getMaxVie());
             }
-            if(differenceAtkDef < 0){
+            if (differenceAtkDef < 0) {
                 System.out.println("Le pokémon adverse perd " + differenceAtkDef + " points de vie !");
                 pkmnAdverse.setVieActuelle(pkmnAdverse.getVieActuelle() - differenceAtkDef);
                 ProgressBar progressBarAdverse = (ProgressBar) findViewById(R.id.progressBarPokemonAdverse);
@@ -150,71 +156,111 @@ public class CombatActivity extends AppCompatActivity {
             }
         }
 
-        if(pkmnAdverse.getVieActuelle()<0){
+        if (pkmnAdverse.getVieActuelle() < 0) {
             System.out.println("GAGNE");
         }
-        if(pkmnCourant.getVieActuelle()<0){
+        if (pkmnCourant.getVieActuelle() < 0) {
             System.out.println("PERDU");
         }
-
     }
 
-    public void pokeball(View view){
+    public void sac(View view) {
+        // custom dialog
+        final Dialog dialog = new Dialog(CombatActivity.this);
+        dialog.setContentView(R.layout.activity_dialogue_sac);
+        dialog.setTitle("Sac à Dos");
+
+        RelativeLayout boutonSac1 = (RelativeLayout) dialog.findViewById(R.id.bouton_sac1);
+        ImageView image1 = (ImageView) dialog.findViewById(R.id.image_element_dialog);
+        TextView libelle1 = (TextView) dialog.findViewById(R.id.nom_element_dialog);
+        TextView nombre1 = (TextView) dialog.findViewById(R.id.number_element_dialog);
+        image1.setImageResource(this.getResources().getIdentifier(u.getSacADos().get(0).getElement().getImage(), "mipmap", this.getPackageName()));
+        libelle1.setText(u.getSacADos().get(0).getElement().getLibelle());
+        nombre1.setText("(" + Integer.toString(u.getSacADos().get(0).getNombre()) + ")");
+
+        RelativeLayout boutonSac2 = (RelativeLayout)  dialog.findViewById(R.id.bouton_sac2);
+        ImageView image2 = (ImageView) dialog.findViewById(R.id.image_element_dialog2);
+        TextView libelle2 = (TextView) dialog.findViewById(R.id.nom_element_dialog2);
+        TextView nombre2 = (TextView) dialog.findViewById(R.id.number_element_dialog2);
+        image2.setImageResource(this.getResources().getIdentifier(u.getSacADos().get(1).getElement().getImage(), "mipmap", this.getPackageName()));
+        libelle2.setText(u.getSacADos().get(1).getElement().getLibelle());
+        nombre2.setText("("Integer.toString(u.getSacADos().get(1).getNombre())")");
+
+        boutonSac1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pokeball(v);
+                dialog.dismiss();
+            }
+        });
+
+        boutonSac2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                potion(v);
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
+    }
+
+    public void pokeball(View view) {
         int nbrePokeball = 0;
         for (ElementSac e : u.getSacADos()) {
-            if(e.getElement().getLibelle().equals("pokeball")){
-                if(e.getNombre() >0) {
+            if (e.getElement().getLibelle().equals("pokeball")) {
+                if (e.getNombre() > 0) {
                     nbrePokeball = e.getNombre() - 1;
                     e.setNombre(nbrePokeball);
-                    if(pokemonEstCapture()){
+                    if (pokemonEstCapture()) {
                         System.out.println("Youpi pokémon capturé !");
                     }
-                }
-                else{
+                } else {
                     System.out.println("NOOOOOOOOOOPE");
                 }
             }
         }
-        Button buttonPokeball = (Button) findViewById(R.id.buttonPokeball);
-        buttonPokeball.setText(getResources().getString(R.string.button_pkball) + " (" + nbrePokeball + ")");
+        //Button buttonPokeball = (Button) findViewById(R.id.buttonPokeball);
+        //buttonPokeball.setText(getResources().getString(R.string.button_pkball) + " (" + nbrePokeball + ")");
 
     }
 
-    public void fuite(View view){
+    public void fuite(View view) {
 
     }
 
-    public int getActionPkmnAdverse(){
+    public int getActionPkmnAdverse() {
         int retour;
         Random randomGenerator = new Random();
-        retour = randomGenerator.nextInt(100)%2;
+        retour = randomGenerator.nextInt(100) % 2;
         return retour;
     }
 
-    private boolean pokemonEstCapture(){
+    private boolean pokemonEstCapture() {
         //TODO si le pokémon est capturé faire :  pkmnAdverse.getPokemon().setCapture(true);
         // db.updatePokemont(pkmnAdverse.getPokemon());
         boolean ret = false;
-        System.out.println("Etape 1 :" + (3*pkmnAdverse.getMaxVie() - 2*pkmnAdverse.getVieActuelle()));
+        System.out.println("Etape 1 :" + (3 * pkmnAdverse.getMaxVie() - 2 * pkmnAdverse.getVieActuelle()));
         System.out.println("Pokemon : " + pkmnAdverse.getPokemon());
         System.out.println("Taux de capture : " + pkmnAdverse.getPokemon().getTauxCapture());
-        System.out.println("Etape 2 :" + ((3*pkmnAdverse.getMaxVie() - 2*pkmnAdverse.getVieActuelle())*pkmnAdverse.getPokemon().getTauxCapture()));
-        int a = ((3*pkmnAdverse.getMaxVie() - 2*pkmnAdverse.getVieActuelle())*pkmnAdverse.getPokemon().getTauxCapture())/(3*pkmnAdverse.getMaxVie());
+        System.out.println("Etape 2 :" + ((3 * pkmnAdverse.getMaxVie() - 2 * pkmnAdverse.getVieActuelle()) * pkmnAdverse.getPokemon().getTauxCapture()));
+        int a = ((3 * pkmnAdverse.getMaxVie() - 2 * pkmnAdverse.getVieActuelle()) * pkmnAdverse.getPokemon().getTauxCapture()) / (3 * pkmnAdverse.getMaxVie());
         System.out.println("chance de capture : " + a);
-        if(a>255){ret=true;}
+        if (a > 255) {
+            ret = true;
+        }
         return ret;
     }
 
-    public void potion(View view){
+    public void potion(View view) {
         int nbrePotions = 0;
         for (ElementSac e : u.getSacADos()) {
-            if(e.getElement().getLibelle().equals("potion")){
-                if(e.getNombre() >0) {
+            if (e.getElement().getLibelle().equals("potion")) {
+                if (e.getNombre() > 0) {
                     nbrePotions = e.getNombre() - 1;
                     e.setNombre(nbrePotions);
                     pkmnCourant.setVieActuelle(pkmnCourant.getMaxVie());
-                }
-                else{
+                } else {
                     System.out.println("NOOOOOOOOOOPE");
                 }
             }
@@ -224,7 +270,7 @@ public class CombatActivity extends AppCompatActivity {
 // TODO bouton potion
     }
 
-    public PokemonReel genererPokemon(int idPokemon, double latitude, double longitude){
+    public PokemonReel genererPokemon(int idPokemon, double latitude, double longitude) {
         PokemonReel pkmn = new PokemonReel();
         Database db = Database.getInstance(this);
         Random randomGenerator = new Random();
@@ -240,10 +286,10 @@ public class CombatActivity extends AppCompatActivity {
         return pkmn;
     }
 
-    public int generateRandomValue(int val){
+    public int generateRandomValue(int val) {
         Random randomGenerator = new Random();
-        double coeff = randomGenerator.nextDouble()*(1.5-0.5) + 0.5;
-        double ret = val*coeff;
+        double coeff = randomGenerator.nextDouble() * (1.5 - 0.5) + 0.5;
+        double ret = val * coeff;
         return (int) ret;
     }
 

@@ -17,8 +17,9 @@ import fr.pokemonteam.pokemon.model.Utilisateur;
 
 public class MonEquipeActivity extends Fragment {
 
-    ArrayList<PokemonReel> monEquipe;
-View view = null;
+    private ArrayList<PokemonReel> monEquipe;
+    private View view = null;
+
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 

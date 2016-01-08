@@ -12,7 +12,7 @@ import fr.pokemonteam.pokemon.model.Pokemon;
 
 public class PokedexDetailActivity extends AppCompatActivity {
 
-    Pokemon pokemon = null;
+    private Pokemon pokemon = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
