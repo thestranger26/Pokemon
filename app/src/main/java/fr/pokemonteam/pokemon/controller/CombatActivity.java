@@ -27,13 +27,16 @@ public class CombatActivity extends AppCompatActivity {
     private PokemonReel pkmnAdverse;
     private Utilisateur u;
     private Button button;
+    private Database db;
+    private ProgressBar progressBarAllie;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_combat);
 
-        Database db = Database.getInstance(this);
+        db = Database.getInstance(this);
         u = db.getUser(0);
 
         System.out.println(u.getNom());
@@ -59,10 +62,10 @@ public class CombatActivity extends AppCompatActivity {
         progressBarAdverse.setProgress(100);
 
         TextView textAdverse = (TextView) findViewById(R.id.textPokemonAdverse);
-        textAdverse.setText(pkmnAdverse.getPseudo() + " N." + pkmnAdverse.getNiveau());
+        textAdverse.setText(pkmnAdverse.getPokemon().getNom() + " N." + pkmnAdverse.getNiveau());
 
         // Définition des infos de notre pokémon
-        ProgressBar progressBarAllie = (ProgressBar) findViewById(R.id.progressBarPokemonAllie);
+        progressBarAllie = (ProgressBar) findViewById(R.id.progressBarPokemonAllie);
         progressBarAllie.setMax(pkmnCourant.getMaxVie());
         progressBarAllie.setProgress(pkmnCourant.getVieActuelle());
 
@@ -93,9 +96,10 @@ public class CombatActivity extends AppCompatActivity {
             System.out.println("Attaque de votre pokémon : " + pkmnCourant.getAtk());
             System.out.println("Défense du pokémon adverse : " + pkmnAdverse.getDef());
             int differenceAtkDef = pkmnCourant.getAtk() - pkmnAdverse.getDef();
+
             if (differenceAtkDef < 0) {
                 System.out.println("Votre pokémon perd " + differenceAtkDef + " points de vie !");
-                pkmnCourant.setVieActuelle(pkmnCourant.getVieActuelle() - differenceAtkDef);
+                pkmnCourant.setVieActuelle(pkmnCourant.getVieActuelle() + differenceAtkDef);
                 ProgressBar progressBarAllie = (ProgressBar) findViewById(R.id.progressBarPokemonAllie);
                 progressBarAllie.setProgress(pkmnCourant.getVieActuelle());
                 TextView textVieAllie = (TextView) findViewById(R.id.textViePokemonAllie);
@@ -185,7 +189,6 @@ public class CombatActivity extends AppCompatActivity {
 
         nombre2.setText("(" + Integer.toString(u.getSacADos().get(1).getNombre()) + ")");
 
-
         boutonSac1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -213,18 +216,17 @@ public class CombatActivity extends AppCompatActivity {
                     nbrePokeball = e.getNombre() - 1;
                     e.setNombre(nbrePokeball);
                     if (pokemonEstCapture()) {
-                        System.out.println("Youpi pokémon capturé !");
+                        capture(pkmnAdverse);
                     }
                 } else {
                     System.out.println("NOOOOOOOOOOPE");
                 }
             }
         }
-
     }
 
     public void fuite(View view) {
-
+        this.finish();
     }
 
     public int getActionPkmnAdverse() {
@@ -245,6 +247,7 @@ public class CombatActivity extends AppCompatActivity {
         int a = ((3 * pkmnAdverse.getMaxVie() - 2 * pkmnAdverse.getVieActuelle()) * pkmnAdverse.getPokemon().getTauxCapture()) / (3 * pkmnAdverse.getMaxVie());
         System.out.println("chance de capture : " + a);
         if (a > 255) {
+
             ret = true;
         }
         return ret;
@@ -258,6 +261,7 @@ public class CombatActivity extends AppCompatActivity {
                     nbrePotions = e.getNombre() - 1;
                     e.setNombre(nbrePotions);
                     pkmnCourant.setVieActuelle(pkmnCourant.getMaxVie());
+                    progressBarAllie.setProgress(pkmnCourant.getVieActuelle());
                 } else {
                     System.out.println("NOOOOOOOOOOPE");
                 }
@@ -287,6 +291,17 @@ public class CombatActivity extends AppCompatActivity {
         double coeff = randomGenerator.nextDouble() * (1.5 - 0.5) + 0.5;
         double ret = val * coeff;
         return (int) ret;
+    }
+
+    public void capture(PokemonReel p){
+        if(u.getEquipe().size() < 6){
+            u.getEquipe().add(p);
+        }
+        db.setPokemonReel(p, u.getId());
+    }
+    
+    public void finDeCombat() {
+        db.updatePokemonReel(pkmnCourant, u.getId());
     }
 
 

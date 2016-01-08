@@ -24,15 +24,15 @@ public class MonEquipeActivity extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-                if (view == null)
-                    view = inflater.inflate(R.layout.activity_mon_equipe,container,false);
+        if (view == null)
+            view = inflater.inflate(R.layout.activity_mon_equipe, container, false);
 //        super.onCreate(savedInstanceState);
 //        setContentView(R.layout.activity_mon_equipe);
 //        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 //        setSupportActionBar(toolbar);
 
-                Toolbar t = (Toolbar) this.getActivity().findViewById(R.id.toolbar);
-                t.setTitle(R.string.title_activity_my_team);
+        Toolbar t = (Toolbar) this.getActivity().findViewById(R.id.toolbar);
+        t.setTitle(R.string.title_activity_my_team);
 
 
         Database db = Database.getInstance(this.getActivity());
@@ -45,10 +45,10 @@ public class MonEquipeActivity extends Fragment {
         if (monEquipe != null) {
 
 
-AdapterMonEquipe adapter = new AdapterMonEquipe(this.getActivity(), R.layout.content_mon_equipe, monEquipe);
-                    ListView listView = (ListView) view.findViewById(R.id.monEquipe_listView);
+            AdapterMonEquipe adapter = new AdapterMonEquipe(this.getActivity(), R.layout.content_mon_equipe, monEquipe);
+            ListView listView = (ListView) view.findViewById(R.id.monEquipe_listView);
 
-                    listView.setAdapter(adapter);
+            listView.setAdapter(adapter);
 
 
         } else {
