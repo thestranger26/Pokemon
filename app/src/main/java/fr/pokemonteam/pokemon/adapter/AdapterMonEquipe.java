@@ -39,10 +39,16 @@ public class AdapterMonEquipe extends ArrayAdapter<PokemonReel> {
         TextView def = (TextView) convertView.findViewById(R.id.monEquipe_defPkm);
         TextView exp = (TextView) convertView.findViewById(R.id.monEquipe_expPkm);
 
-        niv.setText(niv.getText() + Integer.toString(pkm.getNiveau()));
-        atk.setText(atk.getText() + Integer.toString(pkm.getAtk()));
-        def.setText(def.getText() + Integer.toString(pkm.getDef()));
-        exp.setText(exp.getText() + Integer.toString(pkm.getExp()));
+        String label_niv = this.getContext().getString(R.string.label_niv) + " : " + pkm.getNiveau();
+        String label_atk = this.getContext().getString(R.string.label_atk) + " : " + pkm.getAtk();
+        String label_def = this.getContext().getString(R.string.label_def) + " : " + pkm.getDef();
+        String label_exp = this.getContext().getString(R.string.label_exp) + " : " + pkm.getExp();
+
+
+        niv.setText(label_niv );
+        atk.setText(label_atk);
+        def.setText(label_def);
+        exp.setText(label_exp);
         image.setImageResource(getContext().getResources().getIdentifier(pkm.getPokemon().getNomImage(), "drawable", getContext().getPackageName()));
 
         if (pkm.getPseudo() == null || pkm.getPseudo().isEmpty()) {

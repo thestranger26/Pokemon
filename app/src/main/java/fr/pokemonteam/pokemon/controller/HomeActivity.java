@@ -1,6 +1,6 @@
 package fr.pokemonteam.pokemon.controller;
 
-import android.net.Uri;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -20,13 +20,15 @@ import fr.pokemonteam.pokemon.bdd.Database;
 import fr.pokemonteam.pokemon.model.Utilisateur;
 
 public class HomeActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, MapFragment.OnFragmentInteractionListener {
+        implements NavigationView.OnNavigationItemSelectedListener {
 
     public Utilisateur u;
 
-    Fragment fragment_map;
+    Intent fragment_map;
     Fragment fragment_equipe;
     Fragment fragment_pokedex;
+
+    Fragment fragment_sacADos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,13 +59,31 @@ public class HomeActivity extends AppCompatActivity
         t_mail.setText(u.getMail());
         avatar.setImageResource(R.mipmap.pika);
 
-//
-//        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-//        // Replace the contents of the container with the new fragment
-//        ft.replace(R.id.fragmentForChange, new MainActivity());
-//        // or ft.add(R.id.your_placeholder, new FooFragment());
-//        // Complete the changes added above
-//        ft.commit();
+
+        Intent i = getIntent();
+        if (i.hasExtra("fragmentToLoad")) {
+            String fragmentToLoad = i.getStringExtra("fragmentToLoad");
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            if (fragmentToLoad.equals("monEquipe")) {
+                fragment_equipe = new MonEquipeActivity();
+                toolbar.setTitle("@string/title_activity_home");
+                ft.replace(R.id.fragmentForChange, fragment_equipe);
+            } else if (fragmentToLoad.equals("pokedex")) {
+                fragment_pokedex = new PokedexActivity();
+                toolbar.setTitle("@string/title_activity_pokedex");
+                ft.replace(R.id.fragmentForChange, fragment_pokedex);
+            } else if (fragmentToLoad.equals("sacADos")) {
+                fragment_sacADos = new SacActivity();
+                toolbar.setTitle("@string/title_sac_activity");
+                ft.replace(R.id.fragmentForChange, fragment_sacADos);
+            }
+            ft.commit();
+        } else {
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            fragment_equipe = new MonEquipeActivity();
+            ft.replace(R.id.fragmentForChange, fragment_equipe);
+            ft.commit();
+        }
     }
 
     @Override
@@ -91,7 +111,12 @@ public class HomeActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.se_deconnecter) {
+
+            Intent newIntent = new Intent(this, LoginActivity.class);
+            startActivity(newIntent);
+
+            this.finish();
             return true;
         }
 
@@ -100,20 +125,13 @@ public class HomeActivity extends AppCompatActivity
 
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        System.out.println("coucou");
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.nav_carte) {
+            this.finish();
 
-            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            if (this.fragment_map == null) {
-                this.fragment_map = new MainActivity();
-            }
-
-            ft.replace(R.id.fragmentForChange, fragment_map );
-            ft.commit();
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.nav_monEquipe) {
 
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
 
@@ -123,13 +141,22 @@ public class HomeActivity extends AppCompatActivity
             ft.replace(R.id.fragmentForChange, fragment_equipe);
 
             ft.commit();
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_pokedex) {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
 
             if (this.fragment_pokedex == null) {
                 this.fragment_pokedex = new PokedexActivity();
             }
             ft.replace(R.id.fragmentForChange, fragment_pokedex);
+
+            ft.commit();
+        } else if (id == R.id.nav_sacADos) {
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+
+            if (this.fragment_sacADos == null) {
+                this.fragment_sacADos = new SacActivity();
+            }
+            ft.replace(R.id.fragmentForChange, fragment_sacADos);
 
             ft.commit();
         }
@@ -139,8 +166,4 @@ public class HomeActivity extends AppCompatActivity
         return true;
     }
 
-    @Override
-    public void onFragmentInteraction(Uri uri) {
-
-    }
 }
