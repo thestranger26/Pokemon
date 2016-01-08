@@ -1,6 +1,7 @@
 package fr.pokemonteam.pokemon.controller;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -131,6 +133,7 @@ public class CombatActivity extends AppCompatActivity {
             ProgressBar progressBarAdverse = (ProgressBar) findViewById(R.id.progressBarPokemonAdverse);
             progressBarAdverse.setProgress(pkmnAdverse.getVieActuelle());
         }
+        finTour();
     }
 
     public void defense(View view) {
@@ -158,12 +161,7 @@ public class CombatActivity extends AppCompatActivity {
             }
         }
 
-        if (pkmnAdverse.getVieActuelle() < 0) {
-            System.out.println("GAGNE");
-        }
-        if (pkmnCourant.getVieActuelle() < 0) {
-            System.out.println("PERDU");
-        }
+        finTour();
     }
 
     public void sac(View view) {
@@ -217,9 +215,19 @@ public class CombatActivity extends AppCompatActivity {
                     e.setNombre(nbrePokeball);
                     if (pokemonEstCapture()) {
                         capture(pkmnAdverse);
+                        Context context = getApplicationContext();
+                        CharSequence text = "Vous avez capturé un " + pkmnAdverse.getPokemon().getNom() + " niveau " + pkmnAdverse.getNiveau();
+                        int duration = Toast.LENGTH_SHORT;
+                        Toast toast = Toast.makeText(context, text, duration);
+                        toast.show();
+                        this.finish();
                     }
                 } else {
-                    System.out.println("NOOOOOOOOOOPE");
+                    Context context = getApplicationContext();
+                    CharSequence text = "La capture n'a pas fontionnée.";
+                    int duration = Toast.LENGTH_SHORT;
+                    Toast toast = Toast.makeText(context, text, duration);
+                    toast.show();
                 }
             }
         }
@@ -239,13 +247,7 @@ public class CombatActivity extends AppCompatActivity {
     private boolean pokemonEstCapture() {
         //TODO si le pokémon est capturé faire :  pkmnAdverse.getPokemon().setCapture(true);
         // db.updatePokemont(pkmnAdverse.getPokemon());
-        boolean ret = false;
-        System.out.println("Etape 1 :" + (3 * pkmnAdverse.getMaxVie() - 2 * pkmnAdverse.getVieActuelle()));
-        System.out.println("Pokemon : " + pkmnAdverse.getPokemon());
-        System.out.println("Taux de capture : " + pkmnAdverse.getPokemon().getTauxCapture());
-        System.out.println("Etape 2 :" + ((3 * pkmnAdverse.getMaxVie() - 2 * pkmnAdverse.getVieActuelle()) * pkmnAdverse.getPokemon().getTauxCapture()));
-        int a = ((3 * pkmnAdverse.getMaxVie() - 2 * pkmnAdverse.getVieActuelle()) * pkmnAdverse.getPokemon().getTauxCapture()) / (3 * pkmnAdverse.getMaxVie());
-        System.out.println("chance de capture : " + a);
+        boolean ret = false; int a = ((3 * pkmnAdverse.getMaxVie() - 2 * pkmnAdverse.getVieActuelle()) * pkmnAdverse.getPokemon().getTauxCapture()) / (3 * pkmnAdverse.getMaxVie());
         if (a > 255) {
 
             ret = true;
@@ -262,6 +264,11 @@ public class CombatActivity extends AppCompatActivity {
                     e.setNombre(nbrePotions);
                     pkmnCourant.setVieActuelle(pkmnCourant.getMaxVie());
                     progressBarAllie.setProgress(pkmnCourant.getVieActuelle());
+                    Context context = getApplicationContext();
+                    CharSequence text = "Vous avez utilisé une potion";
+                    int duration = Toast.LENGTH_SHORT;
+                    Toast toast = Toast.makeText(context, text, duration);
+                    toast.show();
                 } else {
                     System.out.println("NOOOOOOOOOOPE");
                 }
@@ -299,11 +306,29 @@ public class CombatActivity extends AppCompatActivity {
         }
         db.setPokemonReel(p, u.getId());
     }
-    
+
     public void finDeCombat() {
         db.updatePokemonReel(pkmnCourant, u.getId());
         db.updateSacADos(u.getId(), u.getSacADos());
     }
 
+    public void finTour(){
+        if(pkmnAdverse.getVieActuelle() <0 ){
+            Context context = getApplicationContext();
+            CharSequence text = "Vous avez tué le " + pkmnAdverse.getPokemon().getNom() + " adverse.";
+            int duration = Toast.LENGTH_SHORT;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+            this.finish();
+        }
+        if(pkmnCourant.getVieActuelle() < 0 ){
+            Context context = getApplicationContext();
+            CharSequence text = "Vous " + pkmnCourant.getPokemon().getNom() + " n'a plus de point de vie.";
+            int duration = Toast.LENGTH_SHORT;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+            this.finish();
+        }
+    }
 
 }
