@@ -46,8 +46,7 @@ public class CombatActivity extends AppCompatActivity {
 
         ArrayList<PokemonReel> monEquipe = u.getEquipe();
         pkmnCourant = monEquipe.get(0);
-        pkmnAdverse = monEquipe.get(1);
-        ///pkmnAdverse = genererPokemon(idPokemon, longitude, latitude);
+        pkmnAdverse = genererPokemon(idPokemon, longitude, latitude);
 
         pkmnAdverse.getPokemon().setVue(true);
         db.updatePokemont(pkmnAdverse.getPokemon());
