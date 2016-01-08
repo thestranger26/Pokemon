@@ -306,6 +306,7 @@ Boolean ret = db.verifieDonneesUsers(email,password);
 
                 Intent newIntent = new Intent(LoginActivity.this, MapsActivity.class);
                 startActivity(newIntent);
+                LoginActivity.this.finish();
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));
                 mPasswordView.requestFocus();

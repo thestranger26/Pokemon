@@ -19,6 +19,7 @@ public class Lieu {
     }
     public Lieu(){}
 
+
     public int getId() {
         return id;
     }

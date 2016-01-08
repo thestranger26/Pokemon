@@ -1,7 +1,6 @@
 package fr.pokemonteam.pokemon.controller;
 
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -183,7 +182,7 @@ public class CombatActivity extends AppCompatActivity {
         TextView nombre2 = (TextView) dialog.findViewById(R.id.number_element_dialog2);
         image2.setImageResource(this.getResources().getIdentifier(u.getSacADos().get(1).getElement().getImage(), "mipmap", this.getPackageName()));
         libelle2.setText(u.getSacADos().get(1).getElement().getLibelle());
-        nombre2.setText("("Integer.toString(u.getSacADos().get(1).getNombre())")");
+        nombre2.setText("(" + Integer.toString(u.getSacADos().get(1).getNombre()) + ")");
 
         boutonSac1.setOnClickListener(new View.OnClickListener() {
             @Override

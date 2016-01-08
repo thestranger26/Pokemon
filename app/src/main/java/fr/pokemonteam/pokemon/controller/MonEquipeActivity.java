@@ -2,6 +2,7 @@ package fr.pokemonteam.pokemon.controller;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,12 +24,16 @@ public class MonEquipeActivity extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        if (view == null)
-            view = inflater.inflate(R.layout.activity_mon_equipe,container,false);
+                if (view == null)
+                    view = inflater.inflate(R.layout.activity_mon_equipe,container,false);
 //        super.onCreate(savedInstanceState);
 //        setContentView(R.layout.activity_mon_equipe);
 //        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 //        setSupportActionBar(toolbar);
+
+                Toolbar t = (Toolbar) this.getActivity().findViewById(R.id.toolbar);
+                t.setTitle(R.string.title_activity_my_team);
+
 
         Database db = Database.getInstance(this.getActivity());
         Utilisateur u = db.getUser(0);
