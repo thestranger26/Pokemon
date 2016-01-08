@@ -48,7 +48,9 @@ public class MonEquipeActivity extends Fragment {
 
 
             AdapterMonEquipe adapter = new AdapterMonEquipe(this.getActivity(), R.layout.content_mon_equipe, monEquipe);
-            final ListView listView = (ListView) view.findViewById(R.id.monEquipe_listView);
+
+            ListView listView = (ListView) view.findViewById(R.id.monEquipe_listView);
+
 
             listView.setAdapter(adapter);
 

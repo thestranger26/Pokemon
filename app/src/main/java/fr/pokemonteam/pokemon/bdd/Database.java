@@ -182,7 +182,7 @@ public class Database extends SQLiteOpenHelper {
             values.put("libelle", "Home");
             values.put("typeLieu", "hopital");
             values.put("latitude", 45.770255);
-            values.put("longtiude", 4.869100);
+            values.put("longitude", 4.869100);
             db.insert("lieu", null, values);
 
 
@@ -422,6 +422,25 @@ public class Database extends SQLiteOpenHelper {
             db.endTransaction();
         }
         return liste;
+    }
+
+    public void updateSacADos(int idUser, ArrayList<ElementSac> list) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        try {
+            ContentValues values = new ContentValues();
+            for(int i = 0; i<list.size(); i++) {
+                values.put("idUtilisateur", idUser);
+                values.put("idElement", list.get(i).getElement().getId());
+                values.put("nombre", list.get(i).getNombre());
+                db.insert("sacADos", null, values);
+                db.update("sacADos", values, "idUtilisateur=" + idUser, null);
+            }
+            db.setTransactionSuccessful();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            db.endTransaction();
+        }
     }
 
     private Element getElementById(int idElement) {
