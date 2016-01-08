@@ -321,6 +321,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
+
         return true;
     }
 }
