@@ -342,7 +342,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         }
         u.setSacADos(monSac);
+        db.updateSacADos(u.getId(), monSac);
     }
+
     public void ajoutPotion(){
         Database db = Database.getInstance(this);
         Utilisateur u = db.getUser(0);
@@ -353,6 +355,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         }
         u.setSacADos(monSac);
-
+        db.updateSacADos(u.getId(), monSac);
     }
 }

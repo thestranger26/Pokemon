@@ -71,8 +71,8 @@ public class Database extends SQLiteOpenHelper {
             values.put("pseudo", "Regis");
             values.put("nom", "Professeur Chen");
             values.put("prenom", "Fils du");
-            values.put("mail","a@a");
-            values.put("motDePasse","aaaaa");
+            values.put("mail", "a@a");
+            values.put("motDePasse", "aaaaa");
             db.insert("utilisateur", null, values);
 
             //// CREATION DE POKEMONS
@@ -321,7 +321,7 @@ public class Database extends SQLiteOpenHelper {
         values.put("capture", pokemon.getCapture());
         values.put("numero", pokemon.getNumero());
         values.put("tauxCapture", pokemon.getTauxCapture());
-        db.update("infosPokemon", values, "idPokemon="+pokemon.getId(), null);
+        db.update("infosPokemon", values, "idPokemon=" + pokemon.getId(), null);
     }
 
     public void setPokemonReel(PokemonReel pokemon, int idUser) {
@@ -360,7 +360,6 @@ public class Database extends SQLiteOpenHelper {
         values.put("maxVie", pokemon.getMaxVie());
         db.update("pokemonReel", values, "idPokemonReel=" + pokemon.getId(), null);
     }
-
 
 
     public Pokemon getPokemon(int idPokemon) {
@@ -426,20 +425,13 @@ public class Database extends SQLiteOpenHelper {
 
     public void updateSacADos(int idUser, ArrayList<ElementSac> list) {
         SQLiteDatabase db = this.getReadableDatabase();
-        try {
-            ContentValues values = new ContentValues();
-            for(int i = 0; i<list.size(); i++) {
-                values.put("idUtilisateur", idUser);
-                values.put("idElement", list.get(i).getElement().getId());
-                values.put("nombre", list.get(i).getNombre());
-                db.insert("sacADos", null, values);
-                db.update("sacADos", values, "idUtilisateur=" + idUser, null);
-            }
-            db.setTransactionSuccessful();
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            db.endTransaction();
+        ContentValues values = new ContentValues();
+        for (int i = 0; i < list.size(); i++) {
+            values.put("idUtilisateur", idUser);
+            values.put("idElement", list.get(i).getElement().getId());
+            values.put("nombre", list.get(i).getNombre());
+            db.update("sacADos", values, "idUtilisateur=" + idUser, null);
+            values.clear();
         }
     }
 
@@ -529,13 +521,14 @@ public class Database extends SQLiteOpenHelper {
         }
         return ret;
     }
+
     public ArrayList<Lieu> envoieLieu() {
         ArrayList<Lieu> liste = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
         Boolean ret = false;
         try {
             db.beginTransaction();
-            Cursor c = db.query("lieu", new String[]{"idLieu", "libelle","typeLieu","longitude","latitude"}, null, null, null, null, null);
+            Cursor c = db.query("lieu", new String[]{"idLieu", "libelle", "typeLieu", "longitude", "latitude"}, null, null, null, null, null);
 
             if (c.getCount() > 0) {
                 c.moveToFirst();
