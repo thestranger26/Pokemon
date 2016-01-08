@@ -348,7 +348,7 @@ public class MainActivity extends Fragment implements OnMapReadyCallback {
 
     }
 
-    public PokemonReel genererPokemon(double latitude, double longitude ){
+    public PokemonReel genererPokemon(double latitude, double longitude){
         PokemonReel pkmn = new PokemonReel();
         Database db = Database.getInstance(this.getActivity());
         Random randomGenerator = new Random();

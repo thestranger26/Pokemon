@@ -16,7 +16,6 @@ public class PokemonReel {
     int maxVie;
     int vieActuelle;
 
-
     public PokemonReel() {
     }
 
@@ -30,7 +29,6 @@ public class PokemonReel {
         this.latitude = latitude;
         this.longitude = longitude;
     }
-
 
     public int getId() {
         return id;

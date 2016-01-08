@@ -1,10 +1,8 @@
 package fr.pokemonteam.pokemon.controller;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -37,9 +35,14 @@ public class CombatActivity extends AppCompatActivity {
 
         System.out.println(u.getNom());
 
+        Intent i = getIntent();
+        int idPokemon = i.getIntExtra("idPokemon", 0);
+        double longitude = i.getDoubleExtra("longitude", 0);
+        double latitude = i.getDoubleExtra("latitude", 0);
+
         ArrayList<PokemonReel> monEquipe = u.getEquipe();
         pkmnCourant = monEquipe.get(0);
-        pkmnAdverse = monEquipe.get(1);
+        pkmnAdverse = genererPokemon(idPokemon, longitude, latitude);
 
         pkmnAdverse.getPokemon().setVue(true);
         db.updatePokemont(pkmnAdverse.getPokemon());
@@ -155,6 +158,7 @@ public class CombatActivity extends AppCompatActivity {
         }
 
     }
+
     public void pokeball(View view){
         int nbrePokeball = 0;
         for (ElementSac e : u.getSacADos()) {
@@ -218,6 +222,29 @@ public class CombatActivity extends AppCompatActivity {
 //        Button buttonPokeball = (Button) findViewById(R.id.buttonPokeball);
 //        buttonPokeball.setText(getResources().getString(R.string.button_pkball) + " (" + nbrePokeball + ")");
 // TODO bouton potion
+    }
+
+    public PokemonReel genererPokemon(int idPokemon, double latitude, double longitude){
+        PokemonReel pkmn = new PokemonReel();
+        Database db = Database.getInstance(this);
+        Random randomGenerator = new Random();
+        Pokemon p = db.getPokemon(idPokemon);
+        pkmn.setAtk(generateRandomValue(p.getAttaque()));
+        pkmn.setDef(generateRandomValue(p.getDefense()));
+        pkmn.setMaxVie(generateRandomValue(p.getPv()));
+        pkmn.setExp(0);
+        pkmn.setVieActuelle(pkmn.getMaxVie());
+        pkmn.setNiveau(randomGenerator.nextInt(100));
+        pkmn.setLatitude(latitude);
+        pkmn.setLongitude(longitude);
+        return pkmn;
+    }
+
+    public int generateRandomValue(int val){
+        Random randomGenerator = new Random();
+        double coeff = randomGenerator.nextDouble()*(1.5-0.5) + 0.5;
+        double ret = val*coeff;
+        return (int) ret;
     }
 
 

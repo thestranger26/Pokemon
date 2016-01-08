@@ -19,7 +19,6 @@ public class Pokemon implements Serializable {
     Boolean capture;
     int tauxCapture;
 
-
     public Pokemon(int id, String type, int numero, String nom, int attage, int defense, int pv, String nomImage, Boolean vue, Boolean capture, int tauxCapture) {
         this.id = id;
         this.type = type;
