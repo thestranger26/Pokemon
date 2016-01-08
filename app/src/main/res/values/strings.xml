@@ -11,6 +11,7 @@
     <!-- Strings related to details pokedex -->
     <string name="attaque_pokemon_detail">Attaque</string>
     <string name="defense_pokemon_detail">Défense</string>
+    <string name="niveau_pokemon_detail">Niveau</string>
     <string name="pv_pokemon_detail">PV</string>
 
     <!-- Strings related to fight -->
@@ -45,10 +46,12 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
-
     <string name="label_def">def</string>
     <string name="label_atk">atk</string>
     <string name="label_niv">niv</string>
     <string name="label_exp">exp</string>
+
+    <string name="button_suppEquipe">Enlever de l\'équipe</string>
+    <string name="title_activity_detail_pokemon_mon_equipe">DetailPokemonMonEquipeActivity</string>
 
 </resources>

@@ -542,7 +542,25 @@ public class Database extends SQLiteOpenHelper {
         return liste;
     }
 
+
+    public void suppPokemonEquipe(int id_pokemon) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        try {
+            db.beginTransaction();
+            ContentValues c = new ContentValues();
+            c.put("equipe", 0);
+            db.update("pokemonReel",c,"idPokemonReel="+id_pokemon,null);
+            db.setTransactionSuccessful();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            db.endTransaction();
+        }
+
+    }
 //
+
 //    public void insertTweets(Tweet t) {
 //        SQLiteDatabase db = this.getWritableDatabase();
 //        try {

@@ -43,28 +43,24 @@
                 android:id="@+id/monEquipe_nivPkm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="niv : "
                 android:textAppearance="?android:attr/textAppearanceSmall" />
 
             <TextView
                 android:id="@+id/monEquipe_expPkm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="exp : "
                 android:textAppearance="?android:attr/textAppearanceSmall" />
 
             <TextView
                 android:id="@+id/monEquipe_atkPkm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="atk : "
                 android:textAppearance="?android:attr/textAppearanceSmall" />
 
             <TextView
                 android:id="@+id/monEquipe_defPkm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="def : "
                 android:textAppearance="?android:attr/textAppearanceSmall" />
         </LinearLayout>
     </LinearLayout>
@@ -78,4 +74,6 @@
         android:layout_marginTop="10dp"
         android:progressBackgroundTint="@color/material_deep_teal_200"
         android:progressTint="@color/accent_material_light" />
+
+
 </RelativeLayout>

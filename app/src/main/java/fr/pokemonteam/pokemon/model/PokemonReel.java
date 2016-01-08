@@ -47,7 +47,7 @@ public class PokemonReel {
     }
 
     public String getPseudo() {
-        if(pseudo.equals(null)){
+        if(pseudo == null){
             return this.pokemon.getNom();
         }
         else{
