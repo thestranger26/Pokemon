@@ -42,9 +42,9 @@ public class CombatActivity extends AppCompatActivity {
         System.out.println(u.getNom());
 
         Intent i = getIntent();
-        int idPokemon = 42;//i.getIntExtra("idPokemon", 0);
-        double longitude = 0;// i.getDoubleExtra("longitude", 0);
-        double latitude = 0;// i.getDoubleExtra("latitude", 0);
+        int idPokemon = i.getIntExtra("idPokemon", 0);
+        double longitude = i.getDoubleExtra("longitude", 0);
+        double latitude = i.getDoubleExtra("latitude", 0);
 
         ArrayList<PokemonReel> monEquipe = u.getEquipe();
         pkmnCourant = monEquipe.get(0);
@@ -214,7 +214,7 @@ public class CombatActivity extends AppCompatActivity {
                     nbrePokeball = e.getNombre() - 1;
                     e.setNombre(nbrePokeball);
                     if (pokemonEstCapture()) {
-                        System.out.println("Youpi pokémon capturé !");
+                        capture(pkmnAdverse);
                     }
                 } else {
                     System.out.println("NOOOOOOOOOOPE");
@@ -224,7 +224,7 @@ public class CombatActivity extends AppCompatActivity {
     }
 
     public void fuite(View view) {
-
+        this.finish();
     }
 
     public int getActionPkmnAdverse() {
@@ -245,6 +245,7 @@ public class CombatActivity extends AppCompatActivity {
         int a = ((3 * pkmnAdverse.getMaxVie() - 2 * pkmnAdverse.getVieActuelle()) * pkmnAdverse.getPokemon().getTauxCapture()) / (3 * pkmnAdverse.getMaxVie());
         System.out.println("chance de capture : " + a);
         if (a > 255) {
+
             ret = true;
         }
         return ret;
@@ -271,11 +272,6 @@ public class CombatActivity extends AppCompatActivity {
         Database db = Database.getInstance(this);
         Random randomGenerator = new Random();
         Pokemon p = db.getPokemon(idPokemon);
-        System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
-        System.out.println("ATK : " + p.getAttaque());
-        System.out.println("DEF : " + p.getDefense());
-        System.out.println("VIE : " + p.getPv());
-        System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
         pkmn.setAtk(generateRandomValue(p.getAttaque()));
         pkmn.setDef(generateRandomValue(p.getDefense()));
         pkmn.setMaxVie(generateRandomValue(p.getPv()));
@@ -285,25 +281,21 @@ public class CombatActivity extends AppCompatActivity {
         pkmn.setLatitude(latitude);
         pkmn.setLongitude(longitude);
         pkmn.setPokemon(p);
-        System.out.println("______________________________________________");
-        System.out.println("ATK : " + pkmn.getAtk());
-        System.out.println("DEF : " + pkmn.getDef());
-        System.out.println("VIE : " + pkmn.getMaxVie());
-        System.out.println("______________________________________________");
         return pkmn;
     }
 
     public int generateRandomValue(int val) {
-        System.out.println("###################################");
         Random randomGenerator = new Random();
         double coeff = randomGenerator.nextDouble() * (1.5 - 0.5) + 0.5;
-        System.out.println("COEFF : " + coeff);
-        System.out.println("VAL : " + val);
         double ret = val * coeff;
-        System.out.println("RET : " + ret);
-        System.out.println("###################################");
         return (int) ret;
     }
 
+    public void capture(PokemonReel p){
+        if(u.getEquipe().size() < 6){
+            u.getEquipe().add(p);
+        }
+        db.setPokemonReel(p, u.getId());
+    }
 
 }
