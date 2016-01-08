@@ -224,16 +224,29 @@ public class CombatActivity extends AppCompatActivity {
                     }
                 } else {
                     Context context = getApplicationContext();
-                    CharSequence text = "La capture n'a pas fontionnée.";
+                    CharSequence text = "Vous n'avez plus de pokéball.";
                     int duration = Toast.LENGTH_SHORT;
                     Toast toast = Toast.makeText(context, text, duration);
                     toast.show();
                 }
             }
+            else{
+                Context context = getApplicationContext();
+                CharSequence text = "La capture n'a pas fonctionné";
+                int duration = Toast.LENGTH_SHORT;
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
+            }
         }
     }
 
     public void fuite(View view) {
+        Context context = getApplicationContext();
+        CharSequence text = "Vous avez fuit le combat.";
+        int duration = Toast.LENGTH_SHORT;
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
+        finDeCombat();
         this.finish();
     }
 
@@ -319,6 +332,7 @@ public class CombatActivity extends AppCompatActivity {
             int duration = Toast.LENGTH_SHORT;
             Toast toast = Toast.makeText(context, text, duration);
             toast.show();
+            finDeCombat();
             this.finish();
         }
         if(pkmnCourant.getVieActuelle() < 0 ){
@@ -327,6 +341,7 @@ public class CombatActivity extends AppCompatActivity {
             int duration = Toast.LENGTH_SHORT;
             Toast toast = Toast.makeText(context, text, duration);
             toast.show();
+            finDeCombat();
             this.finish();
         }
     }
