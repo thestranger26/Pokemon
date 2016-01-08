@@ -34,6 +34,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private GoogleMap mMap;
     private Context context;
+    private LatLng latLon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,18 +68,23 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             mMap.moveCamera(CameraUpdateFactory.newLatLng(myLatLng));
         }
 
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(45.782649, 4.865827)));
-        generationPokemon();
-        generationDesLieux();
+        //mMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(45.782649, 4.865827)));
+        //generationPokemon();
+        //generationDesLieux();
+        //generationObjets();
         mMap.setOnMyLocationButtonClickListener(new GoogleMap.OnMyLocationButtonClickListener() {
 
             @Override
             public boolean onMyLocationButtonClick() {
                 Location loc = mMap.getMyLocation();
                 if (loc != null) {
-                    LatLng myLatLng = new LatLng(loc.getLatitude(),
+                    latLon = new LatLng(loc.getLatitude(),
                             loc.getLongitude());
-                    mMap.moveCamera(CameraUpdateFactory.newLatLng(myLatLng));
+                    mMap.clear();
+                    mMap.moveCamera(CameraUpdateFactory.newLatLng(latLon));
+                    generationPokemon();
+                    generationDesLieux();
+                    generationObjets();
                 }
                 return true;
             }
@@ -99,36 +105,41 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     }
 
+    private void generationObjets() {
+        Location loc = mMap.getMyLocation();
+        if (loc != null) {
+            Random randomGenerator = new Random();
+            int u = randomGenerator.nextInt(15);
+
+            if (u>=8 && u<=11){
+                LatLng objCoord = ramdomCoordonnes();
+                creerMarker(objCoord.latitude,objCoord.longitude,"pokeball");
+            }
+            if (u>=10 && u<=13 ){
+                LatLng objCoord = ramdomCoordonnes();
+                creerMarker(objCoord.latitude,objCoord.longitude,"potion");
+            }
+        }
+
+    }
+
 
     private void generationDesLieux() {
         Database db = Database.getInstance(this);
         ArrayList<Lieu> u = db.envoieLieu();
         for (Lieu l : u ) {
-            System.out.println("*********************");
-            System.out.println(l.toString());
-            System.out.println("*********************");
             creerMarker(l.getLatitude(),l.getLongitude(),l.getType());
         }
     }
 
     private void generationPokemon() {
-        LatLng myLatLng = new LatLng(45.782649, 4.865827);
         for (int i=0;i<5;i++){
             System.out.println("pokemon num :"+ i);
             Database db = Database.getInstance(this);
             Random randomGenerator = new Random();
             int u = randomGenerator.nextInt(151);
-            int y = randomGenerator.nextInt(50);
-            Double r= Double.parseDouble("-1");
-            if (y>25) {r = Double.parseDouble("1");
-                }
-            Double d_1 = r*   ( Double.parseDouble( Integer.toString( randomGenerator.nextInt(8)))/ (Double.parseDouble("1000")));
-            y = randomGenerator.nextInt(50);
-            r= Double.parseDouble("-1");
-            if (y>25) {r = Double.parseDouble("1");
-            }
-            Double d_2 = r* ( Double.parseDouble( Integer.toString( randomGenerator.nextInt(8)))/ (Double.parseDouble("1000")));
-            creerMarker(myLatLng.latitude+d_1,myLatLng.longitude+d_2,"pokemon"+u);
+            LatLng pokemCoord = ramdomCoordonnes();
+            creerMarker(pokemCoord.latitude,pokemCoord.longitude,"pokemon"+u);
         }
 
 
@@ -155,6 +166,23 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         imageView.setImageResource(this.getResources().getIdentifier(libelle, "drawable", this.getPackageName()));
         mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromBitmap(createDrawableFromView(this, marker))).position(new LatLng(lat, lon)).title(libelle));
 
+    }
+    public LatLng ramdomCoordonnes()
+    {
+        LatLng coord = new LatLng(0,0);
+        Random randomGenerator = new Random();
+        int y = randomGenerator.nextInt(50);
+        Double r= Double.parseDouble("-1");
+        if (y>25) {r = Double.parseDouble("1");
+        }
+        Double d_1 = r*   ( Double.parseDouble( Integer.toString( randomGenerator.nextInt(8)))/ (Double.parseDouble("1000")));
+        y = randomGenerator.nextInt(50);
+        r= Double.parseDouble("-1");
+        if (y>25) {r = Double.parseDouble("1");
+        }
+        Double d_2 = r* ( Double.parseDouble( Integer.toString( randomGenerator.nextInt(8)))/ (Double.parseDouble("1000")));
+        coord = new LatLng(latLon.latitude+d_1,latLon.longitude+d_2);
+        return  coord;
     }
 
 }
