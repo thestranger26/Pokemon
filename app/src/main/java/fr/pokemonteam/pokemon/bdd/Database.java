@@ -424,6 +424,25 @@ public class Database extends SQLiteOpenHelper {
         return liste;
     }
 
+    public void updateSacADos(int idUser, ArrayList<ElementSac> list) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        try {
+            ContentValues values = new ContentValues();
+            for(int i = 0; i<list.size(); i++) {
+                values.put("idUtilisateur", idUser);
+                values.put("idElement", list.get(i).getElement().getId());
+                values.put("nombre", list.get(i).getNombre());
+                db.insert("sacADos", null, values);
+                db.update("sacADos", values, "idUtilisateur=" + idUser, null);
+            }
+            db.setTransactionSuccessful();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            db.endTransaction();
+        }
+    }
+
     private Element getElementById(int idElement) {
         Element el = new Element();
         SQLiteDatabase db = this.getReadableDatabase();

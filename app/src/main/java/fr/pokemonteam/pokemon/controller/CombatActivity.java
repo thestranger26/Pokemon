@@ -299,5 +299,9 @@ public class CombatActivity extends AppCompatActivity {
         return (int) ret;
     }
 
+    public void finDeCombat() {
+        db.updatePokemonReel(pkmnCourant, u.getId());
+    }
+
 
 }
