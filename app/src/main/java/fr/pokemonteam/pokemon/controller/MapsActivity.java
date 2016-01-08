@@ -153,7 +153,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     newIntent.putExtra("idPokemon", Integer.parseInt(marker.getTitle()));
                     newIntent.putExtra("latitude", marker.getPosition().latitude);
                     newIntent.putExtra("longitude", marker.getPosition().longitude);
+                    marker.remove();
                     startActivity(newIntent);
+
                 }
                 if (u == 200) {
                     ajoutPokeball();
@@ -339,7 +341,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 monSac.get(i).setNombre(monSac.get(i).getNombre() + 1);
             }
         }
-
+        u.setSacADos(monSac);
     }
     public void ajoutPotion(){
         Database db = Database.getInstance(this);
@@ -350,6 +352,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 monSac.get(i).setNombre(monSac.get(i).getNombre() + 1);
             }
         }
+        u.setSacADos(monSac);
 
     }
 }
