@@ -129,12 +129,7 @@ public class HomeActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_carte) {
-            if (fragment_map == null) {
-                fragment_map = new Intent(this, MapsActivity.class);
-                startActivity(fragment_map);
-            } else {
-                startActivity(fragment_map);
-            }
+            this.finish();
 
         } else if (id == R.id.nav_monEquipe) {
 

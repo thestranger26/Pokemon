@@ -143,7 +143,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             @Override
             public boolean onMarkerClick(Marker marker) {
                 Intent newIntent = new Intent(MapsActivity.this, CombatActivity.class);
-                newIntent.putExtra("idPokemon", marker.getTitle());
+                newIntent.putExtra("idPokemon", Integer.parseInt(marker.getTitle()));
                 newIntent.putExtra("latitude", marker.getPosition().latitude);
                 newIntent.putExtra("longitude", marker.getPosition().longitude);
                 startActivity(newIntent);
@@ -201,7 +201,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             System.out.println("*********************");
             System.out.println(l.toString());
             System.out.println("*********************");
-            creerMarker(l.getLatitude(), l.getLongitude(), l.getType());
+            creerMarker(l.getLatitude(),l.getLongitude(),l.getType(), 0);
         }
     }
 
@@ -226,8 +226,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             if (y > 25) {
                 r = Double.parseDouble("1");
             }
-            Double d_2 = r * (Double.parseDouble(Integer.toString(randomGenerator.nextInt(8))) / (Double.parseDouble("1000")));
-            creerMarker(myLatLng.latitude + d_1, myLatLng.longitude + d_2, "pokemon" + u);
+            Double d_2 = r* ( Double.parseDouble( Integer.toString( randomGenerator.nextInt(8)))/ (Double.parseDouble("1000")));
+            creerMarker(myLatLng.latitude+d_1,myLatLng.longitude+d_2, "pokemon"+(u+1), u);
         }
 
 
@@ -249,14 +249,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         return bitmap;
     }
 
-    public void creerMarker(double lat, double lon, String libelle) {
+    public void creerMarker(double lat,double lon,String libelle, int id){
         View marker = ((LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.custom_marker_layout, null);
         ImageView imageView = (ImageView) marker.findViewById(R.id.imageDisplay);
         imageView.setImageResource(this.getResources().getIdentifier(libelle, "drawable", this.getPackageName()));
-        mMap.addMarker(new MarkerOptions()
-                .icon(BitmapDescriptorFactory.fromBitmap(createDrawableFromView(this, marker)))
-                .position(new LatLng(lat, lon))
-                .title(libelle));
+        mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromBitmap(createDrawableFromView(this, marker))).position(new LatLng(lat, lon)).title(Integer.toString(id)));
 
     }
 
@@ -324,6 +321,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
+
         return true;
     }
 }

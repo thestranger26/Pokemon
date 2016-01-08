@@ -369,12 +369,17 @@ public class Database extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         try {
             db.beginTransaction();
-            Cursor c = db.query("infosPokemon", new String[]{"idPokemon", "nom", "nomImage", "vue", "capture", "tauxCapture"}, "idPokemon=" + idPokemon, null, null, null, null);
+            Cursor c = db.query("infosPokemon", new String[]{"idPokemon", "type", "numero", "nom", "attaque", "defense", "pv", "nomImage", "vue", "capture", "tauxCapture"}, "idPokemon=" + idPokemon, null, null, null, null);
 
             p.setId(idPokemon);
             if (c.getCount() == 1) {
                 c.moveToFirst();
+                p.setType(c.getString(c.getColumnIndex("type")));
+                p.setNumero(c.getInt(c.getColumnIndex("numero")));
                 p.setNom(c.getString(c.getColumnIndex("nom")));
+                p.setAttaque(c.getInt(c.getColumnIndex("attaque")));
+                p.setDefense(c.getInt(c.getColumnIndex("defense")));
+                p.setPv(c.getInt(c.getColumnIndex("pv")));
                 p.setNomImage(c.getString(c.getColumnIndex("nomImage")));
                 p.setVue(c.getInt(c.getColumnIndex("vue")) == 1);
                 p.setCapture(c.getInt(c.getColumnIndex("capture")) == 1);

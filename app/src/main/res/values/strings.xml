@@ -34,7 +34,7 @@
     </string>
     <string name="title_activity_pokedex_detail">Détails du Pokémon</string>
 
-    <string name="title_activity_home">Mon Equipe</string>
+    <string name="title_activity_home">Pokémon</string>
     <string name="menu_seDeconnecter">Se deconnecter</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>

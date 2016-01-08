@@ -218,8 +218,6 @@ public class CombatActivity extends AppCompatActivity {
                 }
             }
         }
-        //Button buttonPokeball = (Button) findViewById(R.id.buttonPokeball);
-        //buttonPokeball.setText(getResources().getString(R.string.button_pkball) + " (" + nbrePokeball + ")");
 
     }
 
@@ -263,9 +261,6 @@ public class CombatActivity extends AppCompatActivity {
                 }
             }
         }
-//        Button buttonPokeball = (Button) findViewById(R.id.buttonPokeball);
-//        buttonPokeball.setText(getResources().getString(R.string.button_pkball) + " (" + nbrePokeball + ")");
-// TODO bouton potion
     }
 
     public PokemonReel genererPokemon(int idPokemon, double latitude, double longitude) {
@@ -287,12 +282,6 @@ public class CombatActivity extends AppCompatActivity {
         pkmn.setLatitude(latitude);
         pkmn.setLongitude(longitude);
         pkmn.setPokemon(p);
-        System.out.println("--------------------------------------------");
-        System.out.println("ATK : " + pkmn.getAtk());
-        System.out.println("DEF : " + pkmn.getDef());
-        System.out.println("VIE : " + pkmn.getMaxVie());
-        System.out.println("NIVEAU : " + pkmn.getNiveau());
-        System.out.println("--------------------------------------------");
         return pkmn;
     }
 
