@@ -96,9 +96,10 @@ public class CombatActivity extends AppCompatActivity {
             System.out.println("Attaque de votre pokémon : " + pkmnCourant.getAtk());
             System.out.println("Défense du pokémon adverse : " + pkmnAdverse.getDef());
             int differenceAtkDef = pkmnCourant.getAtk() - pkmnAdverse.getDef();
+
             if (differenceAtkDef < 0) {
                 System.out.println("Votre pokémon perd " + differenceAtkDef + " points de vie !");
-                pkmnCourant.setVieActuelle(pkmnCourant.getVieActuelle() - differenceAtkDef);
+                pkmnCourant.setVieActuelle(pkmnCourant.getVieActuelle() + differenceAtkDef);
                 ProgressBar progressBarAllie = (ProgressBar) findViewById(R.id.progressBarPokemonAllie);
                 progressBarAllie.setProgress(pkmnCourant.getVieActuelle());
                 TextView textVieAllie = (TextView) findViewById(R.id.textViePokemonAllie);
@@ -284,6 +285,11 @@ public class CombatActivity extends AppCompatActivity {
         pkmn.setLatitude(latitude);
         pkmn.setLongitude(longitude);
         pkmn.setPokemon(p);
+        System.out.println("______________________________________________");
+        System.out.println("ATK : " + pkmn.getAtk());
+        System.out.println("DEF : " + pkmn.getDef());
+        System.out.println("VIE : " + pkmn.getMaxVie());
+        System.out.println("______________________________________________");
         return pkmn;
     }
 
