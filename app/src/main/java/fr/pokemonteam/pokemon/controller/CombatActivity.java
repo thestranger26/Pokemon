@@ -27,13 +27,16 @@ public class CombatActivity extends AppCompatActivity {
     private PokemonReel pkmnAdverse;
     private Utilisateur u;
     private Button button;
+    private Database db;
+    private ProgressBar progressBarAllie;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_combat);
 
-        Database db = Database.getInstance(this);
+        db = Database.getInstance(this);
         u = db.getUser(0);
 
         System.out.println(u.getNom());
@@ -62,7 +65,7 @@ public class CombatActivity extends AppCompatActivity {
         textAdverse.setText(pkmnAdverse.getPseudo() + " N." + pkmnAdverse.getNiveau());
 
         // Définition des infos de notre pokémon
-        ProgressBar progressBarAllie = (ProgressBar) findViewById(R.id.progressBarPokemonAllie);
+        progressBarAllie = (ProgressBar) findViewById(R.id.progressBarPokemonAllie);
         progressBarAllie.setMax(pkmnCourant.getMaxVie());
         progressBarAllie.setProgress(pkmnCourant.getVieActuelle());
 
@@ -183,7 +186,6 @@ public class CombatActivity extends AppCompatActivity {
         image2.setImageResource(this.getResources().getIdentifier(u.getSacADos().get(1).getElement().getImage(), "mipmap", this.getPackageName()));
         libelle2.setText(u.getSacADos().get(1).getElement().getLibelle());
         nombre2.setText("(" + Integer.toString(u.getSacADos().get(1).getNombre()) + ")");
-
         boutonSac1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -218,7 +220,6 @@ public class CombatActivity extends AppCompatActivity {
                 }
             }
         }
-
     }
 
     public void fuite(View view) {
@@ -256,6 +257,7 @@ public class CombatActivity extends AppCompatActivity {
                     nbrePotions = e.getNombre() - 1;
                     e.setNombre(nbrePotions);
                     pkmnCourant.setVieActuelle(pkmnCourant.getMaxVie());
+                    progressBarAllie.setProgress(pkmnCourant.getVieActuelle());
                 } else {
                     System.out.println("NOOOOOOOOOOPE");
                 }
