@@ -7,8 +7,8 @@ public class Lieu {
     int id;
     String libelle;
     String type;
-    long latitude;
-    long longitude;
+    double latitude;
+    double longitude;
 
     public Lieu(int id, String libelle, String type, long latitude, long longitude) {
         this.id = id;
@@ -17,6 +17,7 @@ public class Lieu {
         this.latitude = latitude;
         this.longitude = longitude;
     }
+    public Lieu(){}
 
     public int getId() {
         return id;
@@ -42,19 +43,19 @@ public class Lieu {
         this.type = type;
     }
 
-    public long getLatitude() {
+    public double getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(long latitude) {
+    public void setLatitude(double latitude) {
         this.latitude = latitude;
     }
 
-    public long getLongitude() {
+    public double getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(long longitude) {
+    public void setLongitude(double longitude) {
         this.longitude = longitude;
     }
 }

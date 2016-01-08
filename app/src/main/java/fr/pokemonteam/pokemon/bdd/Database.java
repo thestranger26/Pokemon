@@ -17,6 +17,7 @@ import java.util.HashMap;
 
 import fr.pokemonteam.pokemon.model.Element;
 import fr.pokemonteam.pokemon.model.ElementSac;
+import fr.pokemonteam.pokemon.model.Lieu;
 import fr.pokemonteam.pokemon.model.Pokemon;
 import fr.pokemonteam.pokemon.model.PokemonReel;
 import fr.pokemonteam.pokemon.model.Utilisateur;
@@ -171,18 +172,19 @@ public class Database extends SQLiteOpenHelper {
             values = new ContentValues();
             values.put("idLieu", 0);
             values.put("libelle", "CPE");
-            values.put("typeLieu", "Ecole");
-            values.put("longitude", 45.784807);
-            values.put("latitude", 4.869069);
+            values.put("typeLieu", "maison");
+            values.put("latitude", 45.784807);
+            values.put("longitude", 4.869069);
             db.insert("lieu", null, values);
 
             values = new ContentValues();
             values.put("idLieu", 1);
             values.put("libelle", "Home");
-            values.put("typeLieu", "Maison");
-            values.put("longitude", 45.770255);
-            values.put("latitude", 4.868170);
+            values.put("typeLieu", "hopital");
+            values.put("latitude", 45.770255);
+            values.put("longtiude", 4.869100);
             db.insert("lieu", null, values);
+
 
             db.setTransactionSuccessful();
         } catch (Exception e) {
@@ -356,7 +358,7 @@ public class Database extends SQLiteOpenHelper {
         values.put("latitude", pokemon.getLatitude());
         values.put("vieActuelle", pokemon.getVieActuelle());
         values.put("maxVie", pokemon.getMaxVie());
-        db.update("pokemonReel", values, "idPokemonReel="+pokemon.getId(), null);
+        db.update("pokemonReel", values, "idPokemonReel=" + pokemon.getId(), null);
     }
 
 
@@ -502,6 +504,37 @@ public class Database extends SQLiteOpenHelper {
             db.endTransaction();
         }
         return ret;
+    }
+    public ArrayList<Lieu> envoieLieu() {
+        ArrayList<Lieu> liste = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Boolean ret = false;
+        try {
+            db.beginTransaction();
+            Cursor c = db.query("lieu", new String[]{"idLieu", "libelle","typeLieu","longitude","latitude"}, null, null, null, null, null);
+
+            if (c.getCount() > 0) {
+                c.moveToFirst();
+                do {
+                    Lieu l = new Lieu();
+
+                    l.setId(c.getInt(c.getColumnIndex("idLieu")));
+                    l.setLibelle(c.getString(c.getColumnIndex("libelle")));
+                    l.setType(c.getString(c.getColumnIndex("typeLieu")));
+                    l.setLongitude(c.getDouble(c.getColumnIndex("longitude")));
+                    l.setLatitude(c.getDouble(c.getColumnIndex("latitude")));
+                    liste.add(l);
+
+                } while (c.moveToNext());
+            }
+            db.setTransactionSuccessful();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            db.endTransaction();
+        }
+
+        return liste;
     }
 
 //
