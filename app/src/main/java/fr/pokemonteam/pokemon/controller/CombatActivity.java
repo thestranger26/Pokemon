@@ -300,6 +300,7 @@ public class CombatActivity extends AppCompatActivity {
     
     public void finDeCombat() {
         db.updatePokemonReel(pkmnCourant, u.getId());
+        db.updateSacADos(u.getId(), u.getSacADos());
     }
 
 
