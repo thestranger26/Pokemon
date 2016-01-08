@@ -7,10 +7,7 @@ public class Element {
     int id;
     String libelle;
     String effet;
-
-
     String image;
-
 
     public Element(int id, String libelle, String effet, String image) {
         this.id = id;

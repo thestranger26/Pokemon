@@ -21,7 +21,7 @@ import fr.pokemonteam.pokemon.model.Utilisateur;
 
 public class SacActivity extends AppCompatActivity {
 
-    ArrayList<ElementSac> monSac;
+    private ArrayList<ElementSac> monSac;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

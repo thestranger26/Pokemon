@@ -58,6 +58,7 @@
         <activity
             android:name=".controller.CombatActivity"
             android:label="@string/title_activity_combat"
+            android:exported="true"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
