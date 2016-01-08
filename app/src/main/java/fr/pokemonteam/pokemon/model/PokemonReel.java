@@ -47,7 +47,12 @@ public class PokemonReel {
     }
 
     public String getPseudo() {
-        return pseudo;
+        if(pseudo.equals(null)){
+            return this.pokemon.getNom();
+        }
+        else{
+            return pseudo;
+        }
     }
 
     public void setPseudo(String pseudo) {
